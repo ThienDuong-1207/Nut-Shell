@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Reset & base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: #F2EBDF;
+  color: #2A2018;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #EAE0CE; }
+::-webkit-scrollbar-thumb { background: #A8623C; border-radius: 3px; }
+
+/* ─── Selection ─── */
+::selection { background: #A8623C; color: #F4EFE7; }
+
+/* ─── Hero fade-up keyframes (for initial load) ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Scroll indicator bounce ─── */
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+.bounce-slow { animation: bounceSlow 2.2s ease-in-out infinite; }
+
+/* ─── Thin horizontal scrollbar (projects) ─── */
+.hscroll::-webkit-scrollbar        { height: 2px; }
+.hscroll::-webkit-scrollbar-track  { background: rgba(244,239,231,.12); border-radius: 1px; }
+.hscroll::-webkit-scrollbar-thumb  { background: #A8623C; border-radius: 1px; }
