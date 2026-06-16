@@ -1,34 +1,71 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import LoadingScreen from './components/LoadingScreen'
-import Nav      from './components/Nav'
-import Hero     from './components/Hero'
-import About    from './components/About'
-import Services from './components/Services'
-import Projects from './components/Projects'
-import Stats    from './components/Stats'
-import Process  from './components/Process'
-import Quote    from './components/Quote'
-import CTA      from './components/CTA'
-import Footer   from './components/Footer'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+import FloatingContact from './components/FloatingContact'
+
+// Pages
+import Home from './pages/Home'
+import ProjectsPage from './pages/ProjectsPage'
+import ProjectDetail from './pages/ProjectDetail'
+import BlogPage from './pages/BlogPage'
+import BlogDetail from './pages/BlogDetail'
+import ContactPage from './pages/ContactPage'
+import AboutPage from './pages/AboutPage'
+
+function NotFound() {
+  return (
+    <main style={{ background: '#F2EBDF', minHeight: '100vh', paddingTop: '88px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
+      <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#2A2018' }}>404</p>
+      <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#2A2018' }}>Trang không tìm thấy</h1>
+      <Link to="/" style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2px', color: '#2A2018', border: '1px solid #2A2018', padding: '12px 28px', borderRadius: '999px', textDecoration: 'none' }}>
+        VỀ TRANG CHỦ →
+      </Link>
+    </main>
+  )
+}
 
 export default function App() {
   const [loaded, setLoaded] = useState(false)
+  const footerRef = useRef(null)
+  const [footerH, setFooterH] = useState(320)
+
+  useEffect(() => {
+    const el = footerRef.current
+    if (!el) return
+    const ro = new ResizeObserver(([e]) => setFooterH(e.contentRect.height))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
 
   return (
-    <>
+    <BrowserRouter>
       {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Projects />
-        <Stats />
-        <Process />
-        <Quote />
-        <CTA />
-      </main>
-      <Footer />
-    </>
+
+      {/* Footer sits fixed at bottom as underlay — revealed when content peels away */}
+      <div ref={footerRef} style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 0 }}>
+        <Footer />
+      </div>
+
+      {/* All page content sits above the fixed footer */}
+      <div style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home appLoaded={loaded} />} />
+          <Route path="/gioi-thieu" element={<AboutPage />} />
+          <Route path="/du-an" element={<ProjectsPage />} />
+          <Route path="/du-an/:slug" element={<ProjectDetail />} />
+          <Route path="/chia-se" element={<BlogPage />} />
+          <Route path="/chia-se/:slug" element={<BlogDetail />} />
+          <Route path="/lien-he" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {/* Spacer reveals fixed footer — pointer-events off so clicks reach footer */}
+        <div style={{ height: footerH, pointerEvents: 'none' }} aria-hidden="true" />
+      </div>
+
+      <FloatingContact />
+    </BrowserRouter>
   )
 }

@@ -146,6 +146,7 @@ export default function LoadingScreen({ onDone }) {
             boxShadow: '0 8px 32px rgba(0,0,0,.55)',
             display: 'block',
             margin: '0 auto 12px',
+            filter: 'brightness(1.1) contrast(1.05)',
           }}
         />
         <p style={{

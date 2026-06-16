@@ -46,3 +46,26 @@ body {
 .hscroll::-webkit-scrollbar        { height: 2px; }
 .hscroll::-webkit-scrollbar-track  { background: rgba(244,239,231,.12); border-radius: 1px; }
 .hscroll::-webkit-scrollbar-thumb  { background: #A8623C; border-radius: 1px; }
+
+/* ─── Hero curtain reveal ─── */
+@keyframes curtainUp {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-101%); }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ─── Services story-scroll slide-in ─── */
+@keyframes svcIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Marquee animation ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

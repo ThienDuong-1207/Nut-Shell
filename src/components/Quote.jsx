@@ -14,7 +14,7 @@ export default function Quote() {
               style={{
                 fontFamily: 'Georgia, serif',
                 fontSize: '96px', lineHeight: .6,
-                color: '#A8623C', opacity: .18,
+                color: '#2A2018', opacity: .12,
                 marginBottom: '28px',
                 userSelect: 'none',
               }}
@@ -35,7 +35,7 @@ export default function Quote() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
               <div style={{ width: '36px', height: '1px', background: '#A8623C' }} />
               <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2.5px', color: '#6B5E4F' }}>
-                NGUYỄN THÀNH AN — NHÀ THIẾT KẾ SÁNG LẬP
+                HOÀNG VÂN ANH — NHÀ THIẾT KẾ SÁNG LẬP
               </p>
               <div style={{ width: '36px', height: '1px', background: '#A8623C' }} />
             </div>

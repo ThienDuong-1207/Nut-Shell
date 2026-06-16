@@ -1,4 +1,4 @@
-/* ─── Process — 4 bước quy trình ─── */
+/* ─── Process — 2-column, 2 steps each ─── */
 import RevealOnScroll from '../ui/RevealOnScroll'
 
 const STEPS = [
@@ -24,6 +24,55 @@ const STEPS = [
   },
 ]
 
+function Step({ step, delay }) {
+  return (
+    <RevealOnScroll delay={delay}>
+      <div style={{
+        borderTop: '1px solid rgba(42,32,24,.1)',
+        paddingTop: '40px',
+        paddingBottom: '48px',
+      }}>
+        {/* Ghost number */}
+        <p style={{
+          fontFamily: 'Marcellus, serif',
+          fontSize: 'clamp(56px, 8vw, 112px)',
+          lineHeight: .85,
+          color: '#2A2018',
+          opacity: .07,
+          letterSpacing: '-3px',
+          userSelect: 'none',
+          marginBottom: '20px',
+        }}>
+          {step.num}
+        </p>
+
+        {/* Title */}
+        <h3 style={{
+          fontFamily: 'Marcellus, serif',
+          fontSize: 'clamp(20px, 2vw, 28px)',
+          color: '#2A2018',
+          lineHeight: 1.2,
+          marginBottom: '18px',
+        }}>
+          {step.name}
+        </h3>
+
+        {/* Divider */}
+        <div style={{ width: '28px', height: '1px', background: 'rgba(42,32,24,.2)', marginBottom: '18px' }} />
+
+        {/* Description */}
+        <p style={{
+          fontFamily: 'Jost, sans-serif',
+          fontSize: '15px', fontWeight: 300,
+          color: '#6B5E4F', lineHeight: 1.85,
+        }}>
+          {step.desc}
+        </p>
+      </div>
+    </RevealOnScroll>
+  )
+}
+
 export default function Process() {
   return (
     <section id="quytrinh" style={{ background: '#F2EBDF', padding: '120px 0' }}>
@@ -31,7 +80,7 @@ export default function Process() {
 
         {/* Header */}
         <RevealOnScroll>
-          <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '18px' }}>
+          <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#8B7B6E', marginBottom: '18px' }}>
             QUY TRÌNH
           </p>
         </RevealOnScroll>
@@ -40,33 +89,32 @@ export default function Process() {
             fontFamily: 'Marcellus, serif',
             fontSize: 'clamp(32px, 4.5vw, 58px)',
             lineHeight: 1.15, color: '#2A2018',
-            marginBottom: '80px', maxWidth: '500px',
+            marginBottom: '72px', maxWidth: '500px',
           }}>
             Từ ý tưởng đến bàn giao
           </h2>
         </RevealOnScroll>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          {STEPS.map((step, i) => (
-            <RevealOnScroll key={step.num} delay={i * 90}>
-              <div>
-                {/* Big number */}
-                <p style={{ fontFamily: 'Marcellus, serif', fontSize: '68px', lineHeight: 1, color: '#A8623C', opacity: .18, marginBottom: '18px' }}>
-                  {step.num}
-                </p>
-                {/* Accent rule */}
-                <div style={{ width: '28px', height: '2px', background: '#A8623C', marginBottom: '18px' }} />
-                <h3 style={{ fontFamily: 'Marcellus, serif', fontSize: '20px', color: '#2A2018', marginBottom: '12px', lineHeight: 1.3 }}>
-                  {step.name}
-                </h3>
-                <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '14.5px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.85 }}>
-                  {step.desc}
-                </p>
-              </div>
-            </RevealOnScroll>
-          ))}
+        {/* 2-column grid */}
+        <div
+          style={{ display: 'grid', gap: '0 80px' }}
+          className="grid-cols-1 lg:grid-cols-2"
+        >
+          {/* Left column: steps 01 & 02 */}
+          <div>
+            <Step step={STEPS[0]} delay={0} />
+            <Step step={STEPS[1]} delay={80} />
+            <div style={{ borderTop: '1px solid rgba(42,32,24,.1)' }} />
+          </div>
+
+          {/* Right column: steps 03 & 04 */}
+          <div>
+            <Step step={STEPS[2]} delay={120} />
+            <Step step={STEPS[3]} delay={200} />
+            <div style={{ borderTop: '1px solid rgba(42,32,24,.1)' }} />
+          </div>
         </div>
+
       </div>
     </section>
   )
