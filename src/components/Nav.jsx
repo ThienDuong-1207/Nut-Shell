@@ -57,7 +57,7 @@ export default function Nav() {
 
   return (
     <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9999,
       background: navBg,
       borderBottom: navBorder,
       transition: 'background .5s ease, border-color .5s ease',
@@ -65,7 +65,11 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between" style={{ height: '72px' }}>
 
         {/* Logo */}
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%' }}>
+        <Link
+          to="/"
+          onClick={() => { if (isHome) window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%', cursor: 'pointer' }}
+        >
           <img
             src="/images/logo.jpeg"
             alt="Nut Shell"
@@ -76,6 +80,7 @@ export default function Nav() {
               display: 'block',
               mixBlendMode: heroMode ? 'normal' : 'multiply',
               transition: 'mix-blend-mode .5s',
+              pointerEvents: 'none',
             }}
           />
         </Link>

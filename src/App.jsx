@@ -1,5 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 import LoadingScreen from './components/LoadingScreen'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -41,6 +47,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
 
       {/* Footer: fixed underlay at z-index 0 */}
