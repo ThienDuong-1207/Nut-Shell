@@ -43,14 +43,16 @@ export default function App() {
     <BrowserRouter>
       {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
 
-      {/* Footer sits fixed at bottom as underlay — revealed when content peels away */}
+      {/* Footer: fixed underlay at z-index 0 */}
       <div ref={footerRef} style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 0 }}>
         <Footer />
       </div>
 
-      {/* All page content sits above the fixed footer */}
-      <div style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
-        <Nav />
+      {/* Nav: outside content wrapper — position:fixed, no pointer-events conflicts */}
+      <Nav />
+
+      {/* Page content: z-index 1, normal pointer-events */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
         <Routes>
           <Route path="/" element={<Home appLoaded={loaded} />} />
           <Route path="/gioi-thieu" element={<AboutPage />} />
@@ -61,9 +63,11 @@ export default function App() {
           <Route path="/lien-he" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* Spacer reveals fixed footer — pointer-events off so clicks reach footer */}
-        <div style={{ height: footerH, pointerEvents: 'none' }} aria-hidden="true" />
       </div>
+
+      {/* Spacer: non-positioned (stacking layer below fixed footer) + pointer-events none
+          → footer is visually & interactively on top in this area */}
+      <div style={{ height: footerH, pointerEvents: 'none' }} aria-hidden="true" />
 
       <FloatingContact />
     </BrowserRouter>
