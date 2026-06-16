@@ -1,4 +1,4 @@
-/* ─── Projects — category pages, scroll-driven horizontal ─── */
+/* ─── Projects — scroll-driven horizontal with editorial cards ─── */
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PROJECTS } from '../data/projects'
@@ -24,14 +24,84 @@ const CATEGORIES = [
   },
 ]
 
-/* pick first N projects from a category */
-function getByCategory(id, n = 3) {
+function getByCategory(id, n = 4) {
   return PROJECTS.filter(p => p.category === id).slice(0, n)
 }
 
+/* ── Card component ── */
+function Card({ project, style }) {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <Link
+      to={`/du-an/${project.slug}`}
+      style={{
+        display: 'block',
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '14px',
+        textDecoration: 'none',
+        ...style,
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Image */}
+      <img
+        src={project.cover}
+        alt={project.name}
+        style={{
+          width: '100%', height: '100%',
+          objectFit: 'cover', display: 'block',
+          transform: hovered ? 'scale(1.06)' : 'scale(1)',
+          transition: 'transform .75s cubic-bezier(.4,0,.2,1)',
+        }}
+      />
+
+      {/* Bottom gradient */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to top, rgba(10,8,6,.80) 0%, rgba(10,8,6,.30) 42%, transparent 70%)',
+        transition: 'opacity .35s',
+        opacity: hovered ? 1 : 0.85,
+      }} />
+
+      {/* Name + arrow row */}
+      <div style={{
+        position: 'absolute', bottom: '18px', left: '18px', right: '18px',
+        display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '10px',
+      }}>
+        <div style={{ minWidth: 0 }}>
+          <p style={{ ...MONO, fontSize: '7.5px', letterSpacing: '2px', color: 'rgba(255,255,255,.48)', marginBottom: '5px' }}>
+            {project.category}
+          </p>
+          <p style={{ ...SERIF, fontSize: '17px', color: '#fff', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {project.name}
+          </p>
+        </div>
+
+        {/* Arrow button */}
+        <div style={{
+          width: '36px', height: '36px', flexShrink: 0,
+          borderRadius: '50%',
+          background: hovered ? 'rgba(255,255,255,.22)' : 'rgba(255,255,255,.10)',
+          border: '1px solid rgba(255,255,255,.28)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'background .25s, transform .25s',
+          transform: hovered ? 'scale(1.1)' : 'scale(1)',
+        }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="white" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
 export default function Projects() {
-  const wrapRef    = useRef(null)
-  const trackRef   = useRef(null)
+  const wrapRef  = useRef(null)
+  const trackRef = useRef(null)
   const [activeIdx, setActiveIdx] = useState(0)
   const N = CATEGORIES.length
 
@@ -48,7 +118,6 @@ export default function Projects() {
 
       const progress = Math.max(0, Math.min(1, scrolled / total))
       track.style.transform = `translateX(-${progress * (N - 1) * 100}vw)`
-
       setActiveIdx(Math.round(progress * (N - 1)))
     }
 
@@ -69,10 +138,9 @@ export default function Projects() {
         <div style={{
           position: 'sticky', top: 0,
           height: '100vh', overflow: 'hidden',
-          background: '#2A2018',
+          background: '#1E1610',
         }}>
-
-          {/* Horizontal track — N pages each 100vw */}
+          {/* Horizontal track */}
           <div
             ref={trackRef}
             style={{
@@ -83,74 +151,53 @@ export default function Projects() {
             }}
           >
             {CATEGORIES.map((cat, ci) => {
-              const projects = getByCategory(cat.id, 3)
-              const [p1, p2, p3] = projects
+              const projects = getByCategory(cat.id, 4)
+              const [p1, p2, p3, p4] = projects
               const count = PROJECTS.filter(p => p.category === cat.id).length
 
               return (
                 <div
                   key={cat.id}
                   style={{
-                    width: '100vw',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'stretch',
-                    flexShrink: 0,
+                    width: '100vw', height: '100%',
+                    display: 'flex', alignItems: 'stretch', flexShrink: 0,
                   }}
                 >
                   {/* ── Left panel: category info ── */}
                   <div style={{
-                    width: '38%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    padding: '0 clamp(40px, 6vw, 96px)',
-                    borderRight: '1px solid rgba(244,239,231,.07)',
+                    width: '30%',
+                    display: 'flex', flexDirection: 'column', justifyContent: 'center',
+                    padding: '0 clamp(32px, 5vw, 80px)',
+                    borderRight: '1px solid rgba(244,239,231,.06)',
                   }}>
-
-                    {/* Index */}
-                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#4A3B2E', marginBottom: '32px' }}>
+                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#4A3B2E', marginBottom: '28px' }}>
                       {String(ci + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
                     </p>
-
-                    {/* Large label */}
                     <h2 style={{
                       ...SERIF,
-                      fontSize: 'clamp(40px, 5.5vw, 76px)',
-                      lineHeight: 1.1,
-                      color: '#F4EFE7',
-                      marginBottom: '28px',
-                      whiteSpace: 'pre-line',
+                      fontSize: 'clamp(36px, 4.5vw, 68px)',
+                      lineHeight: 1.1, color: '#F4EFE7',
+                      marginBottom: '22px', whiteSpace: 'pre-line',
                     }}>
                       {cat.label}
                     </h2>
-
-                    {/* Count badge */}
-                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#A8623C', marginBottom: '24px' }}>
+                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#A8623C', marginBottom: '20px' }}>
                       {count} DỰ ÁN
                     </p>
-
-                    {/* Description */}
                     <p style={{
-                      fontFamily: 'Jost, sans-serif',
-                      fontSize: '15px', fontWeight: 300,
-                      color: '#6B5E4F', lineHeight: 1.9,
-                      maxWidth: '320px',
-                      marginBottom: '44px',
+                      fontFamily: 'Jost, sans-serif', fontSize: '14px', fontWeight: 300,
+                      color: '#6B5E4F', lineHeight: 1.9, maxWidth: '300px', marginBottom: '40px',
                     }}>
                       {cat.desc}
                     </p>
-
-                    {/* CTA */}
                     <Link
                       to="/du-an"
                       style={{
                         ...MONO, fontSize: '10px', letterSpacing: '2px',
                         color: '#E3D2B0', textDecoration: 'none',
-                        border: '1px solid rgba(227,210,176,.3)',
+                        border: '1px solid rgba(227,210,176,.28)',
                         padding: '12px 28px', borderRadius: '999px',
-                        display: 'inline-block',
-                        width: 'fit-content',
+                        display: 'inline-block', width: 'fit-content',
                         transition: 'background .2s, color .2s, border-color .2s',
                       }}
                       onMouseEnter={e => {
@@ -161,85 +208,87 @@ export default function Projects() {
                       onMouseLeave={e => {
                         e.currentTarget.style.background = 'transparent'
                         e.currentTarget.style.color = '#E3D2B0'
-                        e.currentTarget.style.borderColor = 'rgba(227,210,176,.3)'
+                        e.currentTarget.style.borderColor = 'rgba(227,210,176,.28)'
                       }}
                     >
                       XEM TẤT CẢ →
                     </Link>
                   </div>
 
-                  {/* ── Right panel: image collage ── */}
+                  {/* ── Right panel: 3-column card grid ── */}
                   <div style={{
                     flex: 1,
                     display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
+                    gridTemplateColumns: '1fr 1.15fr 1fr',
                     gridTemplateRows: '1fr 1fr',
-                    gap: '3px',
-                    padding: 'clamp(24px, 4vh, 48px)',
-                    paddingLeft: 'clamp(20px, 3vw, 40px)',
+                    gap: '10px',
+                    padding: 'clamp(20px, 3vh, 36px) clamp(20px, 3vw, 40px)',
                   }}>
-                    {/* img1 — spans both rows (tall portrait) */}
-                    {p1 && (
-                      <Link
-                        to={`/du-an/${p1.slug}`}
-                        style={{ gridRow: '1 / 3', overflow: 'hidden', borderRadius: '2px', display: 'block' }}
-                      >
-                        <img
-                          src={p1.cover} alt={p1.name}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform .65s ease' }}
-                          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
-                          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                        />
-                      </Link>
-                    )}
-                    {/* img2 — top right */}
-                    {p2 && (
-                      <Link
-                        to={`/du-an/${p2.slug}`}
-                        style={{ overflow: 'hidden', borderRadius: '2px', display: 'block' }}
-                      >
-                        <img
-                          src={p2.cover} alt={p2.name}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform .65s ease' }}
-                          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
-                          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                        />
-                      </Link>
-                    )}
-                    {/* img3 — bottom right */}
-                    {p3 && (
-                      <Link
-                        to={`/du-an/${p3.slug}`}
-                        style={{ overflow: 'hidden', borderRadius: '2px', display: 'block' }}
-                      >
-                        <img
-                          src={p3.cover} alt={p3.name}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform .65s ease' }}
-                          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
-                          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                        />
-                      </Link>
-                    )}
+                    {/* p1 — top-left */}
+                    {p1 && <Card project={p1} style={{ gridColumn: 1, gridRow: 1 }} />}
+
+                    {/* p2 — center tall (spans 2 rows) */}
+                    {p2 && <Card project={p2} style={{ gridColumn: 2, gridRow: '1 / 3' }} />}
+
+                    {/* p3 — top-right */}
+                    {p3 && <Card project={p3} style={{ gridColumn: 3, gridRow: 1 }} />}
+
+                    {/* p4 — bottom-left */}
+                    {p4 && <Card project={p4} style={{ gridColumn: 1, gridRow: 2 }} />}
+
+                    {/* bottom-right: "view all" CTA */}
+                    <Link
+                      to="/du-an"
+                      style={{
+                        gridColumn: 3, gridRow: 2,
+                        display: 'flex', flexDirection: 'column',
+                        alignItems: 'center', justifyContent: 'center',
+                        gap: '14px',
+                        borderRadius: '14px',
+                        border: '1px solid rgba(244,239,231,.10)',
+                        textDecoration: 'none',
+                        transition: 'border-color .25s, background .25s',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = 'rgba(244,239,231,.04)'
+                        e.currentTarget.style.borderColor = 'rgba(244,239,231,.22)'
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'transparent'
+                        e.currentTarget.style.borderColor = 'rgba(244,239,231,.10)'
+                      }}
+                    >
+                      <div style={{
+                        width: '44px', height: '44px', borderRadius: '50%',
+                        border: '1px solid rgba(227,210,176,.35)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+                          <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="#E3D2B0" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#6B5A4E', textAlign: 'center' }}>
+                        XEM TẤT CẢ
+                      </p>
+                    </Link>
                   </div>
                 </div>
               )
             })}
           </div>
 
-          {/* ── Page dots — bottom center ── */}
+          {/* Page dots */}
           <div style={{
-            position: 'absolute', bottom: '36px', left: '50%',
+            position: 'absolute', bottom: '32px', left: '50%',
             transform: 'translateX(-50%)',
-            display: 'flex', gap: '10px', alignItems: 'center',
-            zIndex: 3,
+            display: 'flex', gap: '10px', alignItems: 'center', zIndex: 3,
           }}>
             {CATEGORIES.map((cat, i) => (
               <div key={cat.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
                 <div style={{
-                  width: i === activeIdx ? '28px' : '8px',
-                  height: '2px',
+                  width: i === activeIdx ? '28px' : '8px', height: '2px',
                   borderRadius: '1px',
-                  background: i === activeIdx ? '#E3D2B0' : 'rgba(244,239,231,.2)',
+                  background: i === activeIdx ? '#E3D2B0' : 'rgba(244,239,231,.18)',
                   transition: 'width .4s ease, background .4s ease',
                 }} />
                 {i === activeIdx && (
@@ -251,42 +300,41 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* ── Scroll hint — bottom right ── */}
+          {/* Scroll hint */}
           <div style={{
-            position: 'absolute', bottom: '40px',
-            right: 'clamp(40px, 6vw, 96px)',
-            zIndex: 3,
+            position: 'absolute', bottom: '36px',
+            right: 'clamp(40px, 6vw, 96px)', zIndex: 3,
           }}>
             <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#4A3B2E' }}>
               {activeIdx < N - 1 ? 'CUỘN TIẾP →' : 'HẾT →'}
             </p>
           </div>
-
         </div>
       </div>
 
-      {/* ── MOBILE: tabbed by category ── */}
-      <div id="duan" className="lg:hidden" style={{ background: '#2A2018', padding: '80px 0' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '14px' }}>
+      {/* ── MOBILE ── */}
+      <div id="duan" className="lg:hidden" style={{ background: '#1E1610', padding: '72px 0' }}>
+        <div className="max-w-7xl mx-auto px-5">
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '12px' }}>
             DỰ ÁN NỔI BẬT
           </p>
-          <h2 style={{ ...SERIF, fontSize: 'clamp(28px, 7vw, 42px)', color: '#F4EFE7', lineHeight: 1.15, marginBottom: '40px' }}>
+          <h2 style={{ ...SERIF, fontSize: 'clamp(26px, 7vw, 40px)', color: '#F4EFE7', lineHeight: 1.15, marginBottom: '36px' }}>
             Những tổ ấm chúng tôi hoàn thiện
           </h2>
           {CATEGORIES.map(cat => {
             const projects = getByCategory(cat.id, 3)
             return (
-              <div key={cat.id} style={{ marginBottom: '48px' }}>
-                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#6B5A4E', marginBottom: '16px' }}>
+              <div key={cat.id} style={{ marginBottom: '44px' }}>
+                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#6B5A4E', marginBottom: '14px' }}>
                   {cat.id}
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {projects.map(p => (
-                    <Link key={p.slug} to={`/du-an/${p.slug}`} style={{ textDecoration: 'none', display: 'block', aspectRatio: '16/9', borderRadius: '2px', overflow: 'hidden' }}>
-                      <img src={p.cover} alt={p.name} loading="lazy"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    </Link>
+                    <Card
+                      key={p.slug}
+                      project={p}
+                      style={{ aspectRatio: '16/9' }}
+                    />
                   ))}
                 </div>
               </div>
@@ -294,7 +342,7 @@ export default function Projects() {
           })}
           <Link to="/du-an" style={{
             ...MONO, fontSize: '10px', letterSpacing: '2px',
-            color: '#E3D2B0', border: '1px solid rgba(227,210,176,.3)',
+            color: '#E3D2B0', border: '1px solid rgba(227,210,176,.28)',
             padding: '12px 28px', borderRadius: '999px',
             textDecoration: 'none', display: 'inline-block',
           }}>
