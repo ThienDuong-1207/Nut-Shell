@@ -77,7 +77,7 @@ export default function BlogDetail() {
           {/* Article */}
           <article style={{ maxWidth: '720px' }}>
             {/* Header */}
-            <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#2A2018', lineHeight: 1.15, marginBottom: '24px' }}>
+            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#2A2018', lineHeight: 1.15, marginBottom: '24px' }}>
               {post.title}
             </h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '48px', flexWrap: 'wrap' }}>
@@ -87,16 +87,16 @@ export default function BlogDetail() {
             </div>
 
             {/* Excerpt */}
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '18px', fontWeight: 300, color: '#4A3B2E', lineHeight: 1.85, marginBottom: '40px', fontStyle: 'italic', borderLeft: '3px solid #A8623C', paddingLeft: '20px' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '18px', fontWeight: 300, color: '#4A3B2E', lineHeight: 1.85, marginBottom: '40px', fontStyle: 'italic', borderLeft: '3px solid #A8623C', paddingLeft: '20px' }}>
               {post.excerpt}
             </p>
 
             {/* Content */}
-            <div style={{ fontFamily: 'Jost, sans-serif', fontSize: '16px', fontWeight: 300, color: '#3A2B1E', lineHeight: 1.9 }}>
+            <div style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#3A2B1E', lineHeight: 1.9 }}>
               {post.content.split('\n\n').map((block, i) => {
                 if (block.startsWith('**') && block.endsWith('**')) {
                   return (
-                    <h3 key={i} style={{ fontFamily: 'Marcellus, serif', fontSize: '22px', color: '#2A2018', marginTop: '44px', marginBottom: '16px' }}>
+                    <h3 key={i} style={{ fontFamily: 'Lora, serif', fontSize: '22px', color: '#2A2018', marginTop: '44px', marginBottom: '16px' }}>
                       {block.replace(/\*\*/g, '')}
                     </h3>
                   )
@@ -149,7 +149,7 @@ export default function BlogDetail() {
                       <span style={{ ...MONO, fontSize: '8px', letterSpacing: '1px', color: '#A8623C', display: 'block', marginBottom: '6px' }}>
                         {p.category}
                       </span>
-                      <p style={{ fontFamily: 'Marcellus, serif', fontSize: '14px', color: '#2A2018', lineHeight: 1.4, transition: 'color .2s' }}
+                      <p style={{ fontFamily: 'Lora, serif', fontSize: '14px', color: '#2A2018', lineHeight: 1.4, transition: 'color .2s' }}
                         onMouseEnter={e => e.currentTarget.style.color = '#A8623C'}
                         onMouseLeave={e => e.currentTarget.style.color = '#2A2018'}
                       >
@@ -165,7 +165,7 @@ export default function BlogDetail() {
                 <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#A8623C', marginBottom: '12px' }}>
                   TƯ VẤN MIỄN PHÍ
                 </p>
-                <p style={{ fontFamily: 'Marcellus, serif', fontSize: '18px', color: '#F4EFE7', lineHeight: 1.4, marginBottom: '20px' }}>
+                <p style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#F4EFE7', lineHeight: 1.4, marginBottom: '20px' }}>
                   Bạn đang ấp ủ ý tưởng thiết kế?
                 </p>
                 <Link to="/lien-he" style={{

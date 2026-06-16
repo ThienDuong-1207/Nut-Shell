@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const MONO = { fontFamily: '"Space Mono", monospace' }
 
 const INPUT_STYLE = {
-  fontFamily: 'Jost, sans-serif',
+  fontFamily: '"Be Vietnam Pro", sans-serif',
   fontSize: '15px',
   background: '#fff',
   border: '1px solid rgba(42,32,24,.18)',
@@ -68,10 +68,10 @@ export default function ContactPage() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '16px' }}>
             LIÊN HỆ
           </p>
-          <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
             Nói chuyện với chúng tôi
           </h1>
-          <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
             Buổi tư vấn đầu tiên hoàn toàn miễn phí. Hãy kể cho chúng tôi nghe về không gian mơ ước của bạn.
           </p>
           {/* Breadcrumb */}
@@ -97,7 +97,7 @@ export default function ContactPage() {
 
           {/* Left — Info */}
           <div>
-            <h2 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(26px, 3vw, 40px)', color: '#2A2018', lineHeight: 1.2, marginBottom: '32px' }}>
+            <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(26px, 3vw, 40px)', color: '#2A2018', lineHeight: 1.2, marginBottom: '32px' }}>
               Thông tin liên hệ
             </h2>
 
@@ -129,7 +129,7 @@ export default function ContactPage() {
                   {item.icon} {item.label}
                 </p>
                 {item.lines.map((line, i) => (
-                  <p key={i} style={{ fontFamily: 'Jost, sans-serif', fontSize: '15px', fontWeight: 300, color: '#3A2B1E', lineHeight: 1.7 }}>
+                  <p key={i} style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '15px', fontWeight: 300, color: '#3A2B1E', lineHeight: 1.7 }}>
                     {line}
                   </p>
                 ))}
@@ -152,10 +152,10 @@ export default function ContactPage() {
                 border: '1px solid rgba(42,32,24,.1)',
               }}>
                 <span style={{ fontSize: '32px', marginBottom: '12px' }}>🗺️</span>
-                <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '14px', fontWeight: 300, color: '#8B7B6E' }}>
+                <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#8B7B6E' }}>
                   Google Maps
                 </p>
-                <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '12px', fontWeight: 300, color: '#A8947E', marginTop: '4px' }}>
+                <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '12px', fontWeight: 300, color: '#A8947E', marginTop: '4px' }}>
                   12 Nguyễn Văn Bình, Quận 1
                 </p>
               </div>
@@ -164,10 +164,10 @@ export default function ContactPage() {
 
           {/* Right — Form */}
           <div style={{ background: '#fff', borderRadius: '4px', padding: '48px', boxShadow: '0 4px 24px rgba(42,32,24,.06)' }}>
-            <h2 style={{ fontFamily: 'Marcellus, serif', fontSize: '28px', color: '#2A2018', marginBottom: '8px' }}>
+            <h2 style={{ fontFamily: 'Lora, serif', fontSize: '28px', color: '#2A2018', marginBottom: '8px' }}>
               Gửi yêu cầu tư vấn
             </h2>
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '14px', fontWeight: 300, color: '#8B7B6E', marginBottom: '36px' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#8B7B6E', marginBottom: '36px' }}>
               Chúng tôi sẽ phản hồi trong vòng 24 giờ.
             </p>
 
@@ -258,7 +258,7 @@ export default function ContactPage() {
                 style={{
                   ...INPUT_STYLE,
                   resize: 'vertical',
-                  fontFamily: 'Jost, sans-serif',
+                  fontFamily: '"Be Vietnam Pro", sans-serif',
                   lineHeight: 1.7,
                 }}
                 onFocus={e => Object.assign(e.currentTarget.style, focusStyle)}
@@ -297,7 +297,7 @@ export default function ContactPage() {
                   padding: '16px',
                   textAlign: 'center',
                 }}>
-                  <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '15px', color: '#2A2018' }}>
+                  <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '15px', color: '#2A2018' }}>
                     Cảm ơn bạn! Chúng tôi sẽ liên hệ trong 24 giờ.
                   </p>
                 </div>

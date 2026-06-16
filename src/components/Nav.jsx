@@ -1,8 +1,7 @@
-/* ─── Navigation — fixed top, transparent → espresso on scroll ─── */
+/* ─── Navigation — hero-mode (transparent) vs page-mode (cream) ─── */
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-/* Mix of router Links (to) and plain anchors (href) */
 const NAV_LINKS = [
   { label: 'GIỚI THIỆU', to: '/gioi-thieu' },
   { label: 'DỊCH VỤ',    href: '/#dichvu'   },
@@ -10,12 +9,12 @@ const NAV_LINKS = [
   { label: 'CHIA SẺ',    to: '/chia-se'     },
 ]
 
-const MONO = { fontFamily: '"Space Mono", monospace', fontSize: '11px', letterSpacing: '2px' }
+const MONO = { fontFamily: '"Space Mono", monospace', fontSize: '10.5px', letterSpacing: '2px' }
 
 export default function Nav() {
-  const [scrolled,      setScrolled]      = useState(false)
-  const [mobileOpen,    setMobileOpen]    = useState(false)
-  const [heroNavColor,  setHeroNavColor]  = useState('rgba(244,239,231,.85)')
+  const [scrolled,     setScrolled]     = useState(false)
+  const [mobileOpen,   setMobileOpen]   = useState(false)
+  const [heroNavColor, setHeroNavColor] = useState('rgba(244,239,231,.85)')
   const location = useLocation()
 
   useEffect(() => {
@@ -44,35 +43,39 @@ export default function Nav() {
 
   useEffect(() => { setMobileOpen(false) }, [location.pathname])
 
-  const navBg     = scrolled ? 'rgba(42,32,24,.93)' : 'transparent'
-  const navBlur   = scrolled ? 'blur(14px)'         : 'none'
-  const navPad    = scrolled ? '14px 0'              : '26px 0'
-  const isHome    = location.pathname === '/'
-  const textColor = scrolled ? '#B6A88F' : (isHome ? heroNavColor : 'rgba(244,239,231,.85)')
-  const barColor  = mobileOpen || scrolled ? '#E3D2B0' : '#F4EFE7'
+  const isHome     = location.pathname === '/'
+  const heroMode   = isHome && !scrolled   // transparent hero overlay
+  const isActive   = (to) => to && (location.pathname === to || location.pathname.startsWith(to + '/'))
 
-  const isActive = (to) => to && (location.pathname === to || location.pathname.startsWith(to + '/'))
+  /* ── Theme tokens ── */
+  const navBg      = heroMode ? 'transparent' : '#F2EBDF'
+  const navBorder  = heroMode ? 'none' : '1px solid rgba(42,32,24,.08)'
+  const textColor  = heroMode ? heroNavColor  : '#2A2018'
+  const hoverColor = heroMode ? '#E3D2B0'     : '#A8623C'
+  const activeCol  = heroMode ? '#E3D2B0'     : '#A8623C'
+  const barColor   = heroMode && !mobileOpen  ? '#F4EFE7' : '#2A2018'
 
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       background: navBg,
-      backdropFilter: navBlur, WebkitBackdropFilter: navBlur,
-      padding: navPad,
-      transition: 'background .55s ease, padding .45s ease',
+      borderBottom: navBorder,
+      transition: 'background .5s ease, border-color .5s ease',
     }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between" style={{ height: '72px' }}>
 
         {/* Logo */}
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%' }}>
           <img
             src="/images/logo.jpeg"
             alt="Nut Shell"
             style={{
-              height: scrolled ? '48px' : '60px',
-              width: 'auto', objectFit: 'contain',
-              transition: 'height .45s ease',
-              mixBlendMode: scrolled ? 'normal' : 'multiply',
+              height: '52px',
+              width: 'auto',
+              objectFit: 'contain',
+              display: 'block',
+              mixBlendMode: heroMode ? 'normal' : 'multiply',
+              transition: 'mix-blend-mode .5s',
             }}
           />
         </Link>
@@ -81,15 +84,15 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(l => {
             const active = isActive(l.to)
-            const color  = active ? '#A8623C' : textColor
+            const color  = active ? activeCol : textColor
 
             if (l.href) {
               return (
                 <a
                   key={l.href}
                   href={l.href}
-                  style={{ ...MONO, color: textColor, textDecoration: 'none', transition: 'color .55s ease' }}
-                  onMouseEnter={e => e.currentTarget.style.color = '#E3D2B0'}
+                  style={{ ...MONO, color: textColor, textDecoration: 'none', transition: 'color .4s ease' }}
+                  onMouseEnter={e => e.currentTarget.style.color = hoverColor}
                   onMouseLeave={e => e.currentTarget.style.color = textColor}
                 >
                   {l.label}
@@ -101,8 +104,8 @@ export default function Nav() {
               <Link
                 key={l.to}
                 to={l.to}
-                style={{ ...MONO, color, textDecoration: 'none', transition: 'color .55s ease' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#E3D2B0'}
+                style={{ ...MONO, color, textDecoration: 'none', transition: 'color .4s ease' }}
+                onMouseEnter={e => e.currentTarget.style.color = hoverColor}
                 onMouseLeave={e => e.currentTarget.style.color = color}
               >
                 {l.label}
@@ -110,16 +113,21 @@ export default function Nav() {
             )
           })}
 
+          {/* LIÊN HỆ button */}
           <Link
             to="/lien-he"
             style={{
               ...MONO,
-              background: isActive('/lien-he') ? '#A8623C' : '#E3D2B0',
-              color: '#2A2018',
-              padding: '9px 22px', borderRadius: '999px',
-              textDecoration: 'none', transition: 'opacity .2s, background .2s',
+              background: heroMode
+                ? (isActive('/lien-he') ? '#A8623C' : '#E3D2B0')
+                : (isActive('/lien-he') ? '#A8623C' : '#2A2018'),
+              color: heroMode ? '#2A2018' : '#F4EFE7',
+              padding: '9px 22px',
+              borderRadius: '999px',
+              textDecoration: 'none',
+              transition: 'background .35s ease, color .35s ease, opacity .2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '.82'}
+            onMouseEnter={e => e.currentTarget.style.opacity = '.78'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             LIÊN HỆ
@@ -138,7 +146,7 @@ export default function Nav() {
               style={{
                 display: 'block', width: '22px', height: '1.5px',
                 background: barColor, borderRadius: '1px',
-                transition: 'transform .35s ease, opacity .35s ease, background .3s',
+                transition: 'transform .35s ease, opacity .35s ease, background .4s',
                 transform: mobileOpen
                   ? i === 0 ? 'rotate(45deg) translateY(6.5px)'
                   : i === 2 ? 'rotate(-45deg) translateY(-6.5px)'
@@ -153,8 +161,9 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       <div style={{
-        background: 'rgba(42,32,24,.97)',
-        maxHeight: mobileOpen ? '480px' : '0',
+        background: '#F2EBDF',
+        borderTop: '1px solid rgba(42,32,24,.07)',
+        maxHeight: mobileOpen ? '520px' : '0',
         overflow: 'hidden',
         transition: 'max-height .4s cubic-bezier(.4,0,.2,1)',
       }}>
@@ -162,14 +171,18 @@ export default function Nav() {
           <Link
             to="/"
             onClick={() => setMobileOpen(false)}
-            style={{ ...MONO, color: location.pathname === '/' ? '#E3D2B0' : '#B6A88F', textDecoration: 'none' }}
+            style={{
+              ...MONO,
+              color: location.pathname === '/' ? '#A8623C' : '#2A2018',
+              textDecoration: 'none',
+            }}
           >
             TRANG CHỦ
           </Link>
 
           {NAV_LINKS.map(l => {
             const active = isActive(l.to)
-            const color  = active ? '#E3D2B0' : '#B6A88F'
+            const color  = active ? '#A8623C' : '#2A2018'
 
             if (l.href) {
               return (
@@ -177,7 +190,7 @@ export default function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  style={{ ...MONO, color: '#B6A88F', textDecoration: 'none' }}
+                  style={{ ...MONO, color: '#2A2018', textDecoration: 'none' }}
                 >
                   {l.label}
                 </a>
@@ -196,13 +209,15 @@ export default function Nav() {
             )
           })}
 
+          <div style={{ height: '1px', background: 'rgba(42,32,24,.08)' }} />
+
           <Link
             to="/lien-he"
             onClick={() => setMobileOpen(false)}
             style={{
               ...MONO,
-              background: '#E3D2B0', color: '#2A2018',
-              padding: '11px 24px', borderRadius: '999px',
+              background: '#2A2018', color: '#F4EFE7',
+              padding: '12px 26px', borderRadius: '999px',
               textDecoration: 'none', width: 'fit-content',
             }}
           >

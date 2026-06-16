@@ -23,7 +23,7 @@ export default function Quote() {
             </p>
 
             <blockquote style={{
-              fontFamily: 'Marcellus, serif',
+              fontFamily: 'Lora, serif',
               fontSize: 'clamp(22px, 3vw, 36px)',
               lineHeight: 1.45, color: '#2A2018',
               marginBottom: '44px',

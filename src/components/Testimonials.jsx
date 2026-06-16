@@ -1,7 +1,7 @@
 /* ─── Testimonials — full-width image overlay + brand marquee ─── */
 
 const MONO  = { fontFamily: '"Space Mono", monospace' }
-const SERIF = { fontFamily: 'Marcellus, serif' }
+const SERIF = { fontFamily: 'Lora, serif' }
 
 const TESTIMONIALS = [
   {
@@ -81,7 +81,7 @@ export default function Testimonials() {
               }}>
                 {/* Quote */}
                 <p style={{
-                  fontFamily: 'Jost, sans-serif',
+                  fontFamily: '"Be Vietnam Pro", sans-serif',
                   fontSize: '14px', fontWeight: 300,
                   color: '#2A2018', lineHeight: 1.9,
                   marginBottom: '28px',
@@ -101,7 +101,7 @@ export default function Testimonials() {
                     </span>
                   </div>
                   <div>
-                    <p style={{ fontFamily: 'Jost, sans-serif', fontWeight: 600, fontSize: '14px', color: '#2A2018', marginBottom: '3px' }}>
+                    <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontWeight: 600, fontSize: '14px', color: '#2A2018', marginBottom: '3px' }}>
                       {t.name}
                     </p>
                     <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1.5px', color: '#6B5E4F' }}>

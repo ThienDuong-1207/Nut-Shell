@@ -2,9 +2,9 @@
 import { Link } from 'react-router-dom'
 import RevealOnScroll from '../ui/RevealOnScroll'
 
-const SERIF = { fontFamily: 'Marcellus, serif' }
+const SERIF = { fontFamily: 'Lora, serif' }
 const MONO  = { fontFamily: '"Space Mono", monospace' }
-const JOST  = { fontFamily: 'Jost, sans-serif' }
+const JOST  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const VALUES = [
   {

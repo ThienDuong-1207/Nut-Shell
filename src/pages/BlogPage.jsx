@@ -14,10 +14,10 @@ export default function BlogPage() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '16px' }}>
             KIẾN THỨC & CẢM HỨNG
           </p>
-          <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
             Chia Sẻ
           </h1>
-          <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
             Kiến thức thiết kế, xu hướng nội thất và những câu chuyện từ studio của chúng tôi.
           </p>
           {/* Breadcrumb */}
@@ -104,10 +104,10 @@ function PostCard({ post }) {
             </span>
           </div>
 
-          <h2 style={{ fontFamily: 'Marcellus, serif', fontSize: '21px', color: '#2A2018', lineHeight: 1.35, marginBottom: '12px' }}>
+          <h2 style={{ fontFamily: 'Lora, serif', fontSize: '21px', color: '#2A2018', lineHeight: 1.35, marginBottom: '12px' }}>
             {post.title}
           </h2>
-          <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '14px', fontWeight: 300, color: '#6B5A4E', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#6B5A4E', lineHeight: 1.7 }}>
             {post.excerpt}
           </p>
 

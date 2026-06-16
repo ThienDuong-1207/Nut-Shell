@@ -18,7 +18,7 @@ function NotFound() {
   return (
     <main style={{ background: '#F2EBDF', minHeight: '100vh', paddingTop: '88px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
       <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#2A2018' }}>404</p>
-      <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#2A2018' }}>Trang không tìm thấy</h1>
+      <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#2A2018' }}>Trang không tìm thấy</h1>
       <Link to="/" style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2px', color: '#2A2018', border: '1px solid #2A2018', padding: '12px 28px', borderRadius: '999px', textDecoration: 'none' }}>
         VỀ TRANG CHỦ →
       </Link>

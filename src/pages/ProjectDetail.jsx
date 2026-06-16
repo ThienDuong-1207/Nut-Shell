@@ -78,10 +78,10 @@ export default function ProjectDetail() {
         >
           {/* Left — name + description */}
           <div>
-            <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#2A2018', lineHeight: 1.1, marginBottom: '32px' }}>
+            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#2A2018', lineHeight: 1.1, marginBottom: '32px' }}>
               {project.name}
             </h1>
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '17px', fontWeight: 300, color: '#4A3B2E', lineHeight: 1.85 }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '17px', fontWeight: 300, color: '#4A3B2E', lineHeight: 1.85 }}>
               {project.description}
             </p>
             {/* Tags */}
@@ -110,10 +110,10 @@ export default function ProjectDetail() {
               { label: 'Năm hoàn thiện', value: project.year },
             ].map(item => (
               <div key={item.label} style={{ paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid rgba(42,32,24,.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '16px', flexWrap: 'wrap' }}>
-                <span style={{ fontFamily: 'Jost, sans-serif', fontSize: '13px', fontWeight: 300, color: '#8B7B6E' }}>
+                <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#8B7B6E' }}>
                   {item.label}
                 </span>
-                <span style={{ fontFamily: 'Marcellus, serif', fontSize: '16px', color: '#2A2018', textAlign: 'right' }}>
+                <span style={{ fontFamily: 'Lora, serif', fontSize: '16px', color: '#2A2018', textAlign: 'right' }}>
                   {item.value}
                 </span>
               </div>
@@ -161,7 +161,7 @@ export default function ProjectDetail() {
           {prevProject ? (
             <Link to={`/du-an/${prevProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#8B7B6E' }}>← DỰ ÁN TRƯỚC</span>
-              <span style={{ fontFamily: 'Marcellus, serif', fontSize: '18px', color: '#2A2018', transition: 'color .2s' }}
+              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#2A2018', transition: 'color .2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#A8623C'}
                 onMouseLeave={e => e.currentTarget.style.color = '#2A2018'}
               >
@@ -186,7 +186,7 @@ export default function ProjectDetail() {
           {nextProject ? (
             <Link to={`/du-an/${nextProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
               <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#8B7B6E' }}>DỰ ÁN TIẾP →</span>
-              <span style={{ fontFamily: 'Marcellus, serif', fontSize: '18px', color: '#2A2018', transition: 'color .2s' }}
+              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#2A2018', transition: 'color .2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#A8623C'}
                 onMouseLeave={e => e.currentTarget.style.color = '#2A2018'}
               >
@@ -203,10 +203,10 @@ export default function ProjectDetail() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
             BẮT ĐẦU NGAY HÔM NAY
           </p>
-          <h2 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F4EFE7', marginBottom: '24px', lineHeight: 1.2 }}>
+          <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F4EFE7', marginBottom: '24px', lineHeight: 1.2 }}>
             Bắt đầu dự án của bạn?
           </h2>
-          <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', marginBottom: '40px', maxWidth: '480px', margin: '0 auto 40px' }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', marginBottom: '40px', maxWidth: '480px', margin: '0 auto 40px' }}>
             Hãy để chúng tôi lắng nghe câu chuyện của bạn. Buổi tư vấn đầu tiên hoàn toàn miễn phí.
           </p>
           <Link to="/lien-he" style={{

@@ -16,7 +16,7 @@ export default function About() {
           <div className="order-2 lg:order-1 lg:col-span-3">
             <RevealOnScroll>
               <h2 style={{
-                fontFamily: 'Marcellus, serif',
+                fontFamily: 'Lora, serif',
                 fontSize: 'clamp(32px, 4.5vw, 58px)',
                 lineHeight: 1.15,
                 color: '#2A2018',
@@ -35,7 +35,7 @@ export default function About() {
                   marginTop: '6px',
                 }} />
                 <p style={{
-                  fontFamily: 'Jost, sans-serif',
+                  fontFamily: '"Be Vietnam Pro", sans-serif',
                   fontSize: 'clamp(16px, 1.4vw, 19px)',
                   fontWeight: 300, lineHeight: 1.85,
                   color: '#6B5E4F',

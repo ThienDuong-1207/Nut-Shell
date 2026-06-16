@@ -2,8 +2,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 
 const MONO  = { fontFamily: '"Space Mono", monospace' }
-const SERIF = { fontFamily: 'Marcellus, serif' }
-const JOST  = { fontFamily: 'Jost, sans-serif' }
+const SERIF = { fontFamily: 'Lora, serif' }
+const JOST  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const FADEIN = (delay) => ({
   opacity: 0,

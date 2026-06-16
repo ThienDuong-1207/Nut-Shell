@@ -14,8 +14,8 @@ export default {
         'text-light-secondary': '#B6A88F',
       },
       fontFamily: {
-        marcellus: ['Marcellus', 'serif'],
-        jost: ['Jost', 'sans-serif'],
+        lora: ['Lora', 'serif'],
+        bevietnam: ['"Be Vietnam Pro"', 'sans-serif'],
         mono: ['"Space Mono"', 'monospace'],
       },
     },

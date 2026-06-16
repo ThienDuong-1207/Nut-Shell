@@ -34,7 +34,7 @@ function Step({ step, delay }) {
       }}>
         {/* Ghost number */}
         <p style={{
-          fontFamily: 'Marcellus, serif',
+          fontFamily: 'Lora, serif',
           fontSize: 'clamp(56px, 8vw, 112px)',
           lineHeight: .85,
           color: '#2A2018',
@@ -48,7 +48,7 @@ function Step({ step, delay }) {
 
         {/* Title */}
         <h3 style={{
-          fontFamily: 'Marcellus, serif',
+          fontFamily: 'Lora, serif',
           fontSize: 'clamp(20px, 2vw, 28px)',
           color: '#2A2018',
           lineHeight: 1.2,
@@ -62,7 +62,7 @@ function Step({ step, delay }) {
 
         {/* Description */}
         <p style={{
-          fontFamily: 'Jost, sans-serif',
+          fontFamily: '"Be Vietnam Pro", sans-serif',
           fontSize: '15px', fontWeight: 300,
           color: '#6B5E4F', lineHeight: 1.85,
         }}>
@@ -86,7 +86,7 @@ export default function Process() {
         </RevealOnScroll>
         <RevealOnScroll delay={80}>
           <h2 style={{
-            fontFamily: 'Marcellus, serif',
+            fontFamily: 'Lora, serif',
             fontSize: 'clamp(32px, 4.5vw, 58px)',
             lineHeight: 1.15, color: '#2A2018',
             marginBottom: '72px', maxWidth: '500px',

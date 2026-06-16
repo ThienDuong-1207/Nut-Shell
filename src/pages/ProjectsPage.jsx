@@ -21,10 +21,10 @@ export default function ProjectsPage() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '16px' }}>
             PORTFOLIO
           </p>
-          <h1 style={{ fontFamily: 'Marcellus, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
             Dự Án
           </h1>
-          <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
             Những công trình chúng tôi tâm huyết — từ tổ ấm gia đình đến không gian thương mại đặc sắc.
           </p>
           {/* Breadcrumb */}
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
 
         {filtered.length === 0 && (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '16px', color: '#6B5A4E' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', color: '#6B5A4E' }}>
               Chưa có dự án trong danh mục này.
             </p>
           </div>
@@ -160,7 +160,7 @@ function ProjectCard({ project }) {
 
         {/* Meta */}
         <div style={{ padding: '20px' }}>
-          <h3 style={{ fontFamily: 'Marcellus, serif', fontSize: '19px', color: '#2A2018', marginBottom: '10px', lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: 'Lora, serif', fontSize: '19px', color: '#2A2018', marginBottom: '10px', lineHeight: 1.3 }}>
             {project.name}
           </h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
@@ -168,7 +168,7 @@ function ProjectCard({ project }) {
               {project.area}
             </span>
             <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'Jost, sans-serif', fontSize: '13px', fontWeight: 300, color: '#6B5A4E' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#6B5A4E' }}>
               {project.location}
             </span>
           </div>

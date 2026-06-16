@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { PROJECTS } from '../data/projects'
 
 const MONO  = { fontFamily: '"Space Mono", monospace' }
-const SERIF = { fontFamily: 'Marcellus, serif' }
+const SERIF = { fontFamily: 'Lora, serif' }
 
 const CATEGORIES = [
   {
@@ -185,7 +185,7 @@ export default function Projects() {
                       {count} DỰ ÁN
                     </p>
                     <p style={{
-                      fontFamily: 'Jost, sans-serif', fontSize: '14px', fontWeight: 300,
+                      fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300,
                       color: '#6B5E4F', lineHeight: 1.9, maxWidth: '300px', marginBottom: '40px',
                     }}>
                       {cat.desc}

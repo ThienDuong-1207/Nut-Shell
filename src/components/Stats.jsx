@@ -15,7 +15,7 @@ export default function Stats() {
           {DATA.map((item) => (
             <div key={item.label}>
               <p style={{
-                fontFamily: 'Marcellus, serif',
+                fontFamily: 'Lora, serif',
                 fontSize: 'clamp(54px, 6vw, 78px)',
                 lineHeight: 1,
                 color: '#E3D2B0',

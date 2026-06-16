@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import RevealOnScroll from '../ui/RevealOnScroll'
 
 const INPUT_STYLE = {
-  fontFamily: 'Jost, sans-serif',
+  fontFamily: '"Be Vietnam Pro", sans-serif',
   fontSize: '14px',
   background: 'rgba(244,239,231,0.08)',
   border: '1px solid rgba(244,239,231,0.2)',
@@ -101,7 +101,7 @@ export default function CTA() {
 
             <RevealOnScroll delay={90}>
               <h2 style={{
-                fontFamily: 'Marcellus, serif',
+                fontFamily: 'Lora, serif',
                 fontSize: 'clamp(34px, 5vw, 68px)',
                 lineHeight: 1.1, color: '#F4EFE7',
                 marginBottom: '28px',
@@ -112,7 +112,7 @@ export default function CTA() {
 
             <RevealOnScroll delay={180}>
               <p style={{
-                fontFamily: 'Jost, sans-serif', fontSize: '17px', fontWeight: 300,
+                fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '17px', fontWeight: 300,
                 color: '#B6A88F', lineHeight: 1.85,
               }}>
                 Hãy để chúng tôi lắng nghe câu chuyện của bạn. Buổi tư vấn đầu tiên hoàn toàn miễn phí.
@@ -198,7 +198,7 @@ export default function CTA() {
 
               {submitted && (
                 <p style={{
-                  fontFamily: 'Jost, sans-serif',
+                  fontFamily: '"Be Vietnam Pro", sans-serif',
                   fontSize: '14px',
                   color: '#B6A88F',
                   textAlign: 'center',
