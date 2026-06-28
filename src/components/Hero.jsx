@@ -92,13 +92,13 @@ export default function Hero() {
         }}
       >
         {/* TOP: Studio label */}
-        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3.5px', color: 'rgba(244,239,231,.42)', ...FADEIN(200) }}>
+        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3.5px', color: 'rgba(244,239,231,.55)', ...FADEIN(200) }}>
           NUT SHELL STUDIO — EST. 2017
         </p>
 
         {/* MIDDLE: Headline + tagline + CTAs */}
         <div>
-          <h1 style={{ ...SERIF, fontSize: 'clamp(38px, 4.2vw, 68px)', lineHeight: 1.08, color: '#F4EFE7', marginBottom: '28px' }}>
+          <h1 style={{ ...SERIF, fontSize: 'clamp(38px, 4.2vw, 68px)', lineHeight: 1.08, color: '#F4EFE7', marginBottom: '28px', textWrap: 'balance' }}>
             <span style={{ display: 'block', ...FADEIN(320) }}>Nơi ánh sáng</span>
             <span style={{ display: 'block', ...FADEIN(420) }}>chạm vào</span>
             <span style={{ display: 'block', color: '#E3D2B0', ...FADEIN(520) }}>chất liệu.</span>
@@ -106,7 +106,7 @@ export default function Hero() {
 
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '36px', ...FADEIN(600) }}>
             <div style={{ width: '28px', height: '1px', background: '#A8623C', marginTop: '10px', flexShrink: 0 }} />
-            <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: 'rgba(244,239,231,.60)', lineHeight: 1.85 }}>
+            <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: 'rgba(244,239,231,.72)', lineHeight: 1.85 }}>
               Thiết kế & thi công nội thất cao cấp.<br />
               Mỗi không gian kể một câu chuyện riêng.
             </p>
@@ -154,7 +154,7 @@ export default function Hero() {
           {[['400+', 'Công trình'], ['7+', 'Năm KN'], ['98%', 'Hài lòng']].map(([n, l]) => (
             <div key={l}>
               <p style={{ ...SERIF, fontSize: '22px', color: '#E3D2B0', lineHeight: 1 }}>{n}</p>
-              <p style={{ ...MONO, fontSize: '8px', letterSpacing: '2px', color: 'rgba(244,239,231,.32)', marginTop: '4px' }}>{l.toUpperCase()}</p>
+              <p style={{ ...MONO, fontSize: '8px', letterSpacing: '2px', color: 'rgba(244,239,231,.48)', marginTop: '4px' }}>{l.toUpperCase()}</p>
             </div>
           ))}
         </div>
@@ -195,14 +195,21 @@ export default function Hero() {
           <button
             key={i}
             onClick={() => setActive(i)}
+            aria-label={`Slide ${i + 1}`}
             style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              width: '44px', height: '44px',
+              background: 'transparent', border: 'none', cursor: 'pointer', padding: 0,
+            }}
+          >
+            <span style={{
+              display: 'block',
               width: i === active ? '24px' : '6px',
               height: '2px', borderRadius: '1px',
               background: i === active ? '#E3D2B0' : 'rgba(244,239,231,.3)',
-              border: 'none', cursor: 'pointer', padding: 0,
               transition: 'width .4s ease, background .4s ease',
-            }}
-          />
+            }} />
+          </button>
         ))}
       </div>
 
@@ -230,14 +237,22 @@ export default function Hero() {
             </a>
           </div>
           {/* Mobile dots */}
-          <div style={{ display: 'flex', gap: '6px' }}>
+          <div style={{ display: 'flex', gap: '0', marginLeft: '-8px' }}>
             {SLIDES.map((_, i) => (
-              <button key={i} onClick={() => setActive(i)} style={{
-                width: i === active ? '20px' : '6px', height: '2px', borderRadius: '1px',
-                background: i === active ? '#E3D2B0' : 'rgba(244,239,231,.35)',
-                border: 'none', cursor: 'pointer', padding: 0,
-                transition: 'width .4s ease',
-              }} />
+              <button key={i} onClick={() => setActive(i)} aria-label={`Slide ${i + 1}`}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'flex-start',
+                  width: '44px', height: '44px',
+                  background: 'transparent', border: 'none', cursor: 'pointer', padding: '0 8px',
+                }}
+              >
+                <span style={{
+                  display: 'block',
+                  width: i === active ? '20px' : '6px', height: '2px', borderRadius: '1px',
+                  background: i === active ? '#E3D2B0' : 'rgba(244,239,231,.35)',
+                  transition: 'width .4s ease',
+                }} />
+              </button>
             ))}
           </div>
         </div>

@@ -166,7 +166,7 @@ export default function LoadingScreen({ onDone }) {
 function PolaroidFrame({ src }) {
   return (
     <div style={{
-      background: '#FAF8F3',
+      background: '#F2EBDF',
       padding: '9px 9px 38px 9px',
       borderRadius: '2px',
       boxShadow:

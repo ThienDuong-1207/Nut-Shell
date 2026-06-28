@@ -172,13 +172,13 @@ export default function ProjectDetail() {
 
           <Link to="/du-an" style={{
             ...MONO, fontSize: '9.5px', letterSpacing: '2px',
-            color: '#6B5A4E', textDecoration: 'none',
+            color: '#6B5E4F', textDecoration: 'none',
             border: '1px solid rgba(42,32,24,.2)',
             padding: '10px 24px', borderRadius: '999px',
             transition: 'all .2s',
           }}
             onMouseEnter={e => { e.currentTarget.style.background = '#2A2018'; e.currentTarget.style.color = '#E3D2B0' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#6B5A4E' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#6B5E4F' }}
           >
             TẤT CẢ DỰ ÁN
           </Link>

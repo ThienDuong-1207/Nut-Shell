@@ -155,7 +155,7 @@ export default function ContactPage() {
                 <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#8B7B6E' }}>
                   Google Maps
                 </p>
-                <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '12px', fontWeight: 300, color: '#A8947E', marginTop: '4px' }}>
+                <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '12px', fontWeight: 300, color: '#B6A88F', marginTop: '4px' }}>
                   12 Nguyễn Văn Bình, Quận 1
                 </p>
               </div>

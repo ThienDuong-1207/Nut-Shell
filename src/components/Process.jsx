@@ -1,4 +1,4 @@
-/* ─── Process — 2-column, 2 steps each ─── */
+/* ─── Process — dark background, 2-column 4 steps ─── */
 import RevealOnScroll from '../ui/RevealOnScroll'
 
 const STEPS = [
@@ -28,43 +28,40 @@ function Step({ step, delay }) {
   return (
     <RevealOnScroll delay={delay}>
       <div style={{
-        borderTop: '1px solid rgba(42,32,24,.1)',
+        borderTop: '1px solid rgba(244,239,231,.1)',
         paddingTop: '40px',
         paddingBottom: '48px',
       }}>
-        {/* Ghost number */}
         <p style={{
           fontFamily: 'Lora, serif',
           fontSize: 'clamp(56px, 8vw, 112px)',
           lineHeight: .85,
-          color: '#2A2018',
+          color: '#F4EFE7',
           opacity: .07,
-          letterSpacing: '-3px',
+          letterSpacing: '-2px',
           userSelect: 'none',
           marginBottom: '20px',
         }}>
           {step.num}
         </p>
 
-        {/* Title */}
         <h3 style={{
           fontFamily: 'Lora, serif',
           fontSize: 'clamp(20px, 2vw, 28px)',
-          color: '#2A2018',
+          color: '#E3D2B0',
           lineHeight: 1.2,
           marginBottom: '18px',
+          textWrap: 'balance',
         }}>
           {step.name}
         </h3>
 
-        {/* Divider */}
-        <div style={{ width: '28px', height: '1px', background: 'rgba(42,32,24,.2)', marginBottom: '18px' }} />
+        <div style={{ width: '28px', height: '1px', background: '#A8623C', marginBottom: '18px', opacity: .6 }} />
 
-        {/* Description */}
         <p style={{
           fontFamily: '"Be Vietnam Pro", sans-serif',
           fontSize: '15px', fontWeight: 300,
-          color: '#6B5E4F', lineHeight: 1.85,
+          color: '#B6A88F', lineHeight: 1.85,
         }}>
           {step.desc}
         </p>
@@ -75,43 +72,34 @@ function Step({ step, delay }) {
 
 export default function Process() {
   return (
-    <section id="quytrinh" style={{ background: '#F2EBDF', padding: '120px 0' }}>
+    <section id="quytrinh" style={{ background: '#2A2018', padding: '120px 0' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* Header */}
         <RevealOnScroll>
-          <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#8B7B6E', marginBottom: '18px' }}>
-            QUY TRÌNH
-          </p>
-        </RevealOnScroll>
-        <RevealOnScroll delay={80}>
           <h2 style={{
             fontFamily: 'Lora, serif',
             fontSize: 'clamp(32px, 4.5vw, 58px)',
-            lineHeight: 1.15, color: '#2A2018',
+            lineHeight: 1.15, color: '#F4EFE7',
             marginBottom: '72px', maxWidth: '500px',
+            textWrap: 'balance',
           }}>
             Từ ý tưởng đến bàn giao
           </h2>
         </RevealOnScroll>
 
-        {/* 2-column grid */}
         <div
           style={{ display: 'grid', gap: '0 80px' }}
           className="grid-cols-1 lg:grid-cols-2"
         >
-          {/* Left column: steps 01 & 02 */}
           <div>
             <Step step={STEPS[0]} delay={0} />
             <Step step={STEPS[1]} delay={80} />
-            <div style={{ borderTop: '1px solid rgba(42,32,24,.1)' }} />
+            <div style={{ borderTop: '1px solid rgba(244,239,231,.1)' }} />
           </div>
-
-          {/* Right column: steps 03 & 04 */}
           <div>
             <Step step={STEPS[2]} delay={120} />
             <Step step={STEPS[3]} delay={200} />
-            <div style={{ borderTop: '1px solid rgba(42,32,24,.1)' }} />
+            <div style={{ borderTop: '1px solid rgba(244,239,231,.1)' }} />
           </div>
         </div>
 

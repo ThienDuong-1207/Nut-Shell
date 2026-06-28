@@ -138,7 +138,7 @@ export default function Projects() {
         <div style={{
           position: 'sticky', top: 0,
           height: '100vh', overflow: 'hidden',
-          background: '#1E1610',
+          background: '#2A2018',
         }}>
           {/* Horizontal track */}
           <div
@@ -267,7 +267,7 @@ export default function Projects() {
                           <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="#E3D2B0" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#6B5A4E', textAlign: 'center' }}>
+                      <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#6B5E4F', textAlign: 'center' }}>
                         XEM TẤT CẢ
                       </p>
                     </Link>
@@ -292,7 +292,7 @@ export default function Projects() {
                   transition: 'width .4s ease, background .4s ease',
                 }} />
                 {i === activeIdx && (
-                  <p style={{ ...MONO, fontSize: '8px', letterSpacing: '1.5px', color: '#6B5A4E' }}>
+                  <p style={{ ...MONO, fontSize: '8px', letterSpacing: '1.5px', color: '#6B5E4F' }}>
                     {cat.id}
                   </p>
                 )}
@@ -313,7 +313,7 @@ export default function Projects() {
       </div>
 
       {/* ── MOBILE ── */}
-      <div id="duan" className="lg:hidden" style={{ background: '#1E1610', padding: '72px 0' }}>
+      <div id="duan" className="lg:hidden" style={{ background: '#2A2018', padding: '72px 0' }}>
         <div className="max-w-7xl mx-auto px-5">
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '12px' }}>
             DỰ ÁN NỔI BẬT
@@ -325,7 +325,7 @@ export default function Projects() {
             const projects = getByCategory(cat.id, 3)
             return (
               <div key={cat.id} style={{ marginBottom: '44px' }}>
-                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#6B5A4E', marginBottom: '14px' }}>
+                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#6B5E4F', marginBottom: '14px' }}>
                   {cat.id}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>

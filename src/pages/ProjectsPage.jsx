@@ -60,7 +60,7 @@ export default function ProjectsPage() {
                   borderRadius: '999px',
                   border: isActive ? 'none' : '1px solid rgba(42,32,24,.25)',
                   background: isActive ? '#2A2018' : 'transparent',
-                  color: isActive ? '#E3D2B0' : '#6B5A4E',
+                  color: isActive ? '#E3D2B0' : '#6B5E4F',
                   cursor: 'pointer',
                   transition: 'all .2s ease',
                 }}
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
 
         {filtered.length === 0 && (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', color: '#6B5A4E' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', color: '#6B5E4F' }}>
               Chưa có dự án trong danh mục này.
             </p>
           </div>
@@ -168,7 +168,7 @@ function ProjectCard({ project }) {
               {project.area}
             </span>
             <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
-            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#6B5A4E' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#6B5E4F' }}>
               {project.location}
             </span>
           </div>

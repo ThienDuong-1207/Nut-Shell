@@ -70,10 +70,12 @@ export default function CTA() {
 
       {/* Layered dark background */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #1A1208 0%, #3D2B1A 45%, #2A2018 100%)' }} />
-      {/* Warm texture overlay */}
+      {/* Grain texture overlay */}
       <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(168,98,60,.04) 22px, rgba(168,98,60,.04) 23px)',
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+        backgroundRepeat: 'repeat', backgroundSize: '128px 128px',
+        opacity: .04, mixBlendMode: 'screen',
       }} />
       {/* Subtle vignette */}
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.35) 100%)' }} />
@@ -94,17 +96,12 @@ export default function CTA() {
           {/* Left — text */}
           <div>
             <RevealOnScroll>
-              <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#B6A88F', marginBottom: '28px' }}>
-                BẮT ĐẦU HÀNH TRÌNH
-              </p>
-            </RevealOnScroll>
-
-            <RevealOnScroll delay={90}>
               <h2 style={{
                 fontFamily: 'Lora, serif',
                 fontSize: 'clamp(34px, 5vw, 68px)',
                 lineHeight: 1.1, color: '#F4EFE7',
                 marginBottom: '28px',
+                textWrap: 'balance',
               }}>
                 Biến không gian của bạn thành điều đáng nhớ.
               </h2>

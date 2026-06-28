@@ -15,16 +15,16 @@ function MarqueeContent() {
             fontFamily: '"Space Mono", monospace',
             fontSize: '9px',
             letterSpacing: '3px',
-            color: '#6B5E4F',
+            color: 'rgba(244,239,231,.35)',
           }}>
             {city}
           </span>
           <span style={{
-            color: '#6B5E4F',
+            color: '#A8623C',
             margin: '0 20px',
-            fontSize: '9px',
+            fontSize: '8px',
           }}>
-            ·
+            ✦
           </span>
         </span>
       ))}
@@ -38,9 +38,11 @@ export default function Marquee() {
   return (
     <section
       style={{
-        background: '#EAE0CE',
-        padding: '18px 0',
+        background: '#1A130D',
+        padding: '16px 0',
         overflow: 'hidden',
+        borderTop: '1px solid rgba(244,239,231,.05)',
+        borderBottom: '1px solid rgba(244,239,231,.05)',
       }}
     >
       <div
@@ -54,7 +56,6 @@ export default function Marquee() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {/* Duplicate content twice for seamless loop */}
         <span style={{ display: 'inline-flex', alignItems: 'center' }}>
           <MarqueeContent />
         </span>

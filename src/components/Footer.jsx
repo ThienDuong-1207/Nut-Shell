@@ -1,4 +1,4 @@
-/* ─── Footer — large wordmark anchor ─── */
+/* ─── Footer — darkest anchor of the page ─── */
 import { Link } from 'react-router-dom'
 
 const MONO = { fontFamily: '"Space Mono", monospace' }
@@ -28,12 +28,12 @@ function FooterLink({ link }) {
   const style = {
     ...JOST,
     fontSize: '14px', fontWeight: 300,
-    color: '#6B5E4F', textDecoration: 'none',
+    color: 'rgba(244,239,231,.45)', textDecoration: 'none',
     lineHeight: 1.65, whiteSpace: 'pre-line',
     transition: 'color .2s',
   }
-  const hover = e => e.currentTarget.style.color = '#2A2018'
-  const leave = e => e.currentTarget.style.color = '#6B5E4F'
+  const hover = e => e.currentTarget.style.color = '#F4EFE7'
+  const leave = e => e.currentTarget.style.color = 'rgba(244,239,231,.45)'
 
   return link.router
     ? <Link to={link.href} style={style} onMouseEnter={hover} onMouseLeave={leave}>{link.label}</Link>
@@ -42,7 +42,7 @@ function FooterLink({ link }) {
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#F2EBDF', overflow: 'hidden' }}>
+    <footer style={{ background: '#1A130D', overflow: 'hidden' }}>
 
       {/* ── Top: logo + columns ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ paddingTop: '72px', paddingBottom: '56px' }}>
@@ -53,9 +53,13 @@ export default function Footer() {
             <img
               src="/images/logo.jpeg"
               alt="Nut Shell"
-              style={{ height: '44px', width: 'auto', objectFit: 'contain', borderRadius: '4px', marginBottom: '16px' }}
+              style={{
+                height: '44px', width: 'auto', objectFit: 'contain',
+                borderRadius: '4px', marginBottom: '16px',
+                opacity: .72,
+              }}
             />
-            <p style={{ ...JOST, fontSize: '13px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.85, maxWidth: '200px' }}>
+            <p style={{ ...JOST, fontSize: '13px', fontWeight: 300, color: 'rgba(244,239,231,.38)', lineHeight: 1.85, maxWidth: '200px' }}>
               Studio thiết kế & thi công nội thất sang trọng tại Việt Nam.
             </p>
           </div>
@@ -63,7 +67,7 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(COLUMNS).map(([title, links]) => (
             <div key={title}>
-              <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#2A2018', marginBottom: '18px', textTransform: 'uppercase' }}>
+              <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: 'rgba(244,239,231,.28)', marginBottom: '18px', textTransform: 'uppercase' }}>
                 {title}
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '11px' }}>
@@ -78,7 +82,7 @@ export default function Footer() {
 
       {/* ── Copyright bar ── */}
       <div style={{
-        borderTop: '1px solid rgba(42,32,24,.1)',
+        borderTop: '1px solid rgba(244,239,231,.06)',
         padding: '18px clamp(16px, 4vw, 48px)',
         display: 'flex',
         justifyContent: 'space-between',
@@ -86,10 +90,10 @@ export default function Footer() {
         flexWrap: 'wrap',
         gap: '8px',
       }}>
-        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1px', color: '#8B7B6E' }}>
+        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1px', color: 'rgba(244,239,231,.22)' }}>
           © 2026 Nut Shell. Bảo lưu mọi quyền.
         </p>
-        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1px', color: '#8B7B6E' }}>
+        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1px', color: 'rgba(244,239,231,.22)' }}>
           NUT SHELL STUDIO
         </p>
       </div>

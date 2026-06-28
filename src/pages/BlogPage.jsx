@@ -107,7 +107,7 @@ function PostCard({ post }) {
           <h2 style={{ fontFamily: 'Lora, serif', fontSize: '21px', color: '#2A2018', lineHeight: 1.35, marginBottom: '12px' }}>
             {post.title}
           </h2>
-          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#6B5A4E', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.7 }}>
             {post.excerpt}
           </p>
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-/**
- * Wraps children in a div that fades + slides up when entering the viewport.
- * Has a safety fallback: reveals after 2.5 s if IntersectionObserver never fires.
- */
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 export default function RevealOnScroll({ children, delay = 0, className = '', layoutStyle = {} }) {
   const ref = useRef(null)
 
@@ -11,12 +11,18 @@ export default function RevealOnScroll({ children, delay = 0, className = '', la
     const el = ref.current
     if (!el) return
 
+    // Skip animation entirely for users who prefer reduced motion
+    if (prefersReducedMotion) {
+      el.style.opacity = '1'
+      el.style.transform = 'translateY(0)'
+      return
+    }
+
     const reveal = () => {
       el.style.opacity = '1'
       el.style.transform = 'translateY(0)'
     }
 
-    // Safety: always visible after 2.5 s
     const fallback = setTimeout(reveal, 2500)
 
     const observer = new IntersectionObserver(
@@ -37,15 +43,23 @@ export default function RevealOnScroll({ children, delay = 0, className = '', la
     }
   }, [])
 
+  if (prefersReducedMotion) {
+    return (
+      <div ref={ref} className={className} style={layoutStyle}>
+        {children}
+      </div>
+    )
+  }
+
   return (
     <div
       ref={ref}
       className={className}
       style={{
         opacity: 0,
-        transform: 'translateY(30px)',
-        transition: `opacity 1s cubic-bezier(.2,.7,.2,1) ${delay}ms,
-                     transform 1s cubic-bezier(.2,.7,.2,1) ${delay}ms`,
+        transform: 'translateY(24px)',
+        transition: `opacity .9s cubic-bezier(.2,.7,.2,1) ${delay}ms,
+                     transform .9s cubic-bezier(.2,.7,.2,1) ${delay}ms`,
         ...layoutStyle,
       }}
     >

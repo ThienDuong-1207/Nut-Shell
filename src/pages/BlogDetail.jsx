@@ -119,14 +119,14 @@ export default function BlogDetail() {
             <div style={{ marginTop: '64px', paddingTop: '40px', borderTop: '1px solid rgba(42,32,24,.12)' }}>
               <Link to="/chia-se" style={{
                 ...MONO, fontSize: '10px', letterSpacing: '2.5px',
-                color: '#6B5A4E', textDecoration: 'none',
+                color: '#6B5E4F', textDecoration: 'none',
                 border: '1px solid rgba(42,32,24,.2)',
                 padding: '12px 28px', borderRadius: '999px',
                 display: 'inline-block',
                 transition: 'all .2s',
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = '#2A2018'; e.currentTarget.style.color = '#E3D2B0' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#6B5A4E' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#6B5E4F' }}
               >
                 ← TẤT CẢ BÀI VIẾT
               </Link>
