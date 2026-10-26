@@ -23,10 +23,10 @@ const COLUMNS = {
     { label: 'Behance',    href: '#' },
   ],
   'Liên hệ': [
-    { label: 'hello@nutshell.vn',                         href: 'mailto:hello@nutshell.vn' },
+    { label: 'nuttt.shell@gmail.com',                         href: 'mailto:nuttt.shell@gmail.com' },
     { label: '0898 123 636',                             href: 'tel:0898123636'          },
     { label: 'Zalo: 0898 123 636',                       href: 'https://zalo.me/0898123636' },
-    { label: '12 Nguyễn Văn Bình, Q.1\nTP. Hồ Chí Minh', href: '#'                       },
+    { label: '228 Thống Nhất, P. Gò Vấp\nTP. Hồ Chí Minh',  href: 'https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh' },
   ],
 }
 

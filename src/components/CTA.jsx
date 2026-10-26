@@ -1,6 +1,7 @@
 /* ─── CTA — gradient tối, form với stagger entrance + animated feedback ─── */
 import { useState, useRef, useEffect } from 'react'
 import RevealOnScroll from '../ui/RevealOnScroll'
+import { sendContact, SEND_ERROR_TEXT } from '../lib/sendContact'
 
 const MONO = { fontFamily: '"Space Mono", monospace' }
 const JOST = { fontFamily: '"Be Vietnam Pro", sans-serif' }
@@ -59,6 +60,7 @@ export default function CTA() {
   const [form, setForm]           = useState({ name: '', phone: '', type: '' })
   const [loading, setLoading]     = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError]         = useState(false)
   const [visible, setVisible]     = useState(false)
 
   const sectionRef = useRef(null)
@@ -109,15 +111,25 @@ export default function CTA() {
     setForm(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    setError(false)
+    try {
+      await sendContact(`Yêu cầu tư vấn mới — ${form.name}`, {
+        'Họ tên': form.name,
+        'Số điện thoại': form.phone,
+        'Loại dự án': form.type,
+        'Nguồn': 'Form trang chủ',
+      })
       setForm({ name: '', phone: '', type: '' })
       setSubmitted(true)
       setTimeout(() => setSubmitted(false), 6000)
-    }, 1400)
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -217,6 +229,11 @@ export default function CTA() {
               </button>
 
               {submitted && <SuccessMark />}
+              {error && (
+                <p role="alert" style={{ ...JOST, fontSize: '14px', color: '#F2B8A0', textAlign: 'center' }}>
+                  {SEND_ERROR_TEXT}
+                </p>
+              )}
 
             </form>
           </div>

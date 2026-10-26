@@ -1,6 +1,7 @@
 /* ─── Contact Page — full layout standalone ─── */
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { sendContact, SEND_ERROR_TEXT } from '../lib/sendContact'
 
 const MONO = { fontFamily: '"Space Mono", monospace' }
 
@@ -42,18 +43,36 @@ const BUDGETS = [
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', type: '', budget: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Contact form:', form)
-    setForm({ name: '', phone: '', email: '', type: '', budget: '', message: '' })
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 8000)
+    setLoading(true)
+    setError(false)
+    try {
+      await sendContact(`Yêu cầu tư vấn mới — ${form.name}`, {
+        'Họ tên': form.name,
+        'Số điện thoại': form.phone,
+        email: form.email,
+        'Loại dự án': form.type,
+        'Ngân sách': form.budget,
+        'Mô tả': form.message,
+        'Nguồn': 'Trang Liên hệ',
+      })
+      setForm({ name: '', phone: '', email: '', type: '', budget: '', message: '' })
+      setSubmitted(true)
+      setTimeout(() => setSubmitted(false), 8000)
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const focusStyle = { borderColor: '#6B3318' }
@@ -106,7 +125,7 @@ export default function ContactPage() {
               {
                 icon: '📍',
                 label: 'ĐỊA CHỈ',
-                lines: ['12 Nguyễn Văn Bình, Phường Bến Nghé,', 'Quận 1, TP. Hồ Chí Minh'],
+                lines: ['228 Thống Nhất, Phường Gò Vấp,', 'TP. Hồ Chí Minh'],
               },
               {
                 icon: '📞',
@@ -116,7 +135,7 @@ export default function ContactPage() {
               {
                 icon: '✉️',
                 label: 'EMAIL',
-                lines: ['hello@nutshell.vn'],
+                lines: ['nuttt.shell@gmail.com'],
               },
               {
                 icon: '🕐',
@@ -136,7 +155,7 @@ export default function ContactPage() {
               </div>
             ))}
 
-            {/* Google Maps placeholder */}
+            {/* Google Maps */}
             <div style={{ marginTop: '8px' }}>
               <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#9B5030', marginBottom: '14px' }}>
                 📌 BẢN ĐỒ
@@ -145,20 +164,28 @@ export default function ContactPage() {
                 background: '#E0D8CF',
                 height: '280px',
                 borderRadius: '4px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
+                overflow: 'hidden',
                 border: '1px solid rgba(42,32,24,.1)',
               }}>
-                <span style={{ fontSize: '32px', marginBottom: '12px' }}>🗺️</span>
-                <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#9A6A40' }}>
-                  Google Maps
-                </p>
-                <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '12px', fontWeight: 300, color: '#D4B080', marginTop: '4px' }}>
-                  12 Nguyễn Văn Bình, Quận 1
-                </p>
+                <iframe
+                  title="Bản đồ Nut Shell — 228 Thống Nhất, Phường Gò Vấp"
+                  src="https://www.google.com/maps?q=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh&hl=vi&z=16&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: 'block' }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ ...MONO, display: 'inline-block', fontSize: '10px', letterSpacing: '1.5px', color: '#9B5030', marginTop: '12px', padding: '12px 0', textDecoration: 'underline', textUnderlineOffset: '4px' }}
+              >
+                MỞ TRONG GOOGLE MAPS ↗
+              </a>
             </div>
           </div>
 
@@ -267,27 +294,36 @@ export default function ContactPage() {
 
               <button
                 type="submit"
+                disabled={loading}
                 style={{
                   ...MONO,
                   fontSize: '11px', letterSpacing: '2.5px',
                   background: '#6B3318', color: '#F0E5CC',
                   padding: '18px 38px', borderRadius: '999px',
-                  border: 'none', cursor: 'pointer',
+                  border: 'none', cursor: loading ? 'wait' : 'pointer',
+                  opacity: loading ? 0.7 : 1,
                   width: '100%',
                   marginTop: '4px',
                   transition: 'opacity .25s, transform .25s',
                 }}
                 onMouseEnter={e => {
+                  if (loading) return
                   e.currentTarget.style.opacity = '.82'
                   e.currentTarget.style.transform = 'translateY(-3px)'
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.opacity = '1'
+                  e.currentTarget.style.opacity = loading ? '.7' : '1'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
-                GỬI YÊU CẦU
+                {loading ? 'ĐANG GỬI...' : 'GỬI YÊU CẦU'}
               </button>
+
+              {error && (
+                <p role="alert" style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', color: '#9B3020', textAlign: 'center' }}>
+                  {SEND_ERROR_TEXT}
+                </p>
+              )}
 
               {submitted && (
                 <div style={{
