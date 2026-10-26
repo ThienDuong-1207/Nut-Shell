@@ -1,5 +1,16 @@
-/* ─── FloatingContact — fixed bottom-right Zalo + Phone buttons ─── */
+/* ─── FloatingContact — fixed bottom-right Zalo + Messenger + Phone buttons ─── */
 import { useState, useEffect } from 'react'
+
+// Username của fanpage Facebook (phần sau facebook.com/) — m.me/<username> mở thẳng Messenger
+export const FB_PAGE_USERNAME = 'nutshell.interior'
+export const FB_PAGE_URL = `https://www.facebook.com/${FB_PAGE_USERNAME}`
+const MESSENGER_URL = `https://m.me/${FB_PAGE_USERNAME}`
+
+const MESSENGER_SVG = (
+  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fillRule="evenodd" fill="white" d="M.001 11.639C.001 4.949 5.241 0 12.001 0S24 4.95 24 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 00-.64.05l-2.39 1.05a.96.96 0 01-1.35-.85l-.07-2.14a.97.97 0 00-.32-.68A11.39 11.389 0 01.002 11.64zm8.32-2.19l-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 00-2.61.48z"/>
+  </svg>
+)
 
 const ZALO_SVG = (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,6 +28,7 @@ const PHONE_SVG = (
 export default function FloatingContact() {
   const [visible, setVisible] = useState(false)
   const [zaloHover, setZaloHover] = useState(false)
+  const [msgHover, setMsgHover] = useState(false)
   const [phoneHover, setPhoneHover] = useState(false)
 
   useEffect(() => {
@@ -74,7 +86,7 @@ export default function FloatingContact() {
     >
       {/* Zalo button */}
       <a
-        href="https://zalo.me/0000000000"
+        href="https://zalo.me/0898123636"
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -96,9 +108,33 @@ export default function FloatingContact() {
         {ZALO_SVG}
       </a>
 
+      {/* Messenger button */}
+      <a
+        href={MESSENGER_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          ...btnBase,
+          background: 'linear-gradient(45deg, #0099FF 0%, #A033FF 60%, #FF5280 90%, #FF7061 100%)',
+          transform: msgHover ? 'scale(1.1)' : 'scale(1)',
+          boxShadow: msgHover
+            ? '0 6px 24px rgba(160,51,255,0.4)'
+            : '0 4px 16px rgba(0,0,0,0.22)',
+        }}
+        onMouseEnter={() => setMsgHover(true)}
+        onMouseLeave={() => setMsgHover(false)}
+        aria-label="Nhắn tin qua Messenger"
+      >
+        {/* Tooltip */}
+        <span style={{ ...tooltipBase, opacity: msgHover ? 1 : 0 }}>
+          Messenger
+        </span>
+        {MESSENGER_SVG}
+      </a>
+
       {/* Phone button */}
       <a
-        href="tel:0000000000"
+        href="tel:0898123636"
         style={{
           ...btnBase,
           background: '#6B3318',

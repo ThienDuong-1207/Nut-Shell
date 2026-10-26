@@ -1,6 +1,7 @@
 /* ─── Footer — sandcastle reveal, stagger columns ─── */
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { FB_PAGE_URL } from './FloatingContact'
 
 const MONO = { fontFamily: '"Space Mono", monospace' }
 const JOST = { fontFamily: '"Be Vietnam Pro", sans-serif' }
@@ -18,12 +19,13 @@ const COLUMNS = {
   'Kết nối': [
     { label: 'Instagram', href: '#' },
     { label: 'Pinterest',  href: '#' },
-    { label: 'Facebook',   href: '#' },
+    { label: 'Facebook',   href: FB_PAGE_URL },
     { label: 'Behance',    href: '#' },
   ],
   'Liên hệ': [
     { label: 'hello@nutshell.vn',                         href: 'mailto:hello@nutshell.vn' },
-    { label: '0901 234 567',                              href: 'tel:0901234567'           },
+    { label: '0898 123 636',                             href: 'tel:0898123636'          },
+    { label: 'Zalo: 0898 123 636',                       href: 'https://zalo.me/0898123636' },
     { label: '12 Nguyễn Văn Bình, Q.1\nTP. Hồ Chí Minh', href: '#'                       },
   ],
 }

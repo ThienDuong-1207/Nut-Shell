@@ -111,7 +111,7 @@ export default function ContactPage() {
               {
                 icon: '📞',
                 label: 'ĐIỆN THOẠI',
-                lines: ['0901 234 567', '(Thứ Hai – Thứ Sáu, 8:00 – 18:00)'],
+                lines: ['0898 123 636', '(Thứ Hai – Thứ Sáu, 8:00 – 18:00)'],
               },
               {
                 icon: '✉️',
