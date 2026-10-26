@@ -1,10 +1,17 @@
 /* ─── FloatingContact — fixed bottom-right Zalo + Messenger + Phone buttons ─── */
 import { useState, useEffect } from 'react'
 
-// Username của fanpage Facebook (phần sau facebook.com/) — m.me/<username> mở thẳng Messenger
+// Username của fanpage Facebook (phần sau facebook.com/)
 export const FB_PAGE_USERNAME = 'nutshell.interior'
 export const FB_PAGE_URL = `https://www.facebook.com/${FB_PAGE_USERNAME}`
-const MESSENGER_URL = `https://m.me/${FB_PAGE_USERNAME}`
+
+// Mobile: m.me mở thẳng app Messenger.
+// Desktop: m.me chuyển sang messenger.com (không chung phiên đăng nhập với facebook.com)
+// nên mở khung chat ngay trên facebook.com, nơi người dùng thường đã đăng nhập sẵn.
+const IS_MOBILE = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+const MESSENGER_URL = IS_MOBILE
+  ? `https://m.me/${FB_PAGE_USERNAME}`
+  : `https://www.facebook.com/messages/t/${FB_PAGE_USERNAME}`
 
 const MESSENGER_SVG = (
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
