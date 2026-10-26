@@ -13,30 +13,30 @@ export default function ProjectsPage() {
     : PROJECTS.filter(p => p.category === activeCategory)
 
   return (
-    <main style={{ background: '#F2EBDF', minHeight: '100vh', paddingTop: '88px' }}>
+    <main style={{ background: '#F0E8D8', minHeight: '100vh', paddingTop: '88px' }}>
 
       {/* Page Header */}
-      <div style={{ background: '#2A2018', padding: '80px 0 64px' }}>
+      <div style={{ background: '#6B3318', padding: '80px 0 64px' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '16px' }}>
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '16px' }}>
             PORTFOLIO
           </p>
-          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F4EFE7', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
             Dự Án
           </h1>
-          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', lineHeight: 1.7 }}>
             Những công trình chúng tôi tâm huyết — từ tổ ấm gia đình đến không gian thương mại đặc sắc.
           </p>
           {/* Breadcrumb */}
           <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#4A3B2E', textDecoration: 'none', transition: 'color .2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#B6A88F'}
-              onMouseLeave={e => e.currentTarget.style.color = '#4A3B2E'}
+            <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#3D2010', textDecoration: 'none', transition: 'color .2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#D4B080'}
+              onMouseLeave={e => e.currentTarget.style.color = '#3D2010'}
             >
               TRANG CHỦ
             </Link>
-            <span style={{ ...MONO, fontSize: '10px', color: '#4A3B2E' }}>/</span>
-            <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#A8623C' }}>DỰ ÁN</span>
+            <span style={{ ...MONO, fontSize: '10px', color: '#3D2010' }}>/</span>
+            <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9B5030' }}>DỰ ÁN</span>
           </div>
         </div>
       </div>
@@ -59,8 +59,8 @@ export default function ProjectsPage() {
                   padding: '10px 22px',
                   borderRadius: '999px',
                   border: isActive ? 'none' : '1px solid rgba(42,32,24,.25)',
-                  background: isActive ? '#2A2018' : 'transparent',
-                  color: isActive ? '#E3D2B0' : '#6B5E4F',
+                  background: isActive ? '#6B3318' : 'transparent',
+                  color: isActive ? '#DCC99B' : '#5A3820',
                   cursor: 'pointer',
                   transition: 'all .2s ease',
                 }}
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
 
         {filtered.length === 0 && (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
-            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', color: '#6B5E4F' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', color: '#5A3820' }}>
               Chưa có dự án trong danh mục này.
             </p>
           </div>
@@ -131,7 +131,7 @@ function ProjectCard({ project }) {
             position: 'absolute', top: '14px', left: '14px',
             fontFamily: '"Space Mono", monospace',
             fontSize: '8.5px', letterSpacing: '2px',
-            background: 'rgba(42,32,24,.82)', color: '#E3D2B0',
+            background: 'rgba(42,32,24,.82)', color: '#DCC99B',
             padding: '5px 12px', borderRadius: '999px',
             backdropFilter: 'blur(8px)',
           }}>
@@ -149,7 +149,7 @@ function ProjectCard({ project }) {
           >
             <span style={{
               fontFamily: '"Space Mono", monospace',
-              fontSize: '10px', letterSpacing: '3px', color: '#F4EFE7',
+              fontSize: '10px', letterSpacing: '3px', color: '#F0E5CC',
               border: '1px solid rgba(244,239,231,.6)',
               padding: '12px 24px', borderRadius: '999px',
             }}>
@@ -160,15 +160,15 @@ function ProjectCard({ project }) {
 
         {/* Meta */}
         <div style={{ padding: '20px' }}>
-          <h3 style={{ fontFamily: 'Lora, serif', fontSize: '19px', color: '#2A2018', marginBottom: '10px', lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: 'Lora, serif', fontSize: '19px', color: '#6B3318', marginBottom: '10px', lineHeight: 1.3 }}>
             {project.name}
           </h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '1px', color: '#A8623C' }}>
+            <span style={{ fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '1px', color: '#9B5030' }}>
               {project.area}
             </span>
             <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
-            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#6B5E4F' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#5A3820' }}>
               {project.location}
             </span>
           </div>

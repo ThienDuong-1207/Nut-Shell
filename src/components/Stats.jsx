@@ -9,7 +9,7 @@ const DATA = [
 
 export default function Stats() {
   return (
-    <section style={{ background: '#2A2018', padding: '88px 0' }}>
+    <section style={{ background: '#DCC99B', padding: '96px 0' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
           {DATA.map((item) => (
@@ -18,7 +18,7 @@ export default function Stats() {
                 fontFamily: 'Lora, serif',
                 fontSize: 'clamp(54px, 6vw, 78px)',
                 lineHeight: 1,
-                color: '#E3D2B0',
+                color: '#6B3318',
                 marginBottom: '12px',
               }}>
                 <CountUp target={item.value} suffix={item.suffix} />
@@ -27,7 +27,7 @@ export default function Stats() {
                 fontFamily: '"Space Mono", monospace',
                 fontSize: '10px',
                 letterSpacing: '2.5px',
-                color: '#B6A88F',
+                color: '#6B3318',
                 textTransform: 'uppercase',
               }}>
                 {item.label}

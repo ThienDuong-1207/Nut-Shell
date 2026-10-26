@@ -14,11 +14,11 @@ export default function Home({ appLoaded }) {
   return (
     <main>
       <Hero appLoaded={appLoaded} />
-      <Marquee />
       <About />
       <Services />
       <Projects />
       <Testimonials />
+      <Marquee />
       <Stats />
       <Process />
       <Quote />

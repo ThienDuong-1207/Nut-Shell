@@ -54,23 +54,23 @@ const MILESTONES = [
 
 export default function AboutPage() {
   return (
-    <main style={{ background: '#F2EBDF', paddingTop: '80px' }}>
+    <main style={{ background: '#F0E8D8', paddingTop: '80px' }}>
 
       {/* ── Hero banner ── */}
-      <section style={{ background: '#2A2018', padding: '100px 0 88px' }}>
+      <section style={{ background: '#6B3318', padding: '100px 0 88px' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <RevealOnScroll>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
               VỀ CHÚNG TÔI
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={80}>
-            <h1 style={{ ...SERIF, fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1.1, color: '#F4EFE7', maxWidth: '680px', marginBottom: '32px' }}>
+            <h1 style={{ ...SERIF, fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1.1, color: '#F0E5CC', maxWidth: '680px', marginBottom: '32px' }}>
               Câu chuyện của Nut Shell Studio
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={160}>
-            <p style={{ ...JOST, fontSize: '17px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.9, maxWidth: '540px' }}>
+            <p style={{ ...JOST, fontSize: '17px', fontWeight: 300, color: '#D4B080', lineHeight: 1.9, maxWidth: '540px' }}>
               Được thành lập với niềm tin rằng mỗi không gian sống đều có thể trở thành một tác phẩm — nơi ánh sáng, chất liệu và cảm xúc hòa quyện thành một.
             </p>
           </RevealOnScroll>
@@ -78,32 +78,32 @@ export default function AboutPage() {
       </section>
 
       {/* ── Founder story ── */}
-      <section style={{ background: '#F2EBDF', padding: '120px 0' }}>
+      <section style={{ background: '#F0E8D8', padding: '120px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             {/* Text */}
             <div>
               <RevealOnScroll>
-                <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
+                <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
                   NGUỒN GỐC
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={80}>
-                <h2 style={{ ...SERIF, fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1.2, color: '#2A2018', marginBottom: '32px' }}>
+                <h2 style={{ ...SERIF, fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1.2, color: '#6B3318', marginBottom: '32px' }}>
                   Từ một xưởng nhỏ đến 400+ công trình
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={150}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '28px', marginBottom: '28px' }}>
-                  <div style={{ width: '2px', flexShrink: 0, height: '56px', background: 'linear-gradient(to bottom, #A8623C, transparent)', marginTop: '4px' }} />
-                  <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.9 }}>
+                  <div style={{ width: '2px', flexShrink: 0, height: '56px', background: 'linear-gradient(to bottom, #9B5030, transparent)', marginTop: '4px' }} />
+                  <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#5A3820', lineHeight: 1.9 }}>
                     Năm 2017, kiến trúc sư Hoàng Vân Anh bắt đầu hành trình từ một xưởng thiết kế nhỏ tại quận 1, TP.HCM. Với triết lý "ít hơn nhưng có ý nghĩa hơn", mỗi dự án là bài toán cân bằng giữa vẻ đẹp thẩm mỹ và giá trị công năng thực sự.
                   </p>
                 </div>
               </RevealOnScroll>
               <RevealOnScroll delay={210}>
-                <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.9 }}>
+                <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#5A3820', lineHeight: 1.9 }}>
                   Hơn 7 năm sau, Nut Shell đã đồng hành cùng hơn 400 công trình — từ nhà ở, biệt thự đến không gian thương mại — nhưng vẫn giữ nguyên cam kết từ ngày đầu: thiết kế từ câu chuyện của bạn, không phải từ catalog.
                 </p>
               </RevealOnScroll>
@@ -125,10 +125,10 @@ export default function AboutPage() {
       </section>
 
       {/* ── Milestones ── */}
-      <section style={{ background: '#2A2018', padding: '96px 0' }}>
+      <section style={{ background: '#6B3318', padding: '96px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <RevealOnScroll>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
               HÀNH TRÌNH
             </p>
           </RevealOnScroll>
@@ -140,10 +140,10 @@ export default function AboutPage() {
                   padding: '32px 0',
                   borderBottom: i < MILESTONES.length - 1 ? '1px solid rgba(244,239,231,.08)' : 'none',
                 }}>
-                  <p style={{ ...SERIF, fontSize: 'clamp(28px, 3vw, 42px)', color: '#A8623C', opacity: 0.6, lineHeight: 1, flexShrink: 0, width: '80px' }}>
+                  <p style={{ ...SERIF, fontSize: 'clamp(28px, 3vw, 42px)', color: '#9B5030', opacity: 0.6, lineHeight: 1, flexShrink: 0, width: '80px' }}>
                     {m.year}
                   </p>
-                  <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#B6A88F', lineHeight: 1.8, paddingTop: '6px' }}>
+                  <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#D4B080', lineHeight: 1.8, paddingTop: '6px' }}>
                     {m.text}
                   </p>
                 </div>
@@ -154,15 +154,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values ── */}
-      <section style={{ background: '#EAE0CE', padding: '120px 0' }}>
+      <section style={{ background: '#DCC99B', padding: '120px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <RevealOnScroll>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
               GIÁ TRỊ CỐT LÕI
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={80}>
-            <h2 style={{ ...SERIF, fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1.15, color: '#2A2018', marginBottom: '72px', maxWidth: '480px' }}>
+            <h2 style={{ ...SERIF, fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1.15, color: '#6B3318', marginBottom: '72px', maxWidth: '480px' }}>
               Những điều chúng tôi tin tưởng
             </h2>
           </RevealOnScroll>
@@ -170,10 +170,10 @@ export default function AboutPage() {
             {VALUES.map((v, i) => (
               <RevealOnScroll key={v.num} delay={i * 100}>
                 <div>
-                  <p style={{ ...SERIF, fontSize: '64px', color: '#A8623C', opacity: 0.12, lineHeight: 1, marginBottom: '16px' }}>{v.num}</p>
-                  <div style={{ width: '28px', height: '2px', background: '#A8623C', marginBottom: '16px' }} />
-                  <h3 style={{ ...SERIF, fontSize: '22px', color: '#2A2018', marginBottom: '12px' }}>{v.name}</h3>
-                  <p style={{ ...JOST, fontSize: '15px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.85 }}>{v.desc}</p>
+                  <p style={{ ...SERIF, fontSize: '64px', color: '#9B5030', opacity: 0.12, lineHeight: 1, marginBottom: '16px' }}>{v.num}</p>
+                  <div style={{ width: '28px', height: '2px', background: '#9B5030', marginBottom: '16px' }} />
+                  <h3 style={{ ...SERIF, fontSize: '22px', color: '#6B3318', marginBottom: '12px' }}>{v.name}</h3>
+                  <p style={{ ...JOST, fontSize: '15px', fontWeight: 300, color: '#5A3820', lineHeight: 1.85 }}>{v.desc}</p>
                 </div>
               </RevealOnScroll>
             ))}
@@ -182,15 +182,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── Team ── */}
-      <section style={{ background: '#F2EBDF', padding: '120px 0' }}>
+      <section style={{ background: '#F0E8D8', padding: '120px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <RevealOnScroll>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
               ĐỘI NGŨ
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={80}>
-            <h2 style={{ ...SERIF, fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1.15, color: '#2A2018', marginBottom: '72px', maxWidth: '420px' }}>
+            <h2 style={{ ...SERIF, fontSize: 'clamp(32px, 4vw, 52px)', lineHeight: 1.15, color: '#6B3318', marginBottom: '72px', maxWidth: '420px' }}>
               Những người kiến tạo không gian
             </h2>
           </RevealOnScroll>
@@ -208,11 +208,11 @@ export default function AboutPage() {
                       onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                     />
                   </div>
-                  <h3 style={{ ...SERIF, fontSize: '20px', color: '#2A2018', marginBottom: '6px' }}>{member.name}</h3>
-                  <p style={{ ...MONO, fontSize: '9.5px', letterSpacing: '2px', color: '#A8623C', marginBottom: '12px' }}>
+                  <h3 style={{ ...SERIF, fontSize: '20px', color: '#6B3318', marginBottom: '6px' }}>{member.name}</h3>
+                  <p style={{ ...MONO, fontSize: '9.5px', letterSpacing: '2px', color: '#9B5030', marginBottom: '12px' }}>
                     {member.role.toUpperCase()}
                   </p>
-                  <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: '#6B5E4F', lineHeight: 1.8 }}>{member.desc}</p>
+                  <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: '#5A3820', lineHeight: 1.8 }}>{member.desc}</p>
                 </div>
               </RevealOnScroll>
             ))}
@@ -221,15 +221,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: '#2A2018', padding: '96px 0' }}>
+      <section style={{ background: '#6B3318', padding: '96px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ textAlign: 'center' }}>
           <RevealOnScroll>
-            <h2 style={{ ...SERIF, fontSize: 'clamp(28px, 4vw, 52px)', color: '#F4EFE7', marginBottom: '20px', lineHeight: 1.2 }}>
+            <h2 style={{ ...SERIF, fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0E5CC', marginBottom: '20px', lineHeight: 1.2 }}>
               Sẵn sàng bắt đầu dự án của bạn?
             </h2>
           </RevealOnScroll>
           <RevealOnScroll delay={100}>
-            <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#B6A88F', marginBottom: '40px', lineHeight: 1.8 }}>
+            <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#D4B080', marginBottom: '40px', lineHeight: 1.8 }}>
               Buổi tư vấn đầu tiên hoàn toàn miễn phí.
             </p>
           </RevealOnScroll>
@@ -238,7 +238,7 @@ export default function AboutPage() {
               to="/lien-he"
               style={{
                 ...MONO, fontSize: '11px', letterSpacing: '2px',
-                background: '#E3D2B0', color: '#2A2018',
+                background: '#DCC99B', color: '#6B3318',
                 padding: '14px 36px', borderRadius: '999px',
                 textDecoration: 'none', display: 'inline-block',
                 transition: 'opacity .2s, transform .2s',

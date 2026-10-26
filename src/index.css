@@ -15,19 +15,19 @@ html {
 
 body {
   font-family: 'Be Vietnam Pro', sans-serif;
-  background-color: #F2EBDF;
-  color: #2A2018;
+  background-color: #DCC99B;
+  color: #6B3318;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: #EAE0CE; }
-::-webkit-scrollbar-thumb { background: #A8623C; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #DCC99B; }
+::-webkit-scrollbar-thumb { background: #9B5030; border-radius: 3px; }
 
 /* ─── Selection ─── */
-::selection { background: #A8623C; color: #F4EFE7; }
+::selection { background: #9B5030; color: #F0E5CC; }
 
 /* ─── Hero fade-up keyframes (for initial load) ─── */
 @keyframes fadeUp {
@@ -42,10 +42,14 @@ body {
 }
 .bounce-slow { animation: bounceSlow 2.2s ease-in-out infinite; }
 
+/* ─── Services snap container — hide scrollbar ─── */
+.svc-snap::-webkit-scrollbar { display: none; }
+.svc-snap { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ─── Thin horizontal scrollbar (projects) ─── */
 .hscroll::-webkit-scrollbar        { height: 2px; }
 .hscroll::-webkit-scrollbar-track  { background: rgba(244,239,231,.12); border-radius: 1px; }
-.hscroll::-webkit-scrollbar-thumb  { background: #A8623C; border-radius: 1px; }
+.hscroll::-webkit-scrollbar-thumb  { background: #9B5030; border-radius: 1px; }
 
 /* ─── Hero curtain reveal ─── */
 @keyframes curtainUp {
@@ -63,11 +67,40 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes svcSlideIn {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 
 /* ─── Marquee animation ─── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* ─── Form & footer animations ─── */
+@keyframes drawCheck {
+  from { stroke-dashoffset: 12; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.72) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes spinCW {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Film countdown loading screen ─── */
+@keyframes filmFrameIn {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes beepFlash {
+  0%   { opacity: 1; transform: scale(1); }
+  40%  { opacity: .9; transform: scale(1.35); }
+  100% { opacity: 0; transform: scale(.7); }
 }
 
 /* ─── Typography defaults ─── */

@@ -15,12 +15,12 @@ function MarqueeContent() {
             fontFamily: '"Space Mono", monospace',
             fontSize: '9px',
             letterSpacing: '3px',
-            color: 'rgba(244,239,231,.35)',
+            color: 'rgba(244,239,231,.65)',
           }}>
             {city}
           </span>
           <span style={{
-            color: '#A8623C',
+            color: 'rgba(244,239,231,.38)',
             margin: '0 20px',
             fontSize: '8px',
           }}>
@@ -38,7 +38,7 @@ export default function Marquee() {
   return (
     <section
       style={{
-        background: '#1A130D',
+        background: '#3D1608',
         padding: '16px 0',
         overflow: 'hidden',
         borderTop: '1px solid rgba(244,239,231,.05)',

@@ -48,12 +48,12 @@ export default function Nav() {
   const isActive   = (to) => to && (location.pathname === to || location.pathname.startsWith(to + '/'))
 
   /* ── Theme tokens ── */
-  const navBg      = heroMode ? 'transparent' : '#F2EBDF'
+  const navBg      = heroMode ? 'transparent' : '#F0E8D8'
   const navBorder  = heroMode ? 'none' : '1px solid rgba(42,32,24,.08)'
-  const textColor  = heroMode ? heroNavColor  : '#2A2018'
-  const hoverColor = heroMode ? '#E3D2B0'     : '#A8623C'
-  const activeCol  = heroMode ? '#E3D2B0'     : '#A8623C'
-  const barColor   = heroMode && !mobileOpen  ? '#F4EFE7' : '#2A2018'
+  const textColor  = heroMode ? heroNavColor  : '#6B3318'
+  const hoverColor = heroMode ? '#DCC99B'     : '#9B5030'
+  const activeCol  = heroMode ? '#DCC99B'     : '#9B5030'
+  const barColor   = heroMode && !mobileOpen  ? '#F0E5CC' : '#6B3318'
 
   return (
     <nav style={{
@@ -124,9 +124,9 @@ export default function Nav() {
             style={{
               ...MONO,
               background: heroMode
-                ? (isActive('/lien-he') ? '#A8623C' : '#E3D2B0')
-                : (isActive('/lien-he') ? '#A8623C' : '#2A2018'),
-              color: heroMode ? '#2A2018' : '#F4EFE7',
+                ? (isActive('/lien-he') ? '#9B5030' : '#DCC99B')
+                : (isActive('/lien-he') ? '#9B5030' : '#6B3318'),
+              color: heroMode ? '#6B3318' : '#F0E5CC',
               padding: '9px 22px',
               borderRadius: '999px',
               textDecoration: 'none',
@@ -166,7 +166,7 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       <div style={{
-        background: '#F2EBDF',
+        background: '#F0E8D8',
         borderTop: '1px solid rgba(42,32,24,.07)',
         maxHeight: mobileOpen ? '520px' : '0',
         overflow: 'hidden',
@@ -178,7 +178,7 @@ export default function Nav() {
             onClick={() => setMobileOpen(false)}
             style={{
               ...MONO,
-              color: location.pathname === '/' ? '#A8623C' : '#2A2018',
+              color: location.pathname === '/' ? '#9B5030' : '#6B3318',
               textDecoration: 'none',
             }}
           >
@@ -187,7 +187,7 @@ export default function Nav() {
 
           {NAV_LINKS.map(l => {
             const active = isActive(l.to)
-            const color  = active ? '#A8623C' : '#2A2018'
+            const color  = active ? '#9B5030' : '#6B3318'
 
             if (l.href) {
               return (
@@ -195,7 +195,7 @@ export default function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  style={{ ...MONO, color: '#2A2018', textDecoration: 'none' }}
+                  style={{ ...MONO, color: '#6B3318', textDecoration: 'none' }}
                 >
                   {l.label}
                 </a>
@@ -221,7 +221,7 @@ export default function Nav() {
             onClick={() => setMobileOpen(false)}
             style={{
               ...MONO,
-              background: '#2A2018', color: '#F4EFE7',
+              background: '#6B3318', color: '#F0E5CC',
               padding: '12px 26px', borderRadius: '999px',
               textDecoration: 'none', width: 'fit-content',
             }}

@@ -37,16 +37,18 @@ const BRANDS = [
 
 export default function Testimonials() {
   return (
-    <section style={{ background: '#2A2018', overflow: 'hidden' }}>
+    <section style={{ background: '#6B3318', overflow: 'hidden' }}>
 
-      {/* ── Heading ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ paddingTop: '96px', paddingBottom: '64px' }}>
-        <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '16px' }}>
-          KHÁCH HÀNG NÓI GÌ
-        </p>
-        <h2 style={{ ...SERIF, fontSize: 'clamp(32px, 4vw, 54px)', color: '#F4EFE7', lineHeight: 1.1 }}>
-          Tin tưởng từ những<br />không gian thật
-        </h2>
+      {/* ── Heading — sandcastle band breaks the dark Projects run ── */}
+      <div style={{ background: '#DCC99B' }}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ paddingTop: '96px', paddingBottom: '64px' }}>
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#6B3318', marginBottom: '16px' }}>
+            KHÁCH HÀNG NÓI GÌ
+          </p>
+          <h2 style={{ ...SERIF, fontSize: 'clamp(32px, 4vw, 54px)', color: '#6B3318', lineHeight: 1.1 }}>
+            Tin tưởng từ những<br />không gian thật
+          </h2>
+        </div>
       </div>
 
       {/* ── Full-width image with glass cards ── */}
@@ -83,7 +85,7 @@ export default function Testimonials() {
                 <p style={{
                   fontFamily: '"Be Vietnam Pro", sans-serif',
                   fontSize: '14px', fontWeight: 300,
-                  color: '#2A2018', lineHeight: 1.9,
+                  color: '#6B3318', lineHeight: 1.9,
                   marginBottom: '28px',
                 }}>
                   "{t.quote}"
@@ -93,18 +95,18 @@ export default function Testimonials() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                   <div style={{
                     width: '42px', height: '42px', borderRadius: '50%',
-                    background: '#E3D2B0', flexShrink: 0,
+                    background: '#DCC99B', flexShrink: 0,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
-                    <span style={{ ...MONO, fontSize: '11px', color: '#2A2018', fontWeight: 700 }}>
+                    <span style={{ ...MONO, fontSize: '11px', color: '#6B3318', fontWeight: 700 }}>
                       {t.initials}
                     </span>
                   </div>
                   <div>
-                    <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontWeight: 600, fontSize: '14px', color: '#2A2018', marginBottom: '3px' }}>
+                    <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontWeight: 600, fontSize: '14px', color: '#6B3318', marginBottom: '3px' }}>
                       {t.name}
                     </p>
-                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1.5px', color: '#6B5E4F' }}>
+                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1.5px', color: '#5A3820' }}>
                       {t.role}
                     </p>
                   </div>
@@ -131,7 +133,7 @@ export default function Testimonials() {
               <span style={{
                 ...MONO,
                 fontSize: '10px', letterSpacing: '3.5px',
-                color: 'rgba(244,239,231,.25)',
+                color: 'rgba(244,239,231,.58)',
                 padding: '0 44px',
                 whiteSpace: 'nowrap',
               }}>

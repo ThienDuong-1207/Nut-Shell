@@ -36,7 +36,7 @@ function Step({ step, delay }) {
           fontFamily: 'Lora, serif',
           fontSize: 'clamp(56px, 8vw, 112px)',
           lineHeight: .85,
-          color: '#F4EFE7',
+          color: '#F0E5CC',
           opacity: .07,
           letterSpacing: '-2px',
           userSelect: 'none',
@@ -48,7 +48,7 @@ function Step({ step, delay }) {
         <h3 style={{
           fontFamily: 'Lora, serif',
           fontSize: 'clamp(20px, 2vw, 28px)',
-          color: '#E3D2B0',
+          color: '#DCC99B',
           lineHeight: 1.2,
           marginBottom: '18px',
           textWrap: 'balance',
@@ -56,12 +56,12 @@ function Step({ step, delay }) {
           {step.name}
         </h3>
 
-        <div style={{ width: '28px', height: '1px', background: '#A8623C', marginBottom: '18px', opacity: .6 }} />
+        <div style={{ width: '28px', height: '1px', background: '#9B5030', marginBottom: '18px', opacity: .6 }} />
 
         <p style={{
           fontFamily: '"Be Vietnam Pro", sans-serif',
           fontSize: '15px', fontWeight: 300,
-          color: '#B6A88F', lineHeight: 1.85,
+          color: '#DCC99B', lineHeight: 1.85,
         }}>
           {step.desc}
         </p>
@@ -72,14 +72,14 @@ function Step({ step, delay }) {
 
 export default function Process() {
   return (
-    <section id="quytrinh" style={{ background: '#2A2018', padding: '120px 0' }}>
+    <section id="quytrinh" style={{ background: '#6B3318', padding: '120px 0' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         <RevealOnScroll>
           <h2 style={{
             fontFamily: 'Lora, serif',
             fontSize: 'clamp(32px, 4.5vw, 58px)',
-            lineHeight: 1.15, color: '#F4EFE7',
+            lineHeight: 1.15, color: '#F0E5CC',
             marginBottom: '72px', maxWidth: '500px',
             textWrap: 'balance',
           }}>

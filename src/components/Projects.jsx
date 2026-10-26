@@ -138,8 +138,25 @@ export default function Projects() {
         <div style={{
           position: 'sticky', top: 0,
           height: '100vh', overflow: 'hidden',
-          background: '#2A2018',
+          background: '#3D1608',
         }}>
+          {/* Film perforation strip — top */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: '24px', zIndex: 2,
+            background: '#3D1608',
+            backgroundImage: 'repeating-linear-gradient(90deg, rgba(0,0,0,.55) 0, rgba(0,0,0,.55) 10px, transparent 10px, transparent 26px)',
+            borderBottom: '1px solid rgba(0,0,0,.5)',
+            pointerEvents: 'none',
+          }} />
+          {/* Film perforation strip — bottom */}
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: '24px', zIndex: 2,
+            background: '#3D1608',
+            backgroundImage: 'repeating-linear-gradient(90deg, rgba(0,0,0,.55) 0, rgba(0,0,0,.55) 10px, transparent 10px, transparent 26px)',
+            borderTop: '1px solid rgba(0,0,0,.5)',
+            pointerEvents: 'none',
+          }} />
+
           {/* Horizontal track */}
           <div
             ref={trackRef}
@@ -161,6 +178,7 @@ export default function Projects() {
                   style={{
                     width: '100vw', height: '100%',
                     display: 'flex', alignItems: 'stretch', flexShrink: 0,
+                    borderRight: ci < N - 1 ? '3px solid #2A0E04' : 'none',
                   }}
                 >
                   {/* ── Left panel: category info ── */}
@@ -168,25 +186,25 @@ export default function Projects() {
                     width: '30%',
                     display: 'flex', flexDirection: 'column', justifyContent: 'center',
                     padding: '0 clamp(32px, 5vw, 80px)',
-                    borderRight: '1px solid rgba(244,239,231,.06)',
+                    borderRight: '1px solid rgba(244,239,231,.08)',
                   }}>
-                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#4A3B2E', marginBottom: '28px' }}>
-                      {String(ci + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
+                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: 'rgba(244,239,231,.58)', marginBottom: '28px' }}>
+                      ◼ {String(ci + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
                     </p>
                     <h2 style={{
                       ...SERIF,
                       fontSize: 'clamp(36px, 4.5vw, 68px)',
-                      lineHeight: 1.1, color: '#F4EFE7',
+                      lineHeight: 1.1, color: '#F0E5CC',
                       marginBottom: '22px', whiteSpace: 'pre-line',
                     }}>
                       {cat.label}
                     </h2>
-                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#A8623C', marginBottom: '20px' }}>
+                    <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#DCC99B', marginBottom: '20px' }}>
                       {count} DỰ ÁN
                     </p>
                     <p style={{
                       fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300,
-                      color: '#6B5E4F', lineHeight: 1.9, maxWidth: '300px', marginBottom: '40px',
+                      color: '#D4B080', lineHeight: 1.9, maxWidth: '300px', marginBottom: '40px',
                     }}>
                       {cat.desc}
                     </p>
@@ -194,20 +212,20 @@ export default function Projects() {
                       to="/du-an"
                       style={{
                         ...MONO, fontSize: '10px', letterSpacing: '2px',
-                        color: '#E3D2B0', textDecoration: 'none',
+                        color: '#DCC99B', textDecoration: 'none',
                         border: '1px solid rgba(227,210,176,.28)',
                         padding: '12px 28px', borderRadius: '999px',
                         display: 'inline-block', width: 'fit-content',
                         transition: 'background .2s, color .2s, border-color .2s',
                       }}
                       onMouseEnter={e => {
-                        e.currentTarget.style.background = '#E3D2B0'
-                        e.currentTarget.style.color = '#2A2018'
-                        e.currentTarget.style.borderColor = '#E3D2B0'
+                        e.currentTarget.style.background = '#DCC99B'
+                        e.currentTarget.style.color = '#6B3318'
+                        e.currentTarget.style.borderColor = '#DCC99B'
                       }}
                       onMouseLeave={e => {
                         e.currentTarget.style.background = 'transparent'
-                        e.currentTarget.style.color = '#E3D2B0'
+                        e.currentTarget.style.color = '#DCC99B'
                         e.currentTarget.style.borderColor = 'rgba(227,210,176,.28)'
                       }}
                     >
@@ -264,10 +282,10 @@ export default function Projects() {
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}>
                         <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                          <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="#E3D2B0" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="#DCC99B" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#6B5E4F', textAlign: 'center' }}>
+                      <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: 'rgba(244,239,231,.58)', textAlign: 'center' }}>
                         XEM TẤT CẢ
                       </p>
                     </Link>
@@ -288,11 +306,11 @@ export default function Projects() {
                 <div style={{
                   width: i === activeIdx ? '28px' : '8px', height: '2px',
                   borderRadius: '1px',
-                  background: i === activeIdx ? '#E3D2B0' : 'rgba(244,239,231,.18)',
+                  background: i === activeIdx ? '#DCC99B' : 'rgba(244,239,231,.18)',
                   transition: 'width .4s ease, background .4s ease',
                 }} />
                 {i === activeIdx && (
-                  <p style={{ ...MONO, fontSize: '8px', letterSpacing: '1.5px', color: '#6B5E4F' }}>
+                  <p style={{ ...MONO, fontSize: '8px', letterSpacing: '1.5px', color: 'rgba(244,239,231,.65)' }}>
                     {cat.id}
                   </p>
                 )}
@@ -305,7 +323,7 @@ export default function Projects() {
             position: 'absolute', bottom: '36px',
             right: 'clamp(40px, 6vw, 96px)', zIndex: 3,
           }}>
-            <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#4A3B2E' }}>
+            <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: 'rgba(244,239,231,.58)' }}>
               {activeIdx < N - 1 ? 'CUỘN TIẾP →' : 'HẾT →'}
             </p>
           </div>
@@ -313,19 +331,19 @@ export default function Projects() {
       </div>
 
       {/* ── MOBILE ── */}
-      <div id="duan" className="lg:hidden" style={{ background: '#2A2018', padding: '72px 0' }}>
+      <div id="duan" className="lg:hidden" style={{ background: '#3D1608', padding: '72px 0' }}>
         <div className="max-w-7xl mx-auto px-5">
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '12px' }}>
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#DCC99B', marginBottom: '12px' }}>
             DỰ ÁN NỔI BẬT
           </p>
-          <h2 style={{ ...SERIF, fontSize: 'clamp(26px, 7vw, 40px)', color: '#F4EFE7', lineHeight: 1.15, marginBottom: '36px' }}>
+          <h2 style={{ ...SERIF, fontSize: 'clamp(26px, 7vw, 40px)', color: '#F0E5CC', lineHeight: 1.15, marginBottom: '36px' }}>
             Những tổ ấm chúng tôi hoàn thiện
           </h2>
           {CATEGORIES.map(cat => {
             const projects = getByCategory(cat.id, 3)
             return (
               <div key={cat.id} style={{ marginBottom: '44px' }}>
-                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: '#6B5E4F', marginBottom: '14px' }}>
+                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '3px', color: 'rgba(244,239,231,.62)', marginBottom: '14px' }}>
                   {cat.id}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -342,7 +360,7 @@ export default function Projects() {
           })}
           <Link to="/du-an" style={{
             ...MONO, fontSize: '10px', letterSpacing: '2px',
-            color: '#E3D2B0', border: '1px solid rgba(227,210,176,.28)',
+            color: '#DCC99B', border: '1px solid rgba(227,210,176,.28)',
             padding: '12px 28px', borderRadius: '999px',
             textDecoration: 'none', display: 'inline-block',
           }}>

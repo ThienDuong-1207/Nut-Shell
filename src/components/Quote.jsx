@@ -3,7 +3,7 @@ import RevealOnScroll from '../ui/RevealOnScroll'
 
 export default function Quote() {
   return (
-    <section style={{ background: '#F2EBDF', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ background: '#DCC99B', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
       {/* Grain texture overlay */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
@@ -23,7 +23,7 @@ export default function Quote() {
               style={{
                 fontFamily: 'Lora, serif',
                 fontSize: '88px', lineHeight: .6,
-                color: '#A8623C', opacity: .18,
+                color: '#9B5030', opacity: .18,
                 marginBottom: '28px',
                 userSelect: 'none',
               }}
@@ -35,7 +35,7 @@ export default function Quote() {
               fontFamily: 'Lora, serif',
               fontStyle: 'italic',
               fontSize: 'clamp(22px, 3vw, 34px)',
-              lineHeight: 1.5, color: '#2A2018',
+              lineHeight: 1.5, color: '#6B3318',
               marginBottom: '44px',
               textWrap: 'balance',
             }}>
@@ -43,11 +43,11 @@ export default function Quote() {
             </blockquote>
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
-              <div style={{ width: '36px', height: '1px', background: '#A8623C' }} />
-              <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2.5px', color: '#6B5E4F' }}>
+              <div style={{ width: '36px', height: '1px', background: '#9B5030' }} />
+              <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2.5px', color: '#5A3820' }}>
                 HOÀNG VÂN ANH — NHÀ THIẾT KẾ SÁNG LẬP
               </p>
-              <div style={{ width: '36px', height: '1px', background: '#A8623C' }} />
+              <div style={{ width: '36px', height: '1px', background: '#9B5030' }} />
             </div>
 
           </div>

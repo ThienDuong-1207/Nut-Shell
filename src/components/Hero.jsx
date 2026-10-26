@@ -80,6 +80,14 @@ export default function Hero() {
         zIndex: 1,
       }} />
 
+      {/* ── Film grain overlay ── */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 3,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+        backgroundRepeat: 'repeat', backgroundSize: '156px 156px',
+        opacity: .055, mixBlendMode: 'screen',
+      }} />
+
       {/* ── DESKTOP: text content ── */}
       <div
         className="hidden lg:flex"
@@ -87,7 +95,7 @@ export default function Hero() {
           position: 'absolute', inset: 0, zIndex: 2,
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: 'clamp(100px,12vh,132px) clamp(48px,6vw,96px) clamp(48px,6vh,72px)',
+          padding: 'clamp(100px,12vh,132px) clamp(48px,6vw,96px) clamp(80px,8vh,108px)',
           maxWidth: '520px',
         }}
       >
@@ -98,24 +106,24 @@ export default function Hero() {
 
         {/* MIDDLE: Headline + tagline + CTAs */}
         <div>
-          <h1 style={{ ...SERIF, fontSize: 'clamp(38px, 4.2vw, 68px)', lineHeight: 1.08, color: '#F4EFE7', marginBottom: '28px', textWrap: 'balance' }}>
+          <h1 style={{ ...SERIF, fontSize: 'clamp(38px, 4.2vw, 68px)', lineHeight: 1.08, color: '#F0E5CC', marginBottom: '28px', textWrap: 'balance' }}>
             <span style={{ display: 'block', ...FADEIN(320) }}>Nơi ánh sáng</span>
             <span style={{ display: 'block', ...FADEIN(420) }}>chạm vào</span>
-            <span style={{ display: 'block', color: '#E3D2B0', ...FADEIN(520) }}>chất liệu.</span>
+            <span style={{ display: 'block', color: '#DCC99B', ...FADEIN(520) }}>chất liệu.</span>
           </h1>
 
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '36px', ...FADEIN(600) }}>
-            <div style={{ width: '28px', height: '1px', background: '#A8623C', marginTop: '10px', flexShrink: 0 }} />
+            <div style={{ width: '28px', height: '1px', background: '#9B5030', marginTop: '10px', flexShrink: 0 }} />
             <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: 'rgba(244,239,231,.72)', lineHeight: 1.85 }}>
-              Thiết kế & thi công nội thất cao cấp.<br />
-              Mỗi không gian kể một câu chuyện riêng.
+              Chuyên thiết kế & thi công nội thất.<br />
+              Mỗi không gian là một câu chuyện riêng.
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', ...FADEIN(700) }}>
             <a href="#duan" style={{
               ...MONO, fontSize: '10.5px', letterSpacing: '2.5px',
-              background: '#E3D2B0', color: '#2A2018',
+              background: '#DCC99B', color: '#6B3318',
               padding: '13px 28px', borderRadius: '999px',
               textDecoration: 'none', transition: 'opacity .2s, transform .2s',
             }}
@@ -134,7 +142,7 @@ export default function Hero() {
               onMouseEnter={e => {
                 e.currentTarget.style.background = 'rgba(244,239,231,.1)'
                 e.currentTarget.style.borderColor = 'rgba(244,239,231,.55)'
-                e.currentTarget.style.color = '#F4EFE7'
+                e.currentTarget.style.color = '#F0E5CC'
                 e.currentTarget.style.transform = 'translateY(-2px)'
               }}
               onMouseLeave={e => {
@@ -153,40 +161,36 @@ export default function Hero() {
         <div style={{ display: 'flex', gap: '36px', ...FADEIN(900) }}>
           {[['400+', 'Công trình'], ['7+', 'Năm KN'], ['98%', 'Hài lòng']].map(([n, l]) => (
             <div key={l}>
-              <p style={{ ...SERIF, fontSize: '22px', color: '#E3D2B0', lineHeight: 1 }}>{n}</p>
+              <p style={{ ...SERIF, fontSize: '22px', color: '#DCC99B', lineHeight: 1 }}>{n}</p>
               <p style={{ ...MONO, fontSize: '8px', letterSpacing: '2px', color: 'rgba(244,239,231,.48)', marginTop: '4px' }}>{l.toUpperCase()}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Slide counter — top right ── */}
-      <div style={{ position: 'absolute', top: '40px', right: '40px', zIndex: 3, textAlign: 'right', ...FADEIN(800) }}
-        className="hidden lg:block"
+      {/* ── Film subtitle bar — bottom center (desktop) ── */}
+      <div
+        className="hidden lg:flex"
+        style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 4,
+          justifyContent: 'center', alignItems: 'center',
+          padding: '10px 0',
+          background: 'rgba(10,6,4,.62)',
+          borderTop: '1px solid rgba(244,239,231,.07)',
+          ...FADEIN(900),
+        }}
       >
-        <p style={{ ...MONO, fontSize: '11px', letterSpacing: '2px', color: 'rgba(244,239,231,.50)' }}>
-          {String(active + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
+        <p style={{
+          ...MONO, fontSize: '9px', letterSpacing: '3.5px',
+          color: 'rgba(244,239,231,.55)',
+        }}>
+          ▶ {SLIDES[active].cat} — {SLIDES[active].label} {'   '} {String(active + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
         </p>
       </div>
 
-      {/* ── Project label — bottom right ── */}
+      {/* ── Dot indicators — bottom right, above subtitle bar ── */}
       <div style={{
-        position: 'absolute', bottom: '48px', right: '48px', zIndex: 3,
-        textAlign: 'right', ...FADEIN(800),
-      }}
-        className="hidden lg:block"
-      >
-        <p style={{ ...MONO, fontSize: '8.5px', letterSpacing: '2.5px', color: 'rgba(244,239,231,.45)', marginBottom: '6px' }}>
-          {SLIDES[active].cat}
-        </p>
-        <p style={{ ...SERIF, fontSize: '20px', color: '#F4EFE7' }}>
-          {SLIDES[active].label}
-        </p>
-      </div>
-
-      {/* ── Dot indicators — bottom right (below label) ── */}
-      <div style={{
-        position: 'absolute', bottom: '20px', right: '48px', zIndex: 3,
+        position: 'absolute', bottom: '52px', right: '48px', zIndex: 5,
         display: 'flex', gap: '8px', alignItems: 'center',
       }}
         className="hidden lg:flex"
@@ -206,7 +210,7 @@ export default function Hero() {
               display: 'block',
               width: i === active ? '24px' : '6px',
               height: '2px', borderRadius: '1px',
-              background: i === active ? '#E3D2B0' : 'rgba(244,239,231,.3)',
+              background: i === active ? '#DCC99B' : 'rgba(244,239,231,.3)',
               transition: 'width .4s ease, background .4s ease',
             }} />
           </button>
@@ -225,11 +229,11 @@ export default function Hero() {
           <p style={{ ...MONO, fontSize: '8.5px', letterSpacing: '3px', color: 'rgba(244,239,231,.38)', marginBottom: '16px' }}>
             NUT SHELL STUDIO
           </p>
-          <h1 style={{ ...SERIF, fontSize: 'clamp(30px, 8vw, 44px)', lineHeight: 1.1, color: '#F4EFE7', marginBottom: '28px' }}>
-            Nơi ánh sáng<br />chạm vào <span style={{ color: '#E3D2B0' }}>chất liệu.</span>
+          <h1 style={{ ...SERIF, fontSize: 'clamp(30px, 8vw, 44px)', lineHeight: 1.1, color: '#F0E5CC', marginBottom: '28px' }}>
+            Nơi ánh sáng<br />chạm vào <span style={{ color: '#DCC99B' }}>chất liệu.</span>
           </h1>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '32px' }}>
-            <a href="#duan" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', background: '#E3D2B0', color: '#2A2018', padding: '12px 24px', borderRadius: '999px', textDecoration: 'none' }}>
+            <a href="#duan" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', background: '#DCC99B', color: '#6B3318', padding: '12px 24px', borderRadius: '999px', textDecoration: 'none' }}>
               XEM DỰ ÁN →
             </a>
             <a href="#lienhe" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: 'rgba(244,239,231,.65)', border: '1px solid rgba(244,239,231,.25)', padding: '12px 20px', borderRadius: '999px', textDecoration: 'none' }}>
@@ -249,7 +253,7 @@ export default function Hero() {
                 <span style={{
                   display: 'block',
                   width: i === active ? '20px' : '6px', height: '2px', borderRadius: '1px',
-                  background: i === active ? '#E3D2B0' : 'rgba(244,239,231,.35)',
+                  background: i === active ? '#DCC99B' : 'rgba(244,239,231,.35)',
                   transition: 'width .4s ease',
                 }} />
               </button>

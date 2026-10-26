@@ -45,7 +45,7 @@ export default function FloatingContact() {
     top: '50%',
     transform: 'translateY(-50%)',
     background: 'rgba(42,32,24,0.88)',
-    color: '#F4EFE7',
+    color: '#F0E5CC',
     fontFamily: '"Space Mono", monospace',
     fontSize: '10px',
     letterSpacing: '1.5px',
@@ -101,7 +101,7 @@ export default function FloatingContact() {
         href="tel:0000000000"
         style={{
           ...btnBase,
-          background: '#2A2018',
+          background: '#6B3318',
           transform: phoneHover ? 'scale(1.1)' : 'scale(1)',
           boxShadow: phoneHover
             ? '0 6px 24px rgba(42,32,24,0.4)'

@@ -25,7 +25,7 @@ export default function ProjectDetail() {
   const nextProject = currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : null
 
   return (
-    <main style={{ background: '#F2EBDF', minHeight: '100vh', paddingTop: '88px' }}>
+    <main style={{ background: '#F0E8D8', minHeight: '100vh', paddingTop: '88px' }}>
 
       {/* Hero Image */}
       <div style={{ width: '100%', height: '70vh', overflow: 'hidden', position: 'relative' }}>
@@ -39,7 +39,7 @@ export default function ProjectDetail() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <span style={{
               fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '2px',
-              background: 'rgba(42,32,24,.72)', color: '#F4EFE7',
+              background: 'rgba(42,32,24,.72)', color: '#F0E5CC',
               padding: '6px 16px', borderRadius: '999px',
             }}>
               {project.category}
@@ -52,21 +52,21 @@ export default function ProjectDetail() {
 
         {/* Breadcrumb */}
         <div style={{ paddingTop: '36px', paddingBottom: '0', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#8B7B6E', textDecoration: 'none', transition: 'color .2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#2A2018'}
-            onMouseLeave={e => e.currentTarget.style.color = '#8B7B6E'}
+          <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9A6A40', textDecoration: 'none', transition: 'color .2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#6B3318'}
+            onMouseLeave={e => e.currentTarget.style.color = '#9A6A40'}
           >
             TRANG CHỦ
           </Link>
-          <span style={{ ...MONO, fontSize: '10px', color: '#8B7B6E' }}>/</span>
-          <Link to="/du-an" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#8B7B6E', textDecoration: 'none', transition: 'color .2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#2A2018'}
-            onMouseLeave={e => e.currentTarget.style.color = '#8B7B6E'}
+          <span style={{ ...MONO, fontSize: '10px', color: '#9A6A40' }}>/</span>
+          <Link to="/du-an" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9A6A40', textDecoration: 'none', transition: 'color .2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#6B3318'}
+            onMouseLeave={e => e.currentTarget.style.color = '#9A6A40'}
           >
             DỰ ÁN
           </Link>
-          <span style={{ ...MONO, fontSize: '10px', color: '#8B7B6E' }}>/</span>
-          <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#A8623C' }}>
+          <span style={{ ...MONO, fontSize: '10px', color: '#9A6A40' }}>/</span>
+          <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9B5030' }}>
             {project.name.toUpperCase()}
           </span>
         </div>
@@ -78,10 +78,10 @@ export default function ProjectDetail() {
         >
           {/* Left — name + description */}
           <div>
-            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#2A2018', lineHeight: 1.1, marginBottom: '32px' }}>
+            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#6B3318', lineHeight: 1.1, marginBottom: '32px' }}>
               {project.name}
             </h1>
-            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '17px', fontWeight: 300, color: '#4A3B2E', lineHeight: 1.85 }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '17px', fontWeight: 300, color: '#3D2010', lineHeight: 1.85 }}>
               {project.description}
             </p>
             {/* Tags */}
@@ -89,7 +89,7 @@ export default function ProjectDetail() {
               {project.tags.map(tag => (
                 <span key={tag} style={{
                   ...MONO, fontSize: '9px', letterSpacing: '1.5px',
-                  color: '#2A2018', border: '1px solid rgba(42,32,24,.22)',
+                  color: '#6B3318', border: '1px solid rgba(42,32,24,.22)',
                   padding: '5px 14px', borderRadius: '999px',
                 }}>
                   {tag}
@@ -99,8 +99,8 @@ export default function ProjectDetail() {
           </div>
 
           {/* Right — metadata */}
-          <div style={{ background: '#EAE2D5', borderRadius: '4px', padding: '40px' }}>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '28px' }}>
+          <div style={{ background: '#DCC99B', borderRadius: '4px', padding: '40px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '28px' }}>
               THÔNG TIN DỰ ÁN
             </p>
             {[
@@ -110,10 +110,10 @@ export default function ProjectDetail() {
               { label: 'Năm hoàn thiện', value: project.year },
             ].map(item => (
               <div key={item.label} style={{ paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid rgba(42,32,24,.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '16px', flexWrap: 'wrap' }}>
-                <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#8B7B6E' }}>
+                <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#9A6A40' }}>
                   {item.label}
                 </span>
-                <span style={{ fontFamily: 'Lora, serif', fontSize: '16px', color: '#2A2018', textAlign: 'right' }}>
+                <span style={{ fontFamily: 'Lora, serif', fontSize: '16px', color: '#6B3318', textAlign: 'right' }}>
                   {item.value}
                 </span>
               </div>
@@ -124,7 +124,7 @@ export default function ProjectDetail() {
         {/* Gallery Grid */}
         {project.gallery && project.gallery.length > 0 && (
           <div style={{ paddingBottom: '88px' }}>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '32px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '32px' }}>
               GALLERY
             </p>
             <div style={{
@@ -160,10 +160,10 @@ export default function ProjectDetail() {
         }}>
           {prevProject ? (
             <Link to={`/du-an/${prevProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#8B7B6E' }}>← DỰ ÁN TRƯỚC</span>
-              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#2A2018', transition: 'color .2s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#A8623C'}
-                onMouseLeave={e => e.currentTarget.style.color = '#2A2018'}
+              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>← DỰ ÁN TRƯỚC</span>
+              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
+                onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
               >
                 {prevProject.name}
               </span>
@@ -172,23 +172,23 @@ export default function ProjectDetail() {
 
           <Link to="/du-an" style={{
             ...MONO, fontSize: '9.5px', letterSpacing: '2px',
-            color: '#6B5E4F', textDecoration: 'none',
+            color: '#5A3820', textDecoration: 'none',
             border: '1px solid rgba(42,32,24,.2)',
             padding: '10px 24px', borderRadius: '999px',
             transition: 'all .2s',
           }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#2A2018'; e.currentTarget.style.color = '#E3D2B0' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#6B5E4F' }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#6B3318'; e.currentTarget.style.color = '#DCC99B' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#5A3820' }}
           >
             TẤT CẢ DỰ ÁN
           </Link>
 
           {nextProject ? (
             <Link to={`/du-an/${nextProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#8B7B6E' }}>DỰ ÁN TIẾP →</span>
-              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#2A2018', transition: 'color .2s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#A8623C'}
-                onMouseLeave={e => e.currentTarget.style.color = '#2A2018'}
+              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>DỰ ÁN TIẾP →</span>
+              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
+                onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
               >
                 {nextProject.name}
               </span>
@@ -198,20 +198,20 @@ export default function ProjectDetail() {
       </div>
 
       {/* CTA Section */}
-      <div style={{ background: '#2A2018', padding: '80px 0' }}>
+      <div style={{ background: '#6B3318', padding: '80px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ textAlign: 'center' }}>
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '20px' }}>
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
             BẮT ĐẦU NGAY HÔM NAY
           </p>
-          <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F4EFE7', marginBottom: '24px', lineHeight: 1.2 }}>
+          <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0E5CC', marginBottom: '24px', lineHeight: 1.2 }}>
             Bắt đầu dự án của bạn?
           </h2>
-          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#B6A88F', marginBottom: '40px', maxWidth: '480px', margin: '0 auto 40px' }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', marginBottom: '40px', maxWidth: '480px', margin: '0 auto 40px' }}>
             Hãy để chúng tôi lắng nghe câu chuyện của bạn. Buổi tư vấn đầu tiên hoàn toàn miễn phí.
           </p>
           <Link to="/lien-he" style={{
             ...MONO, fontSize: '11px', letterSpacing: '2.5px',
-            background: '#E3D2B0', color: '#2A2018',
+            background: '#DCC99B', color: '#6B3318',
             padding: '16px 40px', borderRadius: '999px',
             textDecoration: 'none',
             display: 'inline-block',

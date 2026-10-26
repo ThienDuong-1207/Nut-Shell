@@ -1,6 +1,6 @@
-/* ─── Polaroid Loading Screen ───────────────────────────────────────
-   4 ảnh rơi xuống lần lượt như Polaroid thả lên bàn, "Nutt shell"
-   xuất hiện đè lên, sau đó tất cả bay ra 4 góc để lộ hero.
+/* ─── Polaroid Loading Screen — v2 ─────────────────────────────────
+   4 ảnh Polaroid rơi lần lượt trên nền tối, "NUT SHELL" ghost text
+   hiện ra phía sau, brand text thay thế logo, rồi tất cả bay ra góc.
    ─────────────────────────────────────────────────────────────────── */
 import { useState, useEffect, useRef } from 'react'
 
@@ -8,45 +8,58 @@ const POLAROIDS = [
   {
     src:    '/images/proj2.jpg',
     rotate: '-8deg',
-    tx: '-78px', ty: '44px',
-    exit: 'translate(-140vw, 80vh) rotate(-30deg)',
+    tx: '-100px', ty: '56px',
+    exit: 'translate(-150vw, 90vh) rotate(-28deg)',
   },
   {
     src:    '/images/proj1.jpg',
-    rotate: '6deg',
-    tx: '66px', ty: '-38px',
-    exit: 'translate(140vw, -80vh) rotate(24deg)',
+    rotate: '7deg',
+    tx: '88px', ty: '-48px',
+    exit: 'translate(150vw, -90vh) rotate(26deg)',
   },
   {
     src:    '/images/proj5.jpg',
     rotate: '-3.5deg',
-    tx: '-22px', ty: '-16px',
-    exit: 'translate(-140vw, -90vh) rotate(-18deg)',
+    tx: '-28px', ty: '-22px',
+    exit: 'translate(-150vw, -90vh) rotate(-20deg)',
   },
   {
     src:    '/images/proj3.jpg',
-    rotate: '9deg',
-    tx: '30px', ty: '52px',
-    exit: 'translate(140vw, 90vh) rotate(28deg)',
+    rotate: '10deg',
+    tx: '44px', ty: '64px',
+    exit: 'translate(150vw, 90vh) rotate(30deg)',
   },
 ]
 
 /* Timing (ms) */
-const T_DROPS   = [220, 560, 890, 1220]  // when each photo starts falling
-const T_LOGO    = 1760                    // "Nutt shell" fades in
-const T_EXIT    = 2640                    // photos fly out
-const T_FADE    = 2980                    // dark overlay fades out
-const T_DONE    = 3540                    // unmount
+const T_DROPS  = [180, 500, 810, 1100]   // each photo starts falling
+const T_BRAND  = 1620                    // "NUT SHELL" brand text fades in
+const T_EXIT   = 2680                    // photos + brand fly out
+const T_FADE   = 3040                    // overlay fades to transparent
+const T_DONE   = 3560                    // unmount
 
 export default function LoadingScreen({ onDone }) {
-  const [landed,      setLanded]      = useState([false, false, false, false])
-  const [logoVisible, setLogoVisible] = useState(false)
-  const [exiting,     setExiting]     = useState(false)
-  const [fading,      setFading]      = useState(false)
+  const [landed,       setLanded]       = useState([false, false, false, false])
+  const [brandVisible, setBrandVisible] = useState(false)
+  const [exiting,      setExiting]      = useState(false)
+  const [fading,       setFading]       = useState(false)
   const onDoneRef = useRef(onDone)
+
+  const prefersReduced =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
+
+    if (prefersReduced) {
+      const t = setTimeout(() => {
+        document.body.style.overflow = ''
+        onDoneRef.current()
+      }, 500)
+      return () => { clearTimeout(t); document.body.style.overflow = '' }
+    }
+
     const timers = []
 
     T_DROPS.forEach((delay, i) =>
@@ -55,9 +68,9 @@ export default function LoadingScreen({ onDone }) {
       , delay))
     )
 
-    timers.push(setTimeout(() => setLogoVisible(true), T_LOGO))
-    timers.push(setTimeout(() => setExiting(true),     T_EXIT))
-    timers.push(setTimeout(() => setFading(true),      T_FADE))
+    timers.push(setTimeout(() => setBrandVisible(true), T_BRAND))
+    timers.push(setTimeout(() => setExiting(true),      T_EXIT))
+    timers.push(setTimeout(() => setFading(true),       T_FADE))
     timers.push(setTimeout(() => {
       document.body.style.overflow = ''
       onDoneRef.current()
@@ -67,49 +80,79 @@ export default function LoadingScreen({ onDone }) {
       timers.forEach(clearTimeout)
       document.body.style.overflow = ''
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
       style={{
         position: 'fixed', inset: 0, zIndex: 200,
-        background: '#2A2018',
+        background: '#3D1608',
         overflow: 'hidden',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        opacity: fading ? 0 : 1,
-        transition: fading ? 'opacity 0.55s ease' : 'none',
+        opacity:    fading ? 0 : 1,
+        transition: fading ? 'opacity 0.52s ease' : 'none',
         pointerEvents: fading ? 'none' : 'all',
       }}
     >
-      {/* Warm ambient glow behind the pile */}
+      {/* ── Film grain ── */}
+      <svg aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: .06, pointerEvents: 'none' }}>
+        <filter id="ls-grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#ls-grain)" />
+      </svg>
+
+      {/* ── Ghost "NUT SHELL" watermark ── */}
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          top: '50%', left: '50%',
+          fontFamily: 'Lora, serif',
+          fontSize: 'clamp(72px, 14vw, 180px)',
+          letterSpacing: '-2px',
+          color: '#F0E5CC',
+          whiteSpace: 'nowrap',
+          userSelect: 'none',
+          pointerEvents: 'none',
+          lineHeight: 1,
+          opacity: brandVisible && !exiting ? .045 : 0,
+          transform: brandVisible && !exiting
+            ? 'translate(-50%, -50%) scale(1)'
+            : 'translate(-50%, -50%) scale(1.04)',
+          transition: 'opacity 1.1s ease, transform 1.1s ease',
+        }}
+      >
+        NUT SHELL
+      </div>
+
+      {/* ── Warm ambient glow ── */}
       <div
         aria-hidden
         style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 65% 55% at 50% 54%, rgba(168,98,60,.22) 0%, transparent 100%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 54%, rgba(107,51,24,.28) 0%, transparent 100%)',
         }}
       />
 
       {/* ── Polaroid photos ── */}
       {POLAROIDS.map((p, i) => {
-        const idle     = `translateY(-130vh) rotate(${p.rotate})`
-        const resting  = `translate(${p.tx}, ${p.ty}) rotate(${p.rotate})`
-        const flyout   = p.exit
-
+        const idle    = `translateY(-140vh) rotate(${p.rotate})`
+        const resting = `translate(${p.tx}, ${p.ty}) rotate(${p.rotate})`
+        const flyout  = p.exit
         return (
           <div
             key={i}
             style={{
               position: 'absolute',
               zIndex: i + 1,
-              /* initial: off-screen above; once landed: bounce to resting; on exit: fly away */
               transform: exiting ? flyout : landed[i] ? resting : idle,
               opacity:   exiting ? 0 : 1,
               transition: exiting
-                ? `transform 0.52s cubic-bezier(.55,0,1,.7) ${i * 45}ms,
-                   opacity   0.35s ease ${i * 35}ms`
+                ? `transform 0.55s cubic-bezier(.55,0,1,.7) ${i * 40}ms, opacity 0.38s ease ${i * 30}ms`
                 : landed[i]
-                ? 'transform 0.68s cubic-bezier(.34,1.42,.64,1)'
+                ? 'transform 0.72s cubic-bezier(.34,1.38,.64,1)'
                 : 'none',
             }}
           >
@@ -118,42 +161,43 @@ export default function LoadingScreen({ onDone }) {
         )
       })}
 
-      {/* ── Brand logo — đặt phía dưới, tránh đè ảnh ── */}
+      {/* ── Brand text (replaces logo) ── */}
       <div
         style={{
           position: 'absolute',
-          bottom: '8%',
+          bottom: '7%',
           left: '50%',
-          transform: logoVisible && !exiting
-            ? 'translateX(-50%) translateY(0)'
-            : 'translateX(-50%) translateY(16px)',
           zIndex: 10,
           textAlign: 'center',
           pointerEvents: 'none',
-          opacity:    logoVisible && !exiting ? 1 : 0,
-          transition: 'opacity 0.75s ease, transform 0.75s ease',
+          opacity:    brandVisible && !exiting ? 1 : 0,
+          transform:  brandVisible && !exiting
+            ? 'translateX(-50%) translateY(0)'
+            : 'translateX(-50%) translateY(18px)',
+          transition: 'opacity 0.8s ease, transform 0.8s ease',
         }}
       >
-        <img
-          src="/images/logo.jpeg"
-          alt="Nutt shell"
-          draggable={false}
-          style={{
-            height: 'clamp(52px, 7vw, 72px)',
-            width: 'auto',
-            objectFit: 'contain',
-            borderRadius: '6px',
-            boxShadow: '0 8px 32px rgba(0,0,0,.55)',
-            display: 'block',
-            margin: '0 auto 12px',
-            filter: 'brightness(1.1) contrast(1.05)',
-          }}
-        />
+        <p style={{
+          fontFamily: 'Lora, serif',
+          fontSize: 'clamp(22px, 3vw, 36px)',
+          letterSpacing: '5px',
+          color: '#F0E5CC',
+          lineHeight: 1,
+          marginBottom: '12px',
+          whiteSpace: 'nowrap',
+        }}>
+          NUT SHELL
+        </p>
+        <div style={{
+          width: '32px', height: '1px',
+          background: 'linear-gradient(90deg, transparent, #9B5030, transparent)',
+          margin: '0 auto 12px',
+        }} />
         <p style={{
           fontFamily: '"Space Mono", monospace',
-          fontSize: '9px', letterSpacing: '3.5px',
-          color: '#B6A88F',
-          textShadow: '0 1px 12px rgba(0,0,0,.6)',
+          fontSize: '8px', letterSpacing: '3.5px',
+          color: 'rgba(220,201,155,.62)',
+          whiteSpace: 'nowrap',
         }}>
           STUDIO THIẾT KẾ NỘI THẤT
         </p>
@@ -162,23 +206,23 @@ export default function LoadingScreen({ onDone }) {
   )
 }
 
-/* ── Polaroid frame component ── */
+/* ── Polaroid frame ── */
 function PolaroidFrame({ src }) {
   return (
     <div style={{
-      background: '#F2EBDF',
-      padding: '9px 9px 38px 9px',
+      background: '#F0E8D8',
+      padding: '10px 10px 44px 10px',
       borderRadius: '2px',
       boxShadow:
-        '0 28px 70px rgba(0,0,0,.6), 0 6px 20px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.06)',
+        '0 32px 80px rgba(0,0,0,.65), 0 8px 24px rgba(0,0,0,.45), inset 0 0 0 1px rgba(0,0,0,.06)',
     }}>
       <img
         src={src} alt=""
         draggable={false}
         style={{
           display: 'block',
-          width:  'clamp(150px, 19vw, 218px)',
-          height: 'clamp(190px, 24vw, 278px)',
+          width:  'clamp(168px, 22vw, 260px)',
+          height: 'clamp(210px, 28vw, 330px)',
           objectFit: 'cover',
           userSelect: 'none',
         }}

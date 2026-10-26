@@ -23,7 +23,7 @@ export default function BlogDetail() {
   const otherPosts = POSTS.filter(p => p.slug !== slug).slice(0, 3)
 
   return (
-    <main style={{ background: '#F2EBDF', minHeight: '100vh', paddingTop: '88px' }}>
+    <main style={{ background: '#F0E8D8', minHeight: '100vh', paddingTop: '88px' }}>
 
       {/* Hero cover */}
       <div style={{ width: '100%', height: '55vh', overflow: 'hidden', position: 'relative' }}>
@@ -37,7 +37,7 @@ export default function BlogDetail() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <span style={{
               ...MONO, fontSize: '9px', letterSpacing: '2px',
-              background: 'rgba(42,32,24,.72)', color: '#F4EFE7',
+              background: 'rgba(42,32,24,.72)', color: '#F0E5CC',
               padding: '6px 16px', borderRadius: '999px',
             }}>
               {post.category}
@@ -50,21 +50,21 @@ export default function BlogDetail() {
 
         {/* Breadcrumb */}
         <div style={{ paddingTop: '36px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#8B7B6E', textDecoration: 'none', transition: 'color .2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#2A2018'}
-            onMouseLeave={e => e.currentTarget.style.color = '#8B7B6E'}
+          <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9A6A40', textDecoration: 'none', transition: 'color .2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#6B3318'}
+            onMouseLeave={e => e.currentTarget.style.color = '#9A6A40'}
           >
             TRANG CHỦ
           </Link>
-          <span style={{ ...MONO, fontSize: '10px', color: '#8B7B6E' }}>/</span>
-          <Link to="/chia-se" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#8B7B6E', textDecoration: 'none', transition: 'color .2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#2A2018'}
-            onMouseLeave={e => e.currentTarget.style.color = '#8B7B6E'}
+          <span style={{ ...MONO, fontSize: '10px', color: '#9A6A40' }}>/</span>
+          <Link to="/chia-se" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9A6A40', textDecoration: 'none', transition: 'color .2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#6B3318'}
+            onMouseLeave={e => e.currentTarget.style.color = '#9A6A40'}
           >
             CHIA SẺ
           </Link>
-          <span style={{ ...MONO, fontSize: '10px', color: '#8B7B6E' }}>/</span>
-          <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#A8623C' }}>
+          <span style={{ ...MONO, fontSize: '10px', color: '#9A6A40' }}>/</span>
+          <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9B5030' }}>
             {post.category.toUpperCase()}
           </span>
         </div>
@@ -77,26 +77,26 @@ export default function BlogDetail() {
           {/* Article */}
           <article style={{ maxWidth: '720px' }}>
             {/* Header */}
-            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#2A2018', lineHeight: 1.15, marginBottom: '24px' }}>
+            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#6B3318', lineHeight: 1.15, marginBottom: '24px' }}>
               {post.title}
             </h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '48px', flexWrap: 'wrap' }}>
-              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#8B7B6E' }}>{post.date}</span>
+              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>{post.date}</span>
               <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
-              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#8B7B6E' }}>{post.readTime}</span>
+              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>{post.readTime}</span>
             </div>
 
             {/* Excerpt */}
-            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '18px', fontWeight: 300, color: '#4A3B2E', lineHeight: 1.85, marginBottom: '40px', fontStyle: 'italic', borderLeft: '3px solid #A8623C', paddingLeft: '20px' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '18px', fontWeight: 300, color: '#3D2010', lineHeight: 1.85, marginBottom: '40px', fontStyle: 'italic', borderLeft: '3px solid #9B5030', paddingLeft: '20px' }}>
               {post.excerpt}
             </p>
 
             {/* Content */}
-            <div style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#3A2B1E', lineHeight: 1.9 }}>
+            <div style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#3D2010', lineHeight: 1.9 }}>
               {post.content.split('\n\n').map((block, i) => {
                 if (block.startsWith('**') && block.endsWith('**')) {
                   return (
-                    <h3 key={i} style={{ fontFamily: 'Lora, serif', fontSize: '22px', color: '#2A2018', marginTop: '44px', marginBottom: '16px' }}>
+                    <h3 key={i} style={{ fontFamily: 'Lora, serif', fontSize: '22px', color: '#6B3318', marginTop: '44px', marginBottom: '16px' }}>
                       {block.replace(/\*\*/g, '')}
                     </h3>
                   )
@@ -107,7 +107,7 @@ export default function BlogDetail() {
                   <p key={i} style={{ marginBottom: '20px' }}>
                     {parts.map((part, j) =>
                       j % 2 === 1
-                        ? <strong key={j} style={{ fontWeight: 500, color: '#2A2018' }}>{part}</strong>
+                        ? <strong key={j} style={{ fontWeight: 500, color: '#6B3318' }}>{part}</strong>
                         : part
                     )}
                   </p>
@@ -119,14 +119,14 @@ export default function BlogDetail() {
             <div style={{ marginTop: '64px', paddingTop: '40px', borderTop: '1px solid rgba(42,32,24,.12)' }}>
               <Link to="/chia-se" style={{
                 ...MONO, fontSize: '10px', letterSpacing: '2.5px',
-                color: '#6B5E4F', textDecoration: 'none',
+                color: '#5A3820', textDecoration: 'none',
                 border: '1px solid rgba(42,32,24,.2)',
                 padding: '12px 28px', borderRadius: '999px',
                 display: 'inline-block',
                 transition: 'all .2s',
               }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#2A2018'; e.currentTarget.style.color = '#E3D2B0' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#6B5E4F' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#6B3318'; e.currentTarget.style.color = '#DCC99B' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#5A3820' }}
               >
                 ← TẤT CẢ BÀI VIẾT
               </Link>
@@ -136,7 +136,7 @@ export default function BlogDetail() {
           {/* Sidebar */}
           <aside className="hidden lg:block">
             <div style={{ position: 'sticky', top: '108px' }}>
-              <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#A8623C', marginBottom: '24px' }}>
+              <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '24px' }}>
                 BÀI VIẾT KHÁC
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -146,12 +146,12 @@ export default function BlogDetail() {
                       <img src={p.cover} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                     </div>
                     <div>
-                      <span style={{ ...MONO, fontSize: '8px', letterSpacing: '1px', color: '#A8623C', display: 'block', marginBottom: '6px' }}>
+                      <span style={{ ...MONO, fontSize: '8px', letterSpacing: '1px', color: '#9B5030', display: 'block', marginBottom: '6px' }}>
                         {p.category}
                       </span>
-                      <p style={{ fontFamily: 'Lora, serif', fontSize: '14px', color: '#2A2018', lineHeight: 1.4, transition: 'color .2s' }}
-                        onMouseEnter={e => e.currentTarget.style.color = '#A8623C'}
-                        onMouseLeave={e => e.currentTarget.style.color = '#2A2018'}
+                      <p style={{ fontFamily: 'Lora, serif', fontSize: '14px', color: '#6B3318', lineHeight: 1.4, transition: 'color .2s' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
+                        onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
                       >
                         {p.title}
                       </p>
@@ -161,16 +161,16 @@ export default function BlogDetail() {
               </div>
 
               {/* CTA card */}
-              <div style={{ marginTop: '40px', background: '#2A2018', padding: '28px', borderRadius: '4px' }}>
-                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#A8623C', marginBottom: '12px' }}>
+              <div style={{ marginTop: '40px', background: '#6B3318', padding: '28px', borderRadius: '4px' }}>
+                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9B5030', marginBottom: '12px' }}>
                   TƯ VẤN MIỄN PHÍ
                 </p>
-                <p style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#F4EFE7', lineHeight: 1.4, marginBottom: '20px' }}>
+                <p style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#F0E5CC', lineHeight: 1.4, marginBottom: '20px' }}>
                   Bạn đang ấp ủ ý tưởng thiết kế?
                 </p>
                 <Link to="/lien-he" style={{
                   ...MONO, fontSize: '9.5px', letterSpacing: '2px',
-                  background: '#E3D2B0', color: '#2A2018',
+                  background: '#DCC99B', color: '#6B3318',
                   padding: '12px 20px', borderRadius: '999px',
                   textDecoration: 'none', display: 'inline-block',
                   transition: 'opacity .2s',
