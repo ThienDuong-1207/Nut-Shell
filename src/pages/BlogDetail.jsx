@@ -162,7 +162,7 @@ export default function BlogDetail() {
 
               {/* CTA card */}
               <div style={{ marginTop: '40px', background: '#6B3318', padding: '28px', borderRadius: '4px' }}>
-                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9B5030', marginBottom: '12px' }}>
+                <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#FFFFFF', marginBottom: '12px' }}>
                   TƯ VẤN MIỄN PHÍ
                 </p>
                 <p style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#F0E5CC', lineHeight: 1.4, marginBottom: '20px' }}>

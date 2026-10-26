@@ -33,7 +33,8 @@ function NotFound() {
 }
 
 export default function App() {
-  const [loaded, setLoaded] = useState(false)
+  // Loading screen chỉ chạy khi vào thẳng trang chủ; mở link trang con thì vào luôn nội dung
+  const [loaded, setLoaded] = useState(() => window.location.pathname !== '/')
   const footerRef = useRef(null)
   const [footerH, setFooterH] = useState(320)
 

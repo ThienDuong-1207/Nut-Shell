@@ -19,11 +19,11 @@ const MESSENGER_SVG = (
   </svg>
 )
 
+// Chữ "Zalo" thay cho bong bóng chat — tránh nhầm với icon Messenger ngay bên dưới
 const ZALO_SVG = (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.919 1.397 5.523 3.584 7.25L4.5 22l3.978-1.77C9.563 20.717 10.76 21 12 21c5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2z" fill="white"/>
-    <path d="M7.5 13.5L9.75 11l2.25 2.25L14.25 9" stroke="#0068FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
+  <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontWeight: 700, fontSize: '13px', color: 'white', letterSpacing: '-0.2px' }}>
+    Zalo
+  </span>
 )
 
 const PHONE_SVG = (
@@ -39,7 +39,8 @@ export default function FloatingContact() {
   const [phoneHover, setPhoneHover] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 3600)
+    // Trang chủ chờ loading screen (~3.5s); trang khác không có loading nên hiện sớm
+    const timer = setTimeout(() => setVisible(true), window.location.pathname === '/' ? 3600 : 600)
     return () => clearTimeout(timer)
   }, [])
 
@@ -47,8 +48,6 @@ export default function FloatingContact() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '52px',
-    height: '52px',
     borderRadius: '50%',
     border: 'none',
     cursor: 'pointer',
@@ -76,16 +75,15 @@ export default function FloatingContact() {
   }
 
   return (
+    // Kích thước / vị trí qua Tailwind để thu nhỏ trên điện thoại, đỡ che nội dung
     <div
+      className="bottom-4 right-3 gap-2 sm:bottom-8 sm:right-6 sm:gap-3 [&>a]:w-11 [&>a]:h-11 sm:[&>a]:w-[52px] sm:[&>a]:h-[52px]"
       style={{
         position: 'fixed',
-        bottom: '32px',
-        right: '24px',
         zIndex: 100,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '12px',
         opacity: visible ? 1 : 0,
         transition: 'opacity 0.5s ease',
         pointerEvents: visible ? 'auto' : 'none',

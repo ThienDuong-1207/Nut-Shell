@@ -60,7 +60,7 @@ export default function AboutPage() {
       <section style={{ background: '#6B3318', padding: '100px 0 88px' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <RevealOnScroll>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '20px' }}>
               VỀ CHÚNG TÔI
             </p>
           </RevealOnScroll>
@@ -128,7 +128,7 @@ export default function AboutPage() {
       <section style={{ background: '#6B3318', padding: '96px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <RevealOnScroll>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '20px' }}>
               HÀNH TRÌNH
             </p>
           </RevealOnScroll>
@@ -140,7 +140,7 @@ export default function AboutPage() {
                   padding: '32px 0',
                   borderBottom: i < MILESTONES.length - 1 ? '1px solid rgba(244,239,231,.08)' : 'none',
                 }}>
-                  <p style={{ ...SERIF, fontSize: 'clamp(28px, 3vw, 42px)', color: '#9B5030', opacity: 0.6, lineHeight: 1, flexShrink: 0, width: '80px' }}>
+                  <p style={{ ...SERIF, fontSize: 'clamp(28px, 3vw, 42px)', color: '#FFFFFF', lineHeight: 1, flexShrink: 0, width: '80px' }}>
                     {m.year}
                   </p>
                   <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#D4B080', lineHeight: 1.8, paddingTop: '6px' }}>

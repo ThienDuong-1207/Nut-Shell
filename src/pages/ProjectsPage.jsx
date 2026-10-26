@@ -18,7 +18,7 @@ export default function ProjectsPage() {
       {/* Page Header */}
       <div style={{ background: '#6B3318', padding: '80px 0 64px' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '16px' }}>
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '16px' }}>
             PORTFOLIO
           </p>
           <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
@@ -29,14 +29,14 @@ export default function ProjectsPage() {
           </p>
           {/* Breadcrumb */}
           <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#3D2010', textDecoration: 'none', transition: 'color .2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#D4B080'}
-              onMouseLeave={e => e.currentTarget.style.color = '#3D2010'}
+            <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#D4B080', textDecoration: 'none', transition: 'color .2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
+              onMouseLeave={e => e.currentTarget.style.color = '#D4B080'}
             >
               TRANG CHỦ
             </Link>
-            <span style={{ ...MONO, fontSize: '10px', color: '#3D2010' }}>/</span>
-            <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9B5030' }}>DỰ ÁN</span>
+            <span style={{ ...MONO, fontSize: '10px', color: '#D4B080' }}>/</span>
+            <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#FFFFFF' }}>DỰ ÁN</span>
           </div>
         </div>
       </div>

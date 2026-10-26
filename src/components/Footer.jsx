@@ -17,15 +17,13 @@ const COLUMNS = {
     { label: 'Chia sẻ',   href: '/chia-se',  router: true  },
   ],
   'Kết nối': [
-    { label: 'Instagram', href: '#' },
-    { label: 'Pinterest',  href: '#' },
-    { label: 'Facebook',   href: FB_PAGE_URL },
-    { label: 'Behance',    href: '#' },
+    { label: 'Instagram', href: 'https://www.instagram.com/nut.shellinterior/' },
+    { label: 'Facebook',  href: FB_PAGE_URL },
+    { label: 'Zalo',      href: 'https://zalo.me/0898123636' },
   ],
   'Liên hệ': [
     { label: 'nuttt.shell@gmail.com',                         href: 'mailto:nuttt.shell@gmail.com' },
     { label: '0898 123 636',                             href: 'tel:0898123636'          },
-    { label: 'Zalo: 0898 123 636',                       href: 'https://zalo.me/0898123636' },
     { label: '228 Thống Nhất, P. Gò Vấp\nTP. Hồ Chí Minh',  href: 'https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh' },
   ],
 }
@@ -36,7 +34,8 @@ function FooterLink({ link }) {
   const leave = e => e.currentTarget.style.color = LINK_COLOR
   return link.router
     ? <Link to={link.href} style={base} onMouseEnter={hover} onMouseLeave={leave}>{link.label}</Link>
-    : <a href={link.href} style={base} onMouseEnter={hover} onMouseLeave={leave}>{link.label}</a>
+    : <a href={link.href} style={base} onMouseEnter={hover} onMouseLeave={leave}
+        {...(link.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}>{link.label}</a>
 }
 
 export default function Footer() {

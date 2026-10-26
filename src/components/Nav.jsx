@@ -141,7 +141,7 @@ export default function Nav() {
 
         {/* Hamburger */}
         <button
-          className="md:hidden flex flex-col justify-center gap-[5px] p-2 -mr-2"
+          className="md:hidden flex flex-col items-center justify-center gap-[5px] min-w-[44px] min-h-[44px] -mr-3"
           onClick={() => setMobileOpen(o => !o)}
           aria-label={mobileOpen ? 'Đóng menu' : 'Mở menu'}
         >

@@ -200,7 +200,7 @@ export default function ProjectDetail() {
       {/* CTA Section */}
       <div style={{ background: '#6B3318', padding: '80px 0' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ textAlign: 'center' }}>
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '20px' }}>
+          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '20px' }}>
             BẮT ĐẦU NGAY HÔM NAY
           </p>
           <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0E5CC', marginBottom: '24px', lineHeight: 1.2 }}>
