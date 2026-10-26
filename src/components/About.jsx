@@ -94,7 +94,7 @@ export default function About() {
             <div data-zoom style={{ aspectRatio: '3/4', borderRadius: '2px', overflow: 'hidden' }}>
               <img
                 ref={imgRef}
-                src="/images/logo.jpg"
+                src="/images/founder.jpg"
                 alt="Đội ngũ Nut Shell Studio"
                 loading="lazy"
                 style={{
