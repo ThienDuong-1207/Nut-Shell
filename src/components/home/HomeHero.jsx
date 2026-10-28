@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { getProjectBySlug } from '../../data/projects'
 import { Arrow } from '../ui/Icons'
 
-// Nhà ở mục 17, 2, 3, 4 trong thư mục CÔNG TRÌNH RENDER
-const SLIDES = ['villa-longhau', 'cheese-tart', 'muted-spark', 'kingdom101'].map(getProjectBySlug)
+// Ảnh bìa các dự án chọn cho hero (bìa Villa Long Hậu, Kingdom 101 chọn tay trong scripts/import-renders.mjs)
+const SLIDES = ['villa-longhau', 'tiem-kem', 'cf-gau', 'muted-spark', 'kingdom101'].map(getProjectBySlug)
 const INTERVAL = 6000
 
 const prefersReducedMotion =

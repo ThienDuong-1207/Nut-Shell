@@ -18,13 +18,13 @@ const MAX_GALLERY = 20
 const MAX_EDGE = 1600
 const QUALITY = 72
 
-// thư mục nguồn → slug; slug trùng projects.js để giữ thông tin cũ
+// thư mục nguồn → slug (→ ảnh bìa chọn tay, tùy chọn); slug trùng projects.js để giữ thông tin cũ
 const MAP = [
   ['1. Nhà ở', 'nha-o', [
     ['1. Indochine',          'indochine'],
     ['2. Cheese Tart',        'cheese-tart'],
     ['3. Muted Spark',        'muted-spark'],
-    ['4. Kingdom101',         'kingdom101'],
+    ['4. Kingdom101',         'kingdom101', '2.jpg'],
     ['4. Lavida',             'lavida'],
     ['5. Wabi',               'wabi'],
     ['6. Penthouse',          'penthouse'],
@@ -38,7 +38,7 @@ const MAP = [
     ['14. Maison Bleu Miel',  'maison-bleu-miel'],
     ['15. Rustic house',      'rustic-house'],
     ['16. MVillages',         'mvillages'],
-    ['17. Villa Long Hậu',    'villa-longhau'],
+    ['17. Villa Long Hậu',    'villa-longhau', '1.jpg'],
   ]],
   ['2. Cafe', 'cafe', [
     ['1. cf bình chánh',      'cf-binh-chanh'],
@@ -117,13 +117,15 @@ const manifest = {}
 const jobs = []
 
 for (const [catDir, catSlug, projects] of MAP) {
-  for (const [dir, slug] of projects) {
+  for (const [dir, slug, coverFile] of projects) {
     const files = (await listImages(path.join(SRC, catDir, dir)))
       .sort((a, b) => roomRank(a) - roomRank(b) || collator.compare(path.relative(SRC, a), path.relative(SRC, b)))
     if (!files.length) { console.warn('⚠ trống:', dir); continue }
 
-    let coverIdx = 0
-    for (let i = 0; i < files.length; i++) {
+    let coverIdx = coverFile ? files.findIndex(f => path.basename(f).normalize('NFC') === coverFile) : -1
+    if (coverFile && coverIdx < 0) console.warn('⚠ không thấy ảnh bìa', coverFile, 'trong', dir)
+    if (coverIdx < 0) coverIdx = 0
+    for (let i = 0; i < files.length && !coverFile; i++) {
       const { w, h } = await dims(files[i])
       if (w > h) { coverIdx = i; break }
     }
