@@ -24,6 +24,8 @@
   --accent: #DCC99B;
   --accent-hover: #E6D6AE;
   --accent-strong: #6B3318;
+  --brand: #6B3318;             /* nâu thương hiệu — nền thẻ CTA */
+  --text-on-brand: #E6D6BF;     /* đoạn văn trên --brand (7:1) */
 
   --bg-rgb: 240, 231, 215;
   --dark-rgb: 29, 26, 25;

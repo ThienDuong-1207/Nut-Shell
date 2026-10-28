@@ -1,4 +1,4 @@
-/* ─── Thẻ CTA tối + logo tròn — dùng cuối trang chủ và các trang con ─── */
+/* ─── Thẻ CTA nền nâu thương hiệu + logo chữ — dùng cuối trang chủ và các trang con ─── */
 import { Link } from 'react-router-dom'
 import RevealOnScroll from '../../ui/RevealOnScroll'
 import { Arrow } from './Icons'
@@ -18,10 +18,10 @@ export default function CtaCard({
             <div>
               <p className="h-label" style={{ color: '#FFFFFF', marginBottom: '18px' }}>/ {label}</p>
               <h2 className="h-h2" style={{ color: 'var(--accent)', marginBottom: '20px' }}>{title}</h2>
-              <p className="h-body" style={{ color: 'var(--text-light-secondary)', maxWidth: '460px', marginBottom: '32px' }}>{desc}</p>
+              <p className="h-body" style={{ color: 'var(--text-on-brand)', maxWidth: '460px', marginBottom: '32px' }}>{desc}</p>
               <Link to={cta.to} className="btn btn--accent">{cta.label} <Arrow /></Link>
             </div>
-            <img className="cta-orb" src="/images/logo-round.png" alt="Nut Shell Interior Design" loading="lazy" />
+            <img className="cta-card__logo" src="/images/logo-text-light.png" alt="Nut Shell Interior Design" loading="lazy" />
           </div>
         </RevealOnScroll>
       </div>
