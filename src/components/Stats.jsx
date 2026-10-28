@@ -15,7 +15,7 @@ export default function Stats() {
           {DATA.map((item) => (
             <div key={item.label}>
               <p style={{
-                fontFamily: 'Lora, serif',
+                fontFamily: '"Cormorant Garamond", serif',
                 fontSize: 'clamp(54px, 6vw, 78px)',
                 lineHeight: 1,
                 color: '#6B3318',
@@ -24,7 +24,7 @@ export default function Stats() {
                 <CountUp target={item.value} suffix={item.suffix} />
               </p>
               <p style={{
-                fontFamily: '"Space Mono", monospace',
+                fontFamily: '"Be Vietnam Pro", sans-serif',
                 fontSize: '10px',
                 letterSpacing: '2.5px',
                 color: '#6B3318',

@@ -33,7 +33,7 @@ function Step({ step, delay }) {
         paddingBottom: '48px',
       }}>
         <p style={{
-          fontFamily: 'Lora, serif',
+          fontFamily: '"Cormorant Garamond", serif',
           fontSize: 'clamp(56px, 8vw, 112px)',
           lineHeight: .85,
           color: '#F0E5CC',
@@ -46,7 +46,7 @@ function Step({ step, delay }) {
         </p>
 
         <h3 style={{
-          fontFamily: 'Lora, serif',
+          fontFamily: '"Cormorant Garamond", serif',
           fontSize: 'clamp(20px, 2vw, 28px)',
           color: '#DCC99B',
           lineHeight: 1.2,
@@ -77,7 +77,7 @@ export default function Process() {
 
         <RevealOnScroll>
           <h2 style={{
-            fontFamily: 'Lora, serif',
+            fontFamily: '"Cormorant Garamond", serif',
             fontSize: 'clamp(32px, 4.5vw, 58px)',
             lineHeight: 1.15, color: '#F0E5CC',
             marginBottom: '72px', maxWidth: '500px',

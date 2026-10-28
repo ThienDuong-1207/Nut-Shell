@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FB_PAGE_URL } from './FloatingContact'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 const JOST = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const LINK_COLOR = '#5A3820'
@@ -68,7 +68,7 @@ export default function Footer() {
       {/* Ghost wordmark */}
       <div aria-hidden style={{
         position: 'absolute', bottom: '36px', left: '50%',
-        fontFamily: 'Lora, serif',
+        fontFamily: '"Cormorant Garamond", serif',
         fontSize: 'clamp(64px, 10vw, 140px)',
         letterSpacing: '-1px',
         color: 'rgba(107,51,24,.055)',

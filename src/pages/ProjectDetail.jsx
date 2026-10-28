@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getProjectBySlug, PROJECTS } from '../data/projects'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 export default function ProjectDetail() {
   const { slug } = useParams()
@@ -38,7 +38,7 @@ export default function ProjectDetail() {
         <div style={{ position: 'absolute', bottom: '40px', left: 0, right: 0 }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <span style={{
-              fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '2px',
+              fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '2px',
               background: 'rgba(42,32,24,.72)', color: '#F0E5CC',
               padding: '6px 16px', borderRadius: '999px',
             }}>
@@ -78,7 +78,7 @@ export default function ProjectDetail() {
         >
           {/* Left — name + description */}
           <div>
-            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#6B3318', lineHeight: 1.1, marginBottom: '32px' }}>
+            <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#6B3318', lineHeight: 1.1, marginBottom: '32px' }}>
               {project.name}
             </h1>
             <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '17px', fontWeight: 300, color: '#3D2010', lineHeight: 1.85 }}>
@@ -98,7 +98,8 @@ export default function ProjectDetail() {
             </div>
           </div>
 
-          {/* Right — metadata */}
+          {/* Right — metadata (ẩn khi dự án chưa có thông tin) */}
+          {(project.style || project.area || project.location || project.year) && (
           <div style={{ background: '#DCC99B', borderRadius: '4px', padding: '40px' }}>
             <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '28px' }}>
               THÔNG TIN DỰ ÁN
@@ -108,17 +109,18 @@ export default function ProjectDetail() {
               { label: 'Diện tích', value: project.area },
               { label: 'Địa điểm', value: project.location },
               { label: 'Năm hoàn thiện', value: project.year },
-            ].map(item => (
+            ].filter(item => item.value).map(item => (
               <div key={item.label} style={{ paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid rgba(42,32,24,.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '16px', flexWrap: 'wrap' }}>
                 <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#9A6A40' }}>
                   {item.label}
                 </span>
-                <span style={{ fontFamily: 'Lora, serif', fontSize: '16px', color: '#6B3318', textAlign: 'right' }}>
+                <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '16px', color: '#6B3318', textAlign: 'right' }}>
                   {item.value}
                 </span>
               </div>
             ))}
           </div>
+          )}
         </div>
 
         {/* Gallery Grid */}
@@ -161,7 +163,7 @@ export default function ProjectDetail() {
           {prevProject ? (
             <Link to={`/du-an/${prevProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>← DỰ ÁN TRƯỚC</span>
-              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
+              <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
                 onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
               >
@@ -186,7 +188,7 @@ export default function ProjectDetail() {
           {nextProject ? (
             <Link to={`/du-an/${nextProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
               <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>DỰ ÁN TIẾP →</span>
-              <span style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
+              <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
                 onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
               >
@@ -203,7 +205,7 @@ export default function ProjectDetail() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '20px' }}>
             BẮT ĐẦU NGAY HÔM NAY
           </p>
-          <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0E5CC', marginBottom: '24px', lineHeight: 1.2 }}>
+          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0E5CC', marginBottom: '24px', lineHeight: 1.2 }}>
             Bắt đầu dự án của bạn?
           </h2>
           <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', marginBottom: '40px', maxWidth: '480px', margin: '0 auto 40px' }}>

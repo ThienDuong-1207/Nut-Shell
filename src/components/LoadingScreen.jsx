@@ -109,7 +109,7 @@ export default function LoadingScreen({ onDone }) {
         style={{
           position: 'absolute',
           top: '50%', left: '50%',
-          fontFamily: 'Lora, serif',
+          fontFamily: '"Cormorant Garamond", serif',
           fontSize: 'clamp(72px, 14vw, 180px)',
           letterSpacing: '-2px',
           color: '#F0E5CC',
@@ -178,7 +178,7 @@ export default function LoadingScreen({ onDone }) {
         }}
       >
         <p style={{
-          fontFamily: 'Lora, serif',
+          fontFamily: '"Cormorant Garamond", serif',
           fontSize: 'clamp(22px, 3vw, 36px)',
           letterSpacing: '5px',
           color: '#F0E5CC',
@@ -194,7 +194,7 @@ export default function LoadingScreen({ onDone }) {
           margin: '0 auto 12px',
         }} />
         <p style={{
-          fontFamily: '"Space Mono", monospace',
+          fontFamily: '"Be Vietnam Pro", sans-serif',
           fontSize: '8px', letterSpacing: '3.5px',
           color: 'rgba(220,201,155,.62)',
           whiteSpace: 'nowrap',

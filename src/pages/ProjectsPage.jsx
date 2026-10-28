@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PROJECTS, CATEGORIES } from '../data/projects'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('TẤT CẢ')
@@ -21,7 +21,7 @@ export default function ProjectsPage() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '16px' }}>
             PORTFOLIO
           </p>
-          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
             Dự Án
           </h1>
           <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', lineHeight: 1.7 }}>
@@ -129,7 +129,7 @@ function ProjectCard({ project }) {
           {/* Category badge */}
           <span style={{
             position: 'absolute', top: '14px', left: '14px',
-            fontFamily: '"Space Mono", monospace',
+            fontFamily: '"Be Vietnam Pro", sans-serif',
             fontSize: '8.5px', letterSpacing: '2px',
             background: 'rgba(42,32,24,.82)', color: '#DCC99B',
             padding: '5px 12px', borderRadius: '999px',
@@ -148,7 +148,7 @@ function ProjectCard({ project }) {
             onMouseLeave={e => e.currentTarget.style.opacity = '0'}
           >
             <span style={{
-              fontFamily: '"Space Mono", monospace',
+              fontFamily: '"Be Vietnam Pro", sans-serif',
               fontSize: '10px', letterSpacing: '3px', color: '#F0E5CC',
               border: '1px solid rgba(244,239,231,.6)',
               padding: '12px 24px', borderRadius: '999px',
@@ -160,14 +160,16 @@ function ProjectCard({ project }) {
 
         {/* Meta */}
         <div style={{ padding: '20px' }}>
-          <h3 style={{ fontFamily: 'Lora, serif', fontSize: '19px', color: '#6B3318', marginBottom: '10px', lineHeight: 1.3 }}>
+          <h3 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '19px', color: '#6B3318', marginBottom: '10px', lineHeight: 1.3 }}>
             {project.name}
           </h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '1px', color: '#9B5030' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '1px', color: '#9B5030' }}>
               {project.area}
             </span>
-            <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
+            {project.area && project.location && (
+              <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
+            )}
             <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#5A3820' }}>
               {project.location}
             </span>

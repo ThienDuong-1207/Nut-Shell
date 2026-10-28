@@ -4,3 +4,6 @@ dist/
 skills-lock.json
 .DS_Store
 *.local
+
+# Ảnh render gốc (nguồn cho scripts/import-renders.mjs)
+_source/

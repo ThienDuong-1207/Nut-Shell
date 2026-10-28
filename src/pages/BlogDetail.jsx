@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getPostBySlug, POSTS } from '../data/posts'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 export default function BlogDetail() {
   const { slug } = useParams()
@@ -77,7 +77,7 @@ export default function BlogDetail() {
           {/* Article */}
           <article style={{ maxWidth: '720px' }}>
             {/* Header */}
-            <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#6B3318', lineHeight: 1.15, marginBottom: '24px' }}>
+            <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#6B3318', lineHeight: 1.15, marginBottom: '24px' }}>
               {post.title}
             </h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '48px', flexWrap: 'wrap' }}>
@@ -96,7 +96,7 @@ export default function BlogDetail() {
               {post.content.split('\n\n').map((block, i) => {
                 if (block.startsWith('**') && block.endsWith('**')) {
                   return (
-                    <h3 key={i} style={{ fontFamily: 'Lora, serif', fontSize: '22px', color: '#6B3318', marginTop: '44px', marginBottom: '16px' }}>
+                    <h3 key={i} style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '22px', color: '#6B3318', marginTop: '44px', marginBottom: '16px' }}>
                       {block.replace(/\*\*/g, '')}
                     </h3>
                   )
@@ -149,7 +149,7 @@ export default function BlogDetail() {
                       <span style={{ ...MONO, fontSize: '8px', letterSpacing: '1px', color: '#9B5030', display: 'block', marginBottom: '6px' }}>
                         {p.category}
                       </span>
-                      <p style={{ fontFamily: 'Lora, serif', fontSize: '14px', color: '#6B3318', lineHeight: 1.4, transition: 'color .2s' }}
+                      <p style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '14px', color: '#6B3318', lineHeight: 1.4, transition: 'color .2s' }}
                         onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
                         onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
                       >
@@ -165,7 +165,7 @@ export default function BlogDetail() {
                 <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#FFFFFF', marginBottom: '12px' }}>
                   TƯ VẤN MIỄN PHÍ
                 </p>
-                <p style={{ fontFamily: 'Lora, serif', fontSize: '18px', color: '#F0E5CC', lineHeight: 1.4, marginBottom: '20px' }}>
+                <p style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '18px', color: '#F0E5CC', lineHeight: 1.4, marginBottom: '20px' }}>
                   Bạn đang ấp ủ ý tưởng thiết kế?
                 </p>
                 <Link to="/lien-he" style={{

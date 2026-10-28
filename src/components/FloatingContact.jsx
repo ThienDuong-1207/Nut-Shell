@@ -64,7 +64,7 @@ export default function FloatingContact() {
     transform: 'translateY(-50%)',
     background: 'rgba(42,32,24,0.88)',
     color: '#F0E5CC',
-    fontFamily: '"Space Mono", monospace',
+    fontFamily: '"Be Vietnam Pro", sans-serif',
     fontSize: '10px',
     letterSpacing: '1.5px',
     padding: '6px 12px',

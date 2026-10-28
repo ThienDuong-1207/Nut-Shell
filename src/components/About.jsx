@@ -36,7 +36,7 @@ export default function About() {
           <div className="order-2 lg:order-1 lg:col-span-3">
             <RevealOnScroll>
               <h2 style={{
-                fontFamily: 'Lora, serif',
+                fontFamily: '"Cormorant Garamond", serif',
                 fontSize: 'clamp(32px, 4.5vw, 58px)',
                 lineHeight: 1.15,
                 color: '#F0E5CC',
@@ -71,7 +71,7 @@ export default function About() {
             <RevealOnScroll delay={220}>
               <div style={{ marginTop: '40px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span style={{
-                  fontFamily: '"Space Mono", monospace',
+                  fontFamily: '"Be Vietnam Pro", sans-serif',
                   fontSize: '10px', letterSpacing: '2px',
                   color: 'rgba(244,239,231,.38)',
                 }}>
@@ -79,7 +79,7 @@ export default function About() {
                 </span>
                 <span style={{ color: 'rgba(244,239,231,.22)', fontSize: '10px' }}>·</span>
                 <span style={{
-                  fontFamily: '"Space Mono", monospace',
+                  fontFamily: '"Be Vietnam Pro", sans-serif',
                   fontSize: '10px', letterSpacing: '2px',
                   color: 'rgba(244,239,231,.38)',
                 }}>

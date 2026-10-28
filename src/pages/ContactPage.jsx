@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { sendContact, SEND_ERROR_TEXT } from '../lib/sendContact'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const INPUT_STYLE = {
   fontFamily: '"Be Vietnam Pro", sans-serif',
@@ -87,7 +87,7 @@ export default function ContactPage() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '16px' }}>
             LIÊN HỆ
           </p>
-          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
             Nói chuyện với chúng tôi
           </h1>
           <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', lineHeight: 1.7 }}>
@@ -116,7 +116,7 @@ export default function ContactPage() {
 
           {/* Left — Info */}
           <div>
-            <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(26px, 3vw, 40px)', color: '#6B3318', lineHeight: 1.2, marginBottom: '32px' }}>
+            <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(26px, 3vw, 40px)', color: '#6B3318', lineHeight: 1.2, marginBottom: '32px' }}>
               Thông tin liên hệ
             </h2>
 
@@ -191,7 +191,7 @@ export default function ContactPage() {
 
           {/* Right — Form */}
           <div style={{ background: '#fff', borderRadius: '4px', padding: '48px', boxShadow: '0 4px 24px rgba(42,32,24,.06)' }}>
-            <h2 style={{ fontFamily: 'Lora, serif', fontSize: '28px', color: '#6B3318', marginBottom: '8px' }}>
+            <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '28px', color: '#6B3318', marginBottom: '8px' }}>
               Gửi yêu cầu tư vấn
             </h2>
             <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#9A6A40', marginBottom: '36px' }}>

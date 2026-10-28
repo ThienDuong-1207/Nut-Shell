@@ -3,8 +3,8 @@ import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PROJECTS } from '../data/projects'
 
-const MONO  = { fontFamily: '"Space Mono", monospace' }
-const SERIF = { fontFamily: 'Lora, serif' }
+const MONO  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
+const SERIF = { fontFamily: '"Cormorant Garamond", serif' }
 
 const CATEGORIES = [
   {

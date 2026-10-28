@@ -14,9 +14,8 @@ export default {
         'text-light-secondary': '#B6A88F',
       },
       fontFamily: {
-        lora: ['Lora', 'serif'],
+        cormorant: ['"Cormorant Garamond"', 'serif'],
         bevietnam: ['"Be Vietnam Pro"', 'sans-serif'],
-        mono: ['"Space Mono"', 'monospace'],
       },
     },
   },

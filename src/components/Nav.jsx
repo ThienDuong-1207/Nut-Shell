@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: 'CHIA SẺ',    to: '/chia-se'     },
 ]
 
-const MONO = { fontFamily: '"Space Mono", monospace', fontSize: '10.5px', letterSpacing: '2px' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10.5px', letterSpacing: '2px' }
 
 export default function Nav() {
   const [scrolled,     setScrolled]     = useState(false)

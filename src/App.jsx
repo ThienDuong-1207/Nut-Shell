@@ -23,9 +23,9 @@ import AboutPage from './pages/AboutPage'
 function NotFound() {
   return (
     <main style={{ background: '#F0E8D8', minHeight: '100vh', paddingTop: '88px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
-      <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#6B3318' }}>404</p>
-      <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#6B3318' }}>Trang không tìm thấy</h1>
-      <Link to="/" style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2px', color: '#6B3318', border: '1px solid #6B3318', padding: '12px 28px', borderRadius: '999px', textDecoration: 'none' }}>
+      <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '3px', color: '#6B3318' }}>404</p>
+      <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#6B3318' }}>Trang không tìm thấy</h1>
+      <Link to="/" style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '2px', color: '#6B3318', border: '1px solid #6B3318', padding: '12px 28px', borderRadius: '999px', textDecoration: 'none' }}>
         VỀ TRANG CHỦ →
       </Link>
     </main>

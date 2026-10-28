@@ -21,7 +21,7 @@ export default function Quote() {
             <p
               aria-hidden
               style={{
-                fontFamily: 'Lora, serif',
+                fontFamily: '"Cormorant Garamond", serif',
                 fontSize: '88px', lineHeight: .6,
                 color: '#9B5030', opacity: .18,
                 marginBottom: '28px',
@@ -32,7 +32,7 @@ export default function Quote() {
             </p>
 
             <blockquote style={{
-              fontFamily: 'Lora, serif',
+              fontFamily: '"Cormorant Garamond", serif',
               fontStyle: 'italic',
               fontSize: 'clamp(22px, 3vw, 34px)',
               lineHeight: 1.5, color: '#6B3318',
@@ -44,7 +44,7 @@ export default function Quote() {
 
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
               <div style={{ width: '36px', height: '1px', background: '#9B5030' }} />
-              <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '2.5px', color: '#5A3820' }}>
+              <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '2.5px', color: '#5A3820' }}>
                 HOÀNG VÂN ANH — NHÀ THIẾT KẾ SÁNG LẬP
               </p>
               <div style={{ width: '36px', height: '1px', background: '#9B5030' }} />

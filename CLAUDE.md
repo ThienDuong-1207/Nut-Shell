@@ -44,10 +44,13 @@ Custom Tailwind tokens (defined in `tailwind.config.js`):
 | `text-light` | `#F4EFE7` | Text on dark backgrounds |
 | `text-light-secondary` | `#B6A88F` | Muted text on dark backgrounds |
 
-Custom fonts loaded via Google Fonts in `index.html`:
-- `font-marcellus` — headings / display (serif)
-- `font-jost` — body text (sans-serif, set as default on `body`)
-- `font-mono` / `"Space Mono"` — labels, tags, monospace accents
+Fonts (Google Fonts in `index.html`) — only two families site-wide:
+- `"Cormorant Garamond", serif` — headings / display (`font-cormorant`)
+- `"Be Vietnam Pro", sans-serif` — body text and labels (`font-bevietnam`, default on `body`)
+
+## Project images
+
+Source renders live in `_source/CÔNG TRÌNH RENDER/` (gitignored). `node scripts/import-renders.mjs` converts them to WebP under `public/projects/<category>/<slug>/` and regenerates `src/data/projectImages.js`; project metadata stays in `src/data/projects.js`.
 
 ## Animation patterns
 

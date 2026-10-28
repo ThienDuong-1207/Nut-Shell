@@ -57,25 +57,25 @@ export default function Services() {
             display: 'flex', flexDirection: 'column', justifyContent: 'center',
             padding: '0 64px 0 clamp(40px, 8vw, 120px)',
           }}>
-            <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#6B3318', marginBottom: '20px' }}>
+            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '3px', color: '#6B3318', marginBottom: '20px' }}>
               DỊCH VỤ
             </p>
 
-            <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(26px, 3vw, 44px)', lineHeight: 1.2, color: '#6B3318', marginBottom: '52px', maxWidth: '400px' }}>
+            <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(26px, 3vw, 44px)', lineHeight: 1.2, color: '#6B3318', marginBottom: '52px', maxWidth: '400px' }}>
               Hai cách chúng tôi kiến tạo không gian
             </h2>
 
             {/* Animated service block — key forces remount on change */}
             <div key={active} style={{ animation: 'svcSlideIn .52s cubic-bezier(.25,.1,.25,1) both' }}>
               <p style={{
-                fontFamily: 'Lora, serif',
+                fontFamily: '"Cormorant Garamond", serif',
                 fontSize: 'clamp(72px, 9vw, 120px)',
                 lineHeight: 1, color: '#6B3318', opacity: 0.08,
                 marginBottom: '-8px', letterSpacing: '-3px', userSelect: 'none',
               }}>
                 {svc.num}
               </p>
-              <h3 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(20px, 2.2vw, 32px)', color: '#6B3318', marginBottom: '16px', lineHeight: 1.25 }}>
+              <h3 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(20px, 2.2vw, 32px)', color: '#6B3318', marginBottom: '16px', lineHeight: 1.25 }}>
                 {svc.name}
               </h3>
               <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '15px', fontWeight: 300, color: '#5A3820', lineHeight: 1.95, maxWidth: '370px' }}>
@@ -95,7 +95,7 @@ export default function Services() {
                     transition: 'width .45s ease, background .45s ease',
                   }} />
                   <p style={{
-                    fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '1.5px',
+                    fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '1.5px',
                     color: i === active ? '#9B5030' : '#6B3318',
                     transition: 'color .45s ease',
                   }}>
@@ -160,10 +160,10 @@ export default function Services() {
       {/* ── MOBILE: stacked cards ── */}
       <div className="lg:hidden" style={{ background: '#DCC99B', padding: '80px 0' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <p style={{ fontFamily: '"Space Mono", monospace', fontSize: '10px', letterSpacing: '3px', color: '#6B3318', marginBottom: '16px' }}>
+          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '3px', color: '#6B3318', marginBottom: '16px' }}>
             DỊCH VỤ
           </p>
-          <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 7vw, 40px)', lineHeight: 1.2, color: '#6B3318', marginBottom: '40px', maxWidth: '380px' }}>
+          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(28px, 7vw, 40px)', lineHeight: 1.2, color: '#6B3318', marginBottom: '40px', maxWidth: '380px' }}>
             Hai cách chúng tôi kiến tạo không gian
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -173,8 +173,8 @@ export default function Services() {
                   <img src={s.img} alt={s.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: s.imgPosition }} />
                 </div>
                 <div style={{ padding: '24px' }}>
-                  <p style={{ fontFamily: 'Lora, serif', fontSize: '40px', color: '#6B3318', opacity: 0.12, lineHeight: 1, marginBottom: '8px' }}>{s.num}</p>
-                  <h3 style={{ fontFamily: 'Lora, serif', fontSize: '20px', color: '#6B3318', marginBottom: '10px', lineHeight: 1.3 }}>{s.name}</h3>
+                  <p style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '40px', color: '#6B3318', opacity: 0.12, lineHeight: 1, marginBottom: '8px' }}>{s.num}</p>
+                  <h3 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '20px', color: '#6B3318', marginBottom: '10px', lineHeight: 1.3 }}>{s.name}</h3>
                   <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#5A3820', lineHeight: 1.85 }}>{s.desc}</p>
                 </div>
               </div>

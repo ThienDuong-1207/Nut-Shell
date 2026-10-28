@@ -12,7 +12,7 @@ function MarqueeContent() {
       {CITIES.map((city, i) => (
         <span key={i} style={{ display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap' }}>
           <span style={{
-            fontFamily: '"Space Mono", monospace',
+            fontFamily: '"Be Vietnam Pro", sans-serif',
             fontSize: '9px',
             letterSpacing: '3px',
             color: 'rgba(244,239,231,.65)',

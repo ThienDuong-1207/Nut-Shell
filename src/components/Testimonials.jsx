@@ -1,7 +1,7 @@
 /* ─── Testimonials — full-width image overlay + brand marquee ─── */
 
-const MONO  = { fontFamily: '"Space Mono", monospace' }
-const SERIF = { fontFamily: 'Lora, serif' }
+const MONO  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
+const SERIF = { fontFamily: '"Cormorant Garamond", serif' }
 
 const TESTIMONIALS = [
   {

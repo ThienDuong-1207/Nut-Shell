@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import { POSTS } from '../data/posts'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 export default function BlogPage() {
   return (
@@ -14,7 +14,7 @@ export default function BlogPage() {
           <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '16px' }}>
             KIẾN THỨC & CẢM HỨNG
           </p>
-          <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
+          <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(40px, 6vw, 80px)', color: '#F0E5CC', lineHeight: 1.1, marginBottom: '20px' }}>
             Chia Sẻ
           </h1>
           <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', lineHeight: 1.7 }}>
@@ -83,7 +83,7 @@ function PostCard({ post }) {
           {/* Category badge */}
           <span style={{
             position: 'absolute', top: '14px', left: '14px',
-            fontFamily: '"Space Mono", monospace', fontSize: '8.5px', letterSpacing: '2px',
+            fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '8.5px', letterSpacing: '2px',
             background: 'rgba(42,32,24,.72)', color: '#F0E5CC',
             padding: '5px 12px', borderRadius: '999px',
           }}>
@@ -95,16 +95,16 @@ function PostCard({ post }) {
         <div style={{ padding: '28px' }}>
           {/* Meta */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-            <span style={{ fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '1px', color: '#9A6A40' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '1px', color: '#9A6A40' }}>
               {post.date}
             </span>
             <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: '#C4B5A2', display: 'inline-block' }} />
-            <span style={{ fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '1px', color: '#9A6A40' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '1px', color: '#9A6A40' }}>
               {post.readTime}
             </span>
           </div>
 
-          <h2 style={{ fontFamily: 'Lora, serif', fontSize: '21px', color: '#6B3318', lineHeight: 1.35, marginBottom: '12px' }}>
+          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '21px', color: '#6B3318', lineHeight: 1.35, marginBottom: '12px' }}>
             {post.title}
           </h2>
           <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '14px', fontWeight: 300, color: '#5A3820', lineHeight: 1.7 }}>
@@ -112,7 +112,7 @@ function PostCard({ post }) {
           </p>
 
           <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontFamily: '"Space Mono", monospace', fontSize: '9px', letterSpacing: '2px', color: '#9B5030' }}>
+            <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '2px', color: '#9B5030' }}>
               ĐỌC TIẾP
             </span>
             <span style={{ color: '#9B5030', fontSize: '13px' }}>→</span>

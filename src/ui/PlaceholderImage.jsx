@@ -29,7 +29,7 @@ export default function PlaceholderImage({ label = 'ảnh', className = '', styl
       <div className="absolute inset-0 flex items-center justify-center p-6">
         <span
           style={{
-            fontFamily: '"Space Mono", monospace',
+            fontFamily: '"Be Vietnam Pro", sans-serif',
             fontSize: '9px',
             letterSpacing: '2.5px',
             color: 'rgba(227,210,176,.55)',

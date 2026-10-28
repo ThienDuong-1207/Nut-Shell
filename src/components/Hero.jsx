@@ -1,8 +1,8 @@
 /* ─── Hero — full-bleed image slideshow with overlay text ─── */
 import { useEffect, useRef, useState, useCallback } from 'react'
 
-const MONO  = { fontFamily: '"Space Mono", monospace' }
-const SERIF = { fontFamily: 'Lora, serif' }
+const MONO  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
+const SERIF = { fontFamily: '"Cormorant Garamond", serif' }
 const JOST  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const FADEIN = (delay) => ({
@@ -11,10 +11,10 @@ const FADEIN = (delay) => ({
 })
 
 const SLIDES = [
-  { src: '/projects/nha-o/penthouse-cover.jpg',    label: 'The Penthouse',  cat: 'NHÀ Ở',    navColor: 'rgba(244,239,231,.9)' },
-  { src: '/projects/cafe/nina-cover.jpg',           label: 'Nina Café',      cat: 'CAFE',      navColor: 'rgba(244,239,231,.9)' },
-  { src: '/projects/nha-o/villa-longhau-cover.jpg', label: 'Villa Long Hậu', cat: 'NHÀ Ở',    navColor: 'rgba(244,239,231,.9)' },
-  { src: '/projects/nha-hang/sashimi-cover.jpg',    label: 'Sashimi House',  cat: 'NHÀ HÀNG', navColor: 'rgba(244,239,231,.9)' },
+  { src: '/projects/nha-o/penthouse/cover.webp',    label: 'The Penthouse',  cat: 'NHÀ Ở',    navColor: 'rgba(244,239,231,.9)' },
+  { src: '/projects/cafe/nina-de-printa/cover.webp',           label: 'Nina Café',      cat: 'CAFE',      navColor: 'rgba(244,239,231,.9)' },
+  { src: '/projects/nha-o/villa-longhau/cover.webp', label: 'Villa Long Hậu', cat: 'NHÀ Ở',    navColor: 'rgba(244,239,231,.9)' },
+  { src: '/projects/nha-hang/sashimi-restaurant/cover.webp',    label: 'Sashimi House',  cat: 'NHÀ HÀNG', navColor: 'rgba(244,239,231,.9)' },
 ]
 
 export default function Hero() {

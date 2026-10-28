@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import RevealOnScroll from '../ui/RevealOnScroll'
 import { sendContact, SEND_ERROR_TEXT } from '../lib/sendContact'
 
-const MONO = { fontFamily: '"Space Mono", monospace' }
+const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 const JOST = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const INPUT_BASE = {
@@ -154,7 +154,7 @@ export default function CTA() {
           {/* Left — text */}
           <div>
             <RevealOnScroll>
-              <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(34px, 5vw, 68px)', lineHeight: 1.1, color: '#F0E5CC', marginBottom: '28px', textWrap: 'balance' }}>
+              <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(34px, 5vw, 68px)', lineHeight: 1.1, color: '#F0E5CC', marginBottom: '28px', textWrap: 'balance' }}>
                 Biến không gian của bạn thành điều đáng nhớ.
               </h2>
             </RevealOnScroll>
