@@ -9,7 +9,6 @@ import HomeWhy from '../components/home/HomeWhy'
 import HomeTestimonials from '../components/home/HomeTestimonials'
 import Faq from '../components/ui/Faq'
 import HomeCta from '../components/home/HomeCta'
-import HomeClosing from '../components/home/HomeClosing'
 
 export default function Home({ appLoaded }) {
   return (
@@ -23,7 +22,6 @@ export default function Home({ appLoaded }) {
       <HomeTestimonials />
       <Faq />
       <HomeCta />
-      <HomeClosing />
     </main>
   )
 }

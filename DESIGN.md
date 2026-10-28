@@ -24,7 +24,7 @@ Socvra có 13 phần, Nut Shell dùng 12 (bỏ Bảng giá). Cột "Nut Shell" l
 | ~~9~~ | ~~Bảng giá~~ | — | **Bỏ** | — |
 | 10 | FAQ | Trái: H2 + câu + nút · phải: accordion có nút ⊕ | Câu hỏi thường gặp (chi phí, thời gian, bảo hành…) | ❌ cần nội dung |
 | 11 | CTA | Thẻ tối bo lớn · H2 + câu + nút · **vòng tròn màu nhấn khổng lồ** chứa ✱ | "Sẵn sàng bắt đầu dự án của bạn?" + nút Liên hệ | ✅ |
-| 12 | Kết trang | Hàng meta · ảnh tròn kẹp giữa 2 cụm vạch dọc · dải marquee màu nhấn chữ nhỏ · câu lớn chia đôi "_ … / … _" | "_ THIẾT KẾ TỪ CÂU CHUYỆN / KHÔNG TỪ CATALOG _" | ✅ |
+| ~~12~~ | ~~Kết trang~~ | — | **Bỏ** (chỉ trang trí, lặp thông tin) | — |
 | 13 | Footer | Câu tagline + nút · 3 cột "/ ĐIỀU HƯỚNG / LIÊN HỆ / MẠNG XÃ HỘI" · **wordmark khổng lồ** · dòng bản quyền | Footer hiện tại sắp lại | ✅ |
 
 **Các section trang chủ hiện tại sẽ ánh xạ như sau:** Hero → #2 · About → gộp vào #2 (đoạn giới thiệu) · Services → #4 · Projects → #6 · Testimonials → #8 · Marquee → #3 + #12 · Stats → hàng meta ở #2 hoặc vào #7 · Process → #5 · Quote → #12 · CTA → #11.
@@ -326,7 +326,7 @@ Hai thẻ lớn trên nền tối. Bấm vào thẻ (hoặc nút "Xem chi tiết
 |---|---|---|
 | Hiện dần + trượt lên 24px | Mọi tiêu đề, thẻ (lệch nhau 80ms) | `RevealOnScroll`, .9s `cubic-bezier(.2,.7,.2,1)` |
 | Wordmark mask reveal | Hero lúc tải | `clip-path: inset(0 0 100% 0)` → `inset(0)`, 1.1s, chạy 1 lần |
-| Marquee | Dải tên dự án (#3), dải nhấn (#12) | 40s linear, dừng khi hover |
+| Marquee | Dải tên dự án (#3) | 40s linear, dừng khi hover |
 | Nav đổi nền khi cuộn | Nav | nền trong suốt → kem 92% sau 60px |
 | Mũi tên trượt khi hover nút | Mọi nút pill | translateX 3px, .3s |
 | Mở/đóng thẻ dịch vụ | #4 | grid-rows 0fr → 1fr, .45s · nút ⊕ xoay 45° |

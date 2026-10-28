@@ -58,4 +58,8 @@ export const FAQ = [
   },
 ]
 
-export const STRIP = ['Thiết kế nội thất', 'Thi công trọn gói', 'Diễn họa 3D', 'Nhà ở', 'Cafe', 'Nhà hàng']
+// Phần "Dự án" trang chủ: 1 dự án nổi bật + danh sách tên lớn (đổi slug để thay dự án)
+export const HOME_WORK = {
+  featured: 'villa-longhau',
+  list: ['kingdom101', 'indochine', 'penthouse', 'hala-nguyen-hue', 'cf-gau', 'tiem-kem', 'food-court', 'wabi'],
+}
