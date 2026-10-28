@@ -20,13 +20,12 @@
 .hero__eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(12px, 2svh, 24px);
   font: 400 clamp(14px, 1.15vw, 17px)/1.3 "Be Vietnam Pro", sans-serif; letter-spacing: .02em; }
 .hero__eyebrow::before { content: ""; width: 32px; height: 1px; background: currentColor; opacity: .8; }
-/* Cỡ chữ theo cả chiều ngang lẫn chiều cao màn hình → 3 dòng luôn vừa khung trên màn hình thấp */
-.hero__title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(54px, min(10vw, 15.5svh), 168px);
+/* 2 dòng, mỗi dòng ~6.6em → cỡ chữ tính theo chiều ngang; máy tính giới hạn thêm theo chiều cao màn hình */
+.hero__title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(40px, 12.8vw, 72px);
   line-height: 1.02; letter-spacing: -.025em;
   text-shadow: 0 1px 2px rgba(var(--dark-rgb), .25), 0 10px 48px rgba(var(--dark-rgb), .35); }
-.hero__title > span { display: block; }
-.hero__indent-1 { padding-left: 6vw; }
-.hero__indent-2 { padding-left: 14vw; }
+.hero__title > span { display: block; white-space: nowrap; }
+.hero__indent { padding-left: 4vw; }
 /* padding-right chừa chỗ cho nút liên hệ nổi (FloatingContact) ở góc phải */
 .hero__bottom { display: flex; flex-direction: column-reverse; gap: 28px; padding-right: 64px; }
 .hero__side { display: flex; flex-direction: column; gap: 18px; max-width: 360px; }
@@ -40,8 +39,8 @@
 @media (min-width: 768px) {
   .hero__bottom { flex-direction: row; align-items: flex-end; justify-content: space-between; }
   .hero__side { text-align: right; align-items: flex-end; }
-  .hero__indent-1 { padding-left: 7vw; }
-  .hero__indent-2 { padding-left: 30vw; }
+  .hero__title { font-size: clamp(56px, min(11vw, 19svh), 168px); }
+  .hero__indent { padding-left: 14vw; }
 }
 
 /* ── Thẻ dịch vụ mở rộng ── */

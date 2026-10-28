@@ -44,9 +44,8 @@ export default function HomeHero({ appLoaded }) {
         <div className="hero__title-wrap">
           <p className="hero__eyebrow" style={enter(appLoaded, 200)}>Mỗi không gian là một câu chuyện riêng</p>
           <h1 className="hero__title">
-            <span style={{ ...enter(appLoaded, 300) }}>Thiết kế</span>
-            <span className="hero__indent-1" style={enter(appLoaded, 420)}>bắt đầu từ</span>
-            <span className="hero__indent-2" style={enter(appLoaded, 540)}>sự thấu hiểu.</span>
+            <span style={enter(appLoaded, 300)}>Thiết kế bắt đầu</span>
+            <span className="hero__indent" style={enter(appLoaded, 440)}>từ sự thấu hiểu.</span>
           </h1>
         </div>
 
