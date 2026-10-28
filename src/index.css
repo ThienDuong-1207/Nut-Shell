@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design tokens (DESIGN.md §2) ─── */
+:root {
+  --bg: #F0E7D7;
+  --surface: #F6F0E4;
+  --surface-alt: #E6DAC3;
+  --surface-dark: #1D1A19;
+  --surface-dark-card: #3A302C;
+  --surface-dark-hover: #453A35;
+
+  --border: rgba(29, 26, 25, .14);
+  --border-hover: rgba(29, 26, 25, .36);
+  --border-light: rgba(240, 231, 215, .14);
+
+  --text: #1D1A19;
+  --text-secondary: #6B675F;
+  --text-secondary-alt: #5C5851;
+  --text-light: #F0E7D7;
+  --text-light-secondary: #B8AE9C;
+
+  --accent: #DCC99B;
+  --accent-hover: #E6D6AE;
+  --accent-strong: #6B3318;
+
+  --bg-rgb: 240, 231, 215;
+  --dark-rgb: 29, 26, 25;
+}
+
 /* ─── Reset & base ─── */
 *, *::before, *::after {
   box-sizing: border-box;

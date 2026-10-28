@@ -1,4 +1,4 @@
-/* ─── Navigation — hero-mode (transparent) vs page-mode (cream) ─── */
+/* ─── Navigation — nền kem cố định trên mọi trang ─── */
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -12,23 +12,8 @@ const NAV_LINKS = [
 const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10.5px', letterSpacing: '2px' }
 
 export default function Nav() {
-  const [scrolled,     setScrolled]     = useState(false)
-  const [mobileOpen,   setMobileOpen]   = useState(false)
-  const [heroNavColor, setHeroNavColor] = useState('rgba(244,239,231,.85)')
+  const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    const handler = (e) => setHeroNavColor(e.detail.color)
-    window.addEventListener('hero-nav-color', handler)
-    return () => window.removeEventListener('hero-nav-color', handler)
-  }, [])
 
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setMobileOpen(false) }
@@ -44,16 +29,15 @@ export default function Nav() {
   useEffect(() => { setMobileOpen(false) }, [location.pathname])
 
   const isHome     = location.pathname === '/'
-  const heroMode   = isHome && !scrolled   // transparent hero overlay
   const isActive   = (to) => to && (location.pathname === to || location.pathname.startsWith(to + '/'))
 
   /* ── Theme tokens ── */
-  const navBg      = heroMode ? 'transparent' : '#F0E8D8'
-  const navBorder  = heroMode ? 'none' : '1px solid rgba(42,32,24,.08)'
-  const textColor  = heroMode ? heroNavColor  : '#6B3318'
-  const hoverColor = heroMode ? '#DCC99B'     : '#9B5030'
-  const activeCol  = heroMode ? '#DCC99B'     : '#9B5030'
-  const barColor   = heroMode && !mobileOpen  ? '#F0E5CC' : '#6B3318'
+  const navBg      = 'var(--bg)'
+  const navBorder  = '1px solid rgba(42,32,24,.08)'
+  const textColor  = '#6B3318'
+  const hoverColor = '#9B5030'
+  const activeCol  = '#9B5030'
+  const barColor   = '#6B3318'
 
   return (
     <nav style={{
@@ -71,7 +55,7 @@ export default function Nav() {
           style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%', cursor: 'pointer' }}
         >
           <img
-            src={heroMode ? '/images/logo-text-light.png' : '/images/logo-text.png'}
+            src="/images/logo-text.png"
             alt="Nut Shell Interior Design"
             style={{
               height: '40px',
@@ -121,10 +105,8 @@ export default function Nav() {
             to="/lien-he"
             style={{
               ...MONO,
-              background: heroMode
-                ? (isActive('/lien-he') ? '#9B5030' : '#DCC99B')
-                : (isActive('/lien-he') ? '#9B5030' : '#6B3318'),
-              color: heroMode ? '#6B3318' : '#F0E5CC',
+              background: isActive('/lien-he') ? '#9B5030' : '#6B3318',
+              color: '#F0E5CC',
               padding: '9px 22px',
               borderRadius: '999px',
               textDecoration: 'none',
