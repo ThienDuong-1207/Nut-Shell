@@ -61,10 +61,21 @@ const FOUNDERS = [
   },
 ]
 
+// Thành viên có `img` hiện thẻ ảnh; chưa có ảnh thì tạm nằm trong bảng của nhóm.
+// Thêm ảnh: img: '/images/<file>', pos: 'center 30%' (giữ khuôn mặt trong khung)
 const TEAMS = [
-  { name: 'Team 3D Design',            members: ['Mai Hồ Ánh Thư', 'Nguyễn Hồ Minh Nguyệt'] },
-  { name: 'Team Triển khai & Giám sát', members: ['Nguyễn Tuấn Kiệt'] },
+  { name: 'Team 3D Design', members: [
+    { name: 'Mai Hồ Ánh Thư' },
+    { name: 'Nguyễn Hồ Minh Nguyệt' },
+  ] },
+  { name: 'Team Triển khai & Giám sát', members: [
+    { name: 'Nguyễn Tuấn Kiệt' },
+  ] },
 ]
+const MEMBERS_WITH_PHOTO = TEAMS.flatMap(t => t.members.filter(m => m.img).map(m => ({ ...m, team: t.name })))
+const TEAMS_WITHOUT_PHOTO = TEAMS
+  .map(t => ({ ...t, members: t.members.filter(m => !m.img) }))
+  .filter(t => t.members.length > 0)
 
 const MILESTONES = [
   { year: '2017', title: 'Thành lập Nut Shell',      text: 'Khởi đầu từ xưởng nhỏ tại quận 1, TP.HCM' },
@@ -288,9 +299,25 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Các nhóm */}
+          {/* Thành viên đã có ảnh */}
+          {MEMBERS_WITH_PHOTO.length > 0 && (
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10" style={{ marginTop: 'clamp(56px, 7vw, 96px)' }}>
+              {MEMBERS_WITH_PHOTO.map((m, i) => (
+                <RevealOnScroll key={m.name} delay={i * 90}>
+                  <article className="about-team">
+                    <ZoomImage src={m.img} alt={`${m.name} — ${m.team} Nut Shell`} pos={m.pos} ratio="3/4" />
+                    <h3 style={{ ...SERIF, fontSize: '22px', fontWeight: 500, color: C.brown, margin: '16px 0 6px' }}>{m.name}</h3>
+                    <p style={{ ...LABEL, color: C.accent }}>{m.team.toUpperCase()}</p>
+                  </article>
+                </RevealOnScroll>
+              ))}
+            </div>
+          )}
+
+          {/* Thành viên chưa có ảnh — bảng theo nhóm */}
+          {TEAMS_WITHOUT_PHOTO.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 'clamp(56px, 7vw, 96px)' }}>
-            {TEAMS.map((t, i) => (
+            {TEAMS_WITHOUT_PHOTO.map((t, i) => (
               <RevealOnScroll key={t.name} delay={i * 100}>
                 <div style={{ height: '100%', borderRadius: '20px', border: `1px solid ${C.line}`, background: 'var(--surface)', padding: 'clamp(24px, 3vw, 32px)' }}>
                   <div className="flex justify-between items-baseline gap-4" style={{ paddingBottom: '16px', marginBottom: '8px', borderBottom: `1px solid ${C.line}` }}>
@@ -299,9 +326,9 @@ export default function AboutPage() {
                   </div>
                   <ul style={{ listStyle: 'none' }}>
                     {t.members.map((m, k) => (
-                      <li key={m} className="flex items-baseline gap-4" style={{ padding: '14px 0', borderBottom: k < t.members.length - 1 ? `1px solid ${C.line}` : 'none' }}>
+                      <li key={m.name} className="flex items-baseline gap-4" style={{ padding: '14px 0', borderBottom: k < t.members.length - 1 ? `1px solid ${C.line}` : 'none' }}>
                         <span style={{ ...LABEL, color: C.body }}>{String(k + 1).padStart(2, '0')}</span>
-                        <span style={{ ...SERIF, fontSize: '24px', fontWeight: 500, color: C.brown }}>{m}</span>
+                        <span style={{ ...SERIF, fontSize: '24px', fontWeight: 500, color: C.brown }}>{m.name}</span>
                       </li>
                     ))}
                   </ul>
@@ -309,6 +336,7 @@ export default function AboutPage() {
               </RevealOnScroll>
             ))}
           </div>
+          )}
         </div>
       </section>
 
