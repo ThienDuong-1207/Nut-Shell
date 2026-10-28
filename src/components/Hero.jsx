@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 
 const MONO  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 const SERIF = { fontFamily: '"Cormorant Garamond", serif' }
-const JOST  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
 const FADEIN = (delay) => ({
   opacity: 0,
@@ -104,21 +103,12 @@ export default function Hero() {
           NUT SHELL STUDIO — EST. 2017
         </p>
 
-        {/* MIDDLE: Headline + tagline + CTAs */}
+        {/* MIDDLE: Headline + CTAs */}
         <div>
-          <h1 style={{ ...SERIF, fontSize: 'clamp(38px, 4.2vw, 68px)', lineHeight: 1.08, color: '#F0E5CC', marginBottom: '28px', textWrap: 'balance' }}>
-            <span style={{ display: 'block', ...FADEIN(320) }}>Nơi ánh sáng</span>
-            <span style={{ display: 'block', ...FADEIN(420) }}>chạm vào</span>
-            <span style={{ display: 'block', color: '#DCC99B', ...FADEIN(520) }}>chất liệu.</span>
+          <h1 style={{ ...SERIF, fontSize: 'clamp(38px, 4.2vw, 68px)', lineHeight: 1.08, color: '#F0E5CC', marginBottom: '36px', textWrap: 'balance' }}>
+            <span style={{ display: 'block', ...FADEIN(320) }}>Thiết kế bắt đầu</span>
+            <span style={{ display: 'block', color: '#DCC99B', ...FADEIN(420) }}>từ sự thấu hiểu</span>
           </h1>
-
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '36px', ...FADEIN(600) }}>
-            <div style={{ width: '28px', height: '1px', background: '#9B5030', marginTop: '10px', flexShrink: 0 }} />
-            <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: 'rgba(244,239,231,.72)', lineHeight: 1.85 }}>
-              Chuyên thiết kế & thi công nội thất.<br />
-              Mỗi không gian là một câu chuyện riêng.
-            </p>
-          </div>
 
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', ...FADEIN(700) }}>
             <a href="#duan" style={{
@@ -230,7 +220,7 @@ export default function Hero() {
             NUT SHELL STUDIO
           </p>
           <h1 style={{ ...SERIF, fontSize: 'clamp(30px, 8vw, 44px)', lineHeight: 1.1, color: '#F0E5CC', marginBottom: '28px' }}>
-            Nơi ánh sáng<br />chạm vào <span style={{ color: '#DCC99B' }}>chất liệu.</span>
+            Thiết kế bắt đầu<br /><span style={{ color: '#DCC99B' }}>từ sự thấu hiểu</span>
           </h1>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '32px' }}>
             <a href="#duan" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', background: '#DCC99B', color: '#6B3318', padding: '12px 24px', borderRadius: '999px', textDecoration: 'none' }}>
