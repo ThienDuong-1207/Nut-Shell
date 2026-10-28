@@ -1,6 +1,5 @@
-/* ─── #3 Dải tên dự án — nền tối, marquee xen ✱ ─── */
+/* ─── #3 Dải tên dự án — nền tối, marquee xen chấm tròn ─── */
 import { PROJECTS } from '../../data/projects'
-import { Asterisk } from './Icons'
 
 export default function NameMarquee() {
   const names = PROJECTS.map(p => p.name)
@@ -19,7 +18,7 @@ export default function NameMarquee() {
               {names.map(n => (
                 <span key={n} className="inline-flex items-center">
                   <span className="h-serif" style={{ fontSize: 'clamp(26px, 2.6vw, 36px)', color: 'var(--accent)', padding: '0 28px' }}>{n}</span>
-                  <span style={{ color: 'var(--text-light-secondary)' }}><Asterisk size={14} /></span>
+                  <span aria-hidden="true" style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--text-light-secondary)', display: 'inline-block' }} />
                 </span>
               ))}
             </span>

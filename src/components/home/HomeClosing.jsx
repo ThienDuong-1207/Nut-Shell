@@ -1,7 +1,6 @@
 /* ─── #12 Kết trang — meta row, ảnh tròn giữa 2 cụm vạch, dải nhấn, câu lớn chia đôi ─── */
 import { STRIP } from '../../data/home'
 import { PROJECTS } from '../../data/projects'
-import { Asterisk } from './Icons'
 
 function MetaRow() {
   return (
@@ -36,7 +35,7 @@ export default function HomeClosing() {
         <div className="marquee__track">
           {[0, 1, 2, 3].map(copy => STRIP.map(t => (
             <span key={`${copy}-${t}`} className="inline-flex items-center gap-6" style={{ padding: '0 12px' }}>
-              {t} <Asterisk size={11} />
+              {t} <span aria-hidden="true" style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'currentColor', display: 'inline-block' }} />
             </span>
           )))}
         </div>

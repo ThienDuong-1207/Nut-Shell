@@ -22,12 +22,12 @@ import AboutPage from './pages/AboutPage'
 
 function NotFound() {
   return (
-    <main style={{ background: '#F0E8D8', minHeight: '100vh', paddingTop: '88px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
-      <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '3px', color: '#6B3318' }}>404</p>
-      <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(28px, 4vw, 48px)', color: '#6B3318' }}>Trang không tìm thấy</h1>
-      <Link to="/" style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10px', letterSpacing: '2px', color: '#6B3318', border: '1px solid #6B3318', padding: '12px 28px', borderRadius: '999px', textDecoration: 'none' }}>
-        VỀ TRANG CHỦ →
-      </Link>
+    <main className="h-container" style={{ background: 'var(--bg)', minHeight: '100vh', paddingTop: '88px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '20px' }}>
+      <p className="h-label">/ Lỗi 404</p>
+      <p className="h-serif" aria-hidden="true" style={{ fontWeight: 500, fontSize: 'clamp(120px, 22vw, 320px)', lineHeight: .85, letterSpacing: '-.04em', color: 'var(--text)' }}>404</p>
+      <h1 className="h-h2" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>Trang không tìm thấy</h1>
+      <p className="h-body" style={{ maxWidth: '380px' }}>Trang bạn tìm có thể đã được đổi tên hoặc không còn tồn tại.</p>
+      <Link to="/" className="btn btn--dark">Về trang chủ →</Link>
     </main>
   )
 }
@@ -75,7 +75,7 @@ export default function App() {
 
       {/* Spacer: non-positioned (stacking layer below fixed footer) + pointer-events none
           → footer is visually & interactively on top in this area */}
-      <div style={{ height: footerH, pointerEvents: 'none', background: '#DCC99B' }} aria-hidden="true" />
+      <div style={{ height: footerH, pointerEvents: 'none', background: 'var(--bg)' }} aria-hidden="true" />
 
       <FloatingContact />
     </BrowserRouter>

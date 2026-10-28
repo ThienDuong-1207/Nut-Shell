@@ -385,8 +385,33 @@ Hai thẻ lớn trên nền tối. Bấm vào thẻ (hoặc nút "Xem chi tiết
 - Dịch vụ gồm 2 thẻ mở rộng, nội dung chi tiết ở `src/data/services.js`.
 - Bảng màu: nền `#F0E7D7` · tối `#1D1A19` / `#3A302C` · nhấn `#DCC99B` · chữ phụ `#6B675F` · xen kẽ `#E6DAC3`. Giữ nâu `#6B3318` cho nhãn và link trên nền sáng.
 
+## Cập nhật (28/10/2026, lần 2)
+
+- **Hero trang chủ:** đổi sang ảnh tràn màn hình tự chuyển (Villa Long Hậu, Cheese Tart, Muted Spark, Kingdom 101) với tiêu đề lớn so le. Bỏ wordmark và khối bento.
+- **Bỏ ký hiệu ✱ của Socvra.** CTA dùng `logo-round.png`. Marquee và dải nhấn dùng chấm tròn nhỏ. Thẻ "Vì sao" không còn icon.
+- **FAQ:** giữ bản nháp, chỉnh sau.
+- **Giá trị thứ 4:** tạm dùng "Minh bạch".
+
+## Kế hoạch áp dụng cho các trang khác
+
+**Bước 0. Nền chung (làm trước):** tách các class trong `src/pages/home.css` (`.btn`, `.tag`, `.card`, `.h-label`, `.h-h2`, `.section-head`, `.faq__*`, `.cta-card`) ra `src/styles/ui.css` để mọi trang dùng chung. Tạo 2 component dùng chung:
+- `PageHeader`: nhãn "/ MỤC", H2 lớn bên trái, mô tả bên phải, breadcrumb.
+- `CtaCard`: thẻ tối, logo tròn, nút "Đặt lịch tư vấn".
+
+| Trang | Hiện tại | Đề xuất |
+|---|---|---|
+| **Footer** (mọi trang) | Nền cát, wordmark mờ, 4 cột | Nền `--bg` · tagline + nút · 3 cột "/ ĐIỀU HƯỚNG / LIÊN HỆ / MẠNG XÃ HỘI" · logo chữ khổ lớn · dòng bản quyền |
+| **Dự án** `/du-an` | Header nâu, tab lọc, lưới thẻ | `PageHeader` · bộ lọc dạng `.tag` (NHÀ Ở / CAFE / NHÀ HÀNG) kèm số lượng · lưới 3 cột dùng thẻ `.work-card` như trang chủ (ảnh bo 20px, nhãn hạng mục, tên Cormorant) · `CtaCard` |
+| **Chi tiết dự án** | Ảnh hero, 2 cột thông tin, gallery, CTA | Ảnh bìa tràn màn hình, tên dự án lớn đặt góc dưới trái (giống Hero trang chủ) · hàng thông tin dạng meta-row (phong cách · diện tích · địa điểm · năm, ẩn mục trống) · gallery xen kẽ 1 ảnh rộng + 2 ảnh hẹp · điều hướng dự án trước/sau dạng 2 thẻ lớn · `CtaCard` |
+| **Giới thiệu** | Bố cục Interiia, màu nâu | Giữ bố cục, đổi sang token mới (`--surface-dark` thay nâu `#6B3318`) · Hành trình dùng `.process-row` · Đội ngũ dùng thẻ bo 20px · CTA thay bằng `CtaCard` |
+| **Chia sẻ** `/chia-se` | Header, lưới bài | `PageHeader` · bài đầu tiên làm thẻ lớn ngang (ảnh trái, tiêu đề phải) · các bài còn lại lưới 3 cột kiểu `.work-card` (nhãn chuyên mục · ngày · thời gian đọc) |
+| **Bài viết** | Cover, bài + sidebar | Cover bo 28px trong container · tiêu đề Cormorant lớn · thân bài rộng tối đa 680px, Be Vietnam Pro 17px · sidebar thành thẻ tối `CtaCard` thu nhỏ · "Bài viết khác" 3 thẻ |
+| **Liên hệ** | Header, thông tin trái, form phải | `PageHeader` · trái: thẻ tối chứa thông tin liên hệ + bản đồ bo 20px · phải: form trên nền `--surface`, input viền `--border`, bo 12px, focus viền `--text` · nút gửi `.btn--dark` · bên dưới tái dùng FAQ trang chủ |
+| **404** | Chữ nâu giữa trang | Nền `--bg`, "404" Cormorant cỡ lớn, nút `.btn--dark` về trang chủ |
+
+**Thứ tự đề xuất:** Bước 0 → Footer → Dự án + Chi tiết dự án (khách xem nhiều nhất) → Liên hệ → Giới thiệu → Chia sẻ + Bài viết → 404.
+
 ## Còn chờ quyết định
 
-1. **FAQ (#10):** gửi câu hỏi và trả lời, hoặc để mình soạn nháp cho bạn sửa.
-2. **Vì sao chọn (#7):** cần giá trị thứ 4.
-3. **Phạm vi:** chỉ làm trang chủ trước, hay áp dụng luôn cho các trang Dự án, Giới thiệu, Liên hệ?
+1. **FAQ (#10):** nội dung chính thức (đang dùng bản nháp).
+2. **Giá trị thứ 4:** xác nhận "Minh bạch" hoặc đổi.

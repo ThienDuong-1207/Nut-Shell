@@ -7,7 +7,7 @@ import HomeProcess from '../components/home/HomeProcess'
 import HomeWork from '../components/home/HomeWork'
 import HomeWhy from '../components/home/HomeWhy'
 import HomeTestimonials from '../components/home/HomeTestimonials'
-import HomeFaq from '../components/home/HomeFaq'
+import Faq from '../components/ui/Faq'
 import HomeCta from '../components/home/HomeCta'
 import HomeClosing from '../components/home/HomeClosing'
 
@@ -21,7 +21,7 @@ export default function Home({ appLoaded }) {
       <HomeWork />
       <HomeWhy />
       <HomeTestimonials />
-      <HomeFaq />
+      <Faq />
       <HomeCta />
       <HomeClosing />
     </main>

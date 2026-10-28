@@ -2,7 +2,8 @@
 import { Link } from 'react-router-dom'
 import RevealOnScroll from '../../ui/RevealOnScroll'
 import { getFeaturedProjects } from '../../data/projects'
-import { Arrow } from './Icons'
+import { Arrow } from '../ui/Icons'
+import WorkCard from '../ui/WorkCard'
 
 export default function HomeWork() {
   const projects = getFeaturedProjects(3)
@@ -22,17 +23,7 @@ export default function HomeWork() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4">
           {projects.map((p, i) => (
             <RevealOnScroll key={p.slug} delay={i * 100}>
-              <Link to={`/du-an/${p.slug}`} className="work-card">
-                <div className="work-card__img">
-                  <img src={p.cover} alt={p.name} loading="lazy" />
-                </div>
-                <div className="flex justify-between gap-4 h-label" style={{ color: 'var(--text)', margin: '18px 0 10px' }}>
-                  <span>{p.category}</span>
-                  {p.style && <span style={{ color: 'var(--text-secondary-alt)' }}>{p.style}</span>}
-                </div>
-                <h3 className="h-serif" style={{ fontSize: '26px', fontWeight: 500, lineHeight: 1.15, marginBottom: '8px' }}>{p.name}</h3>
-                {p.description && <p className="h-body clamp-2">{p.description}</p>}
-              </Link>
+              <WorkCard project={p} tone="alt" />
             </RevealOnScroll>
           ))}
         </div>

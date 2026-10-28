@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import RevealOnScroll from '../../ui/RevealOnScroll'
 import { SERVICES } from '../../data/services'
-import { Plus, Arrow } from './Icons'
+import { Plus, Arrow } from '../ui/Icons'
 
 function ServiceCard({ svc, open, onToggle }) {
   const headId = `svc-head-${svc.num}`

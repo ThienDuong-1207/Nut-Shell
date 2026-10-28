@@ -1,23 +1,23 @@
 /* ─── About Page — câu chuyện studio ─── */
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import RevealOnScroll from '../ui/RevealOnScroll'
+import CtaCard from '../components/ui/CtaCard'
 
 const SERIF = { fontFamily: '"Cormorant Garamond", serif' }
 const MONO  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 const JOST  = { fontFamily: '"Be Vietnam Pro", sans-serif' }
 
-// Bảng màu chủ đạo của trang
+// Bảng màu — trỏ vào token chung (src/index.css)
 const C = {
-  brown:     '#6B3318',
-  cream:     '#F0E8D8',
-  sand:      '#DCC99B',
-  accent:    '#9B5030',
-  body:      '#5A3820',
-  lightHead: '#F0E5CC',
-  lightBody: '#D4B080',
-  line:      'rgba(107,51,24,.16)',
-  lineLight: 'rgba(244,239,231,.14)',
+  brown:     'var(--surface-dark)',   // nền tối + chữ tiêu đề
+  cream:     'var(--bg)',
+  sand:      'var(--surface-alt)',
+  accent:    'var(--accent-strong)',  // nhãn trên nền sáng
+  body:      'var(--text-secondary)',
+  lightHead: 'var(--text-light)',
+  lightBody: 'var(--text-light-secondary)',
+  line:      'var(--border)',
+  lineLight: 'var(--border-light)',
 }
 
 const LABEL = { ...MONO, fontSize: '10px', letterSpacing: '3px' }
@@ -104,7 +104,7 @@ function SectionHead({ label, title, dark = false }) {
 
 function ZoomImage({ src, alt, pos = 'center', ratio = '4/5' }) {
   return (
-    <div style={{ aspectRatio: ratio, borderRadius: '2px', overflow: 'hidden', background: C.sand }}>
+    <div style={{ aspectRatio: ratio, borderRadius: '20px', overflow: 'hidden', background: C.sand }}>
       <img
         src={src}
         alt={alt}
@@ -120,27 +120,24 @@ export default function AboutPage() {
   const heroBg = useParallax(0.22)
 
   return (
-    <main style={{ background: C.cream, paddingTop: '80px' }}>
+    <main style={{ background: C.cream }}>
       <style>{`
         .about-zoom { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
         .about-zoom:hover { transform: scale(1.04); }
         .about-team img { filter: sepia(.35) saturate(.8); transition: filter .5s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
         .about-team:hover img { filter: none; }
-        .about-cta-btn { transition: opacity .2s, transform .2s; }
-        .about-cta-btn:hover { opacity: .85; transform: translateY(-2px); }
-        .about-cta-btn:focus-visible { outline: 2px solid ${C.lightHead}; outline-offset: 3px; }
         @media (prefers-reduced-motion: reduce) {
-          .about-zoom, .about-team img, .about-cta-btn { transition: none; }
-          .about-zoom:hover, .about-cta-btn:hover { transform: none; }
+          .about-zoom, .about-team img { transition: none; }
+          .about-zoom:hover { transform: none; }
         }
       `}</style>
 
       {/* ── 1. Hero — ảnh tràn màn hình ── */}
-      <section style={{ position: 'relative', height: 'calc(100svh - 80px)', minHeight: '560px', overflow: 'hidden' }}>
+      <section data-hero style={{ position: 'relative', height: '100svh', minHeight: '560px', overflow: 'hidden' }}>
         <div ref={heroBg} style={{ position: 'absolute', inset: '-8% 0 0 0', willChange: 'transform' }}>
           <img src="/images/hero.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, rgba(107,51,24,.45), rgba(107,51,24,.6) 45%, rgba(107,51,24,.9))` }} />
+        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, rgba(var(--dark-rgb), .45), rgba(var(--dark-rgb), .6) 45%, rgba(var(--dark-rgb), .9))` }} />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', textAlign: 'center', padding: '0 24px' }}>
           <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
@@ -245,7 +242,7 @@ export default function AboutPage() {
       {/* ── 5. Dải ảnh — câu chuyện / không gian ── */}
       <section style={{ position: 'relative', height: 'clamp(440px, 85vh, 820px)', overflow: 'hidden' }}>
         <img src="/images/proj5.jpg" alt="Không gian sống do Nut Shell thiết kế" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(107,51,24,.55), rgba(107,51,24,.15) 50%, rgba(107,51,24,.55))' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(var(--dark-rgb), .55), rgba(var(--dark-rgb), .15) 50%, rgba(var(--dark-rgb), .55))' }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: '48px', paddingBottom: '48px' }}>
           <RevealOnScroll>
             <p style={{ ...SERIF, fontSize: 'clamp(28px, 3.6vw, 48px)', color: C.lightHead, lineHeight: 1.1 }}>Câu chuyện của bạn</p>
@@ -280,35 +277,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 7. CTA — thẻ nâu trên nền ảnh ── */}
-      <section style={{ position: 'relative', overflow: 'hidden' }} className="py-16 lg:py-24">
-        <img src="/images/proj3.jpg" alt="" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(107,51,24,.25)' }} />
-        <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ position: 'relative' }}>
-          <RevealOnScroll>
-            <div style={{ background: C.brown, padding: 'clamp(32px, 4vw, 48px)', maxWidth: '440px', borderRadius: '2px' }}>
-              <h2 style={{ ...SERIF, fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 400, color: C.lightHead, marginBottom: '18px', lineHeight: 1.2 }}>
-                Sẵn sàng bắt đầu dự án của bạn?
-              </h2>
-              <p style={{ ...BODY, fontSize: '15px', color: C.lightBody, marginBottom: '32px', lineHeight: 1.8 }}>
-                Buổi tư vấn đầu tiên hoàn toàn miễn phí — kể cho chúng tôi nghe về không gian bạn mơ ước.
-              </p>
-              <Link
-                to="/lien-he"
-                className="about-cta-btn"
-                style={{
-                  ...MONO, fontSize: '11px', letterSpacing: '2px',
-                  background: C.sand, color: C.brown,
-                  padding: '15px 32px', borderRadius: '999px',
-                  textDecoration: 'none', display: 'inline-block', minHeight: '44px',
-                }}
-              >
-                LIÊN HỆ TƯ VẤN →
-              </Link>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
+      {/* ── 7. CTA ── */}
+      <CtaCard />
 
     </main>
   )

@@ -1,11 +1,11 @@
-/* ─── #10 FAQ — trái: tiêu đề + nút · phải: accordion ─── */
+/* ─── FAQ — trái: tiêu đề + nút · phải: accordion (trang chủ, Liên hệ) ─── */
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import RevealOnScroll from '../../ui/RevealOnScroll'
 import { FAQ } from '../../data/home'
 import { Plus, Arrow } from './Icons'
 
-export default function HomeFaq() {
+export default function Faq({ showContact = true }) {
   const [open, setOpen] = useState(0)
   return (
     <section className="h-section" style={{ borderTop: '1px solid var(--border)' }}>
@@ -15,7 +15,7 @@ export default function HomeFaq() {
           <RevealOnScroll delay={80}><h2 className="h-h2" style={{ marginBottom: '20px' }}>Bạn hỏi, chúng tôi trả lời.</h2></RevealOnScroll>
           <RevealOnScroll delay={160}>
             <p className="h-body" style={{ marginBottom: '28px', maxWidth: '340px' }}>Chưa thấy điều bạn cần? Hãy kể cho chúng tôi về không gian của bạn.</p>
-            <Link to="/lien-he" className="btn btn--ghost">Liên hệ Nut Shell <Arrow /></Link>
+            {showContact && <Link to="/lien-he" className="btn btn--ghost">Liên hệ Nut Shell <Arrow /></Link>}
           </RevealOnScroll>
         </div>
 

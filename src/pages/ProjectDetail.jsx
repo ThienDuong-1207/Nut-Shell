@@ -1,9 +1,26 @@
-/* ─── Project Detail Page ─── */
+/* ─── Project Detail Page — ảnh bìa tràn màn hình, thông tin gọn, gallery xen kẽ ─── */
 import { useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getProjectBySlug, PROJECTS } from '../data/projects'
+import RevealOnScroll from '../ui/RevealOnScroll'
+import CtaCard from '../components/ui/CtaCard'
 
-const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
+// Nhóm 3 ảnh: 1 ảnh rộng + 2 ảnh hẹp
+const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, i) => arr.slice(i * n, i * n + n))
+
+function NeighbourCard({ project, dir }) {
+  return (
+    <Link to={`/du-an/${project.slug}`} className="work-card relative block" style={{ borderRadius: '20px', overflow: 'hidden' }}>
+      <div className="work-card__img" style={{ aspectRatio: '16 / 9' }}>
+        <img src={project.cover} alt="" loading="lazy" />
+      </div>
+      <div className="absolute inset-0 flex flex-col justify-end" style={{ padding: '24px', background: 'linear-gradient(to top, rgba(var(--dark-rgb), .75), rgba(var(--dark-rgb), 0) 60%)', color: '#FFFFFF', textAlign: dir === 'next' ? 'right' : 'left' }}>
+        <span className="h-label" style={{ color: '#FFFFFF', marginBottom: '8px' }}>{dir === 'next' ? 'Dự án tiếp →' : '← Dự án trước'}</span>
+        <span className="h-serif" style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', lineHeight: 1.1 }}>{project.name}</span>
+      </div>
+    </Link>
+  )
+}
 
 export default function ProjectDetail() {
   const { slug } = useParams()
@@ -21,212 +38,107 @@ export default function ProjectDetail() {
   if (!project) return null
 
   const currentIndex = PROJECTS.findIndex(p => p.slug === slug)
-  const prevProject = currentIndex > 0 ? PROJECTS[currentIndex - 1] : null
-  const nextProject = currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : null
+  const prevProject = PROJECTS[(currentIndex - 1 + PROJECTS.length) % PROJECTS.length]
+  const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length]
+
+  const facts = [
+    { label: 'Phong cách', value: project.style },
+    { label: 'Diện tích', value: project.area },
+    { label: 'Địa điểm', value: project.location },
+    { label: 'Năm', value: project.year },
+  ].filter(f => f.value)
 
   return (
-    <main style={{ background: '#F0E8D8', minHeight: '100vh', paddingTop: '88px' }}>
+    <main style={{ background: 'var(--bg)', minHeight: '100vh' }}>
 
-      {/* Hero Image */}
-      <div style={{ width: '100%', height: '70vh', overflow: 'hidden', position: 'relative' }}>
-        <img
-          src={project.cover}
-          alt={project.name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-        />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.4) 100%)' }} />
-        <div style={{ position: 'absolute', bottom: '40px', left: 0, right: 0 }}>
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <span style={{
-              fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '9px', letterSpacing: '2px',
-              background: 'rgba(42,32,24,.72)', color: '#F0E5CC',
-              padding: '6px 16px', borderRadius: '999px',
-            }}>
-              {project.category}
+      {/* Ảnh bìa tràn màn hình — nav nằm đè lên (data-hero) */}
+      <section data-hero style={{ position: 'relative', height: '88svh', minHeight: '520px', overflow: 'hidden', background: 'var(--surface-dark)' }}>
+        <img src={project.cover} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(var(--dark-rgb), .5) 0%, rgba(var(--dark-rgb), .1) 35%, rgba(var(--dark-rgb), .7) 100%)' }} />
+        <div className="h-container" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, paddingBottom: 'clamp(28px, 5vh, 56px)', color: '#FFFFFF' }}>
+          <nav aria-label="Breadcrumb" className="crumbs" style={{ color: 'rgba(255,255,255,.8)', marginBottom: '20px' }}>
+            <Link to="/">Trang chủ</Link><span aria-hidden="true">/</span>
+            <Link to="/du-an">Dự án</Link><span aria-hidden="true">/</span>
+            <span aria-current="page" style={{ color: '#FFFFFF' }}>{project.category}</span>
+          </nav>
+          <h1 className="h-serif" style={{ fontWeight: 500, fontSize: 'clamp(48px, 8vw, 132px)', lineHeight: .95, letterSpacing: '-.03em', paddingRight: '64px' }}>
+            {project.name}
+          </h1>
+        </div>
+      </section>
+
+      {/* Thông tin dự án */}
+      <section className="h-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)', paddingBottom: 'clamp(48px, 6vw, 80px)' }}>
+        <div className="meta-row" style={{ paddingBottom: '20px', borderBottom: '1px solid var(--border)', justifyContent: 'flex-start', gap: '12px 40px' }}>
+          <span className="tag tag--accent">{project.category}</span>
+          {facts.map(f => (
+            <span key={f.label} className="flex gap-2">
+              <span style={{ color: 'var(--text-secondary)' }}>{f.label}</span>
+              <span style={{ color: 'var(--text)' }}>{f.value}</span>
             </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-
-        {/* Breadcrumb */}
-        <div style={{ paddingTop: '36px', paddingBottom: '0', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <Link to="/" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9A6A40', textDecoration: 'none', transition: 'color .2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#6B3318'}
-            onMouseLeave={e => e.currentTarget.style.color = '#9A6A40'}
-          >
-            TRANG CHỦ
-          </Link>
-          <span style={{ ...MONO, fontSize: '10px', color: '#9A6A40' }}>/</span>
-          <Link to="/du-an" style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9A6A40', textDecoration: 'none', transition: 'color .2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#6B3318'}
-            onMouseLeave={e => e.currentTarget.style.color = '#9A6A40'}
-          >
-            DỰ ÁN
-          </Link>
-          <span style={{ ...MONO, fontSize: '10px', color: '#9A6A40' }}>/</span>
-          <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: '#9B5030' }}>
-            {project.name.toUpperCase()}
-          </span>
+          ))}
+          <span style={{ marginLeft: 'auto', color: 'var(--text-secondary)' }}>{project.gallery.length + 1} ảnh</span>
         </div>
 
-        {/* Project Info — 2 columns */}
-        <div
-          style={{ paddingTop: '56px', paddingBottom: '72px', display: 'grid', gap: '64px', alignItems: 'start' }}
-          className="lg:grid-cols-2"
-        >
-          {/* Left — name + description */}
-          <div>
-            <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(32px, 5vw, 62px)', color: '#6B3318', lineHeight: 1.1, marginBottom: '32px' }}>
-              {project.name}
-            </h1>
-            <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '17px', fontWeight: 300, color: '#3D2010', lineHeight: 1.85 }}>
-              {project.description}
-            </p>
-            {/* Tags */}
-            <div style={{ marginTop: '28px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {project.tags.map(tag => (
-                <span key={tag} style={{
-                  ...MONO, fontSize: '9px', letterSpacing: '1.5px',
-                  color: '#6B3318', border: '1px solid rgba(42,32,24,.22)',
-                  padding: '5px 14px', borderRadius: '999px',
-                }}>
-                  {tag}
-                </span>
-              ))}
+        {(project.description || project.tags.length > 0) && (
+          <div className="section-head" style={{ marginTop: '48px', marginBottom: 0, alignItems: 'start' }}>
+            <div>
+              <p className="h-label" style={{ marginBottom: '18px' }}>/ Về dự án</p>
+              {project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => <span key={tag} className="tag" style={{ color: 'var(--text)' }}>{tag}</span>)}
+                </div>
+              )}
             </div>
+            {project.description && <p className="h-lead">{project.description}</p>}
           </div>
+        )}
+      </section>
 
-          {/* Right — metadata (ẩn khi dự án chưa có thông tin) */}
-          {(project.style || project.area || project.location || project.year) && (
-          <div style={{ background: '#DCC99B', borderRadius: '4px', padding: '40px' }}>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '28px' }}>
-              THÔNG TIN DỰ ÁN
-            </p>
-            {[
-              { label: 'Phong cách', value: project.style },
-              { label: 'Diện tích', value: project.area },
-              { label: 'Địa điểm', value: project.location },
-              { label: 'Năm hoàn thiện', value: project.year },
-            ].filter(item => item.value).map(item => (
-              <div key={item.label} style={{ paddingBottom: '20px', marginBottom: '20px', borderBottom: '1px solid rgba(42,32,24,.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '16px', flexWrap: 'wrap' }}>
-                <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '13px', fontWeight: 300, color: '#9A6A40' }}>
-                  {item.label}
-                </span>
-                <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '16px', color: '#6B3318', textAlign: 'right' }}>
-                  {item.value}
-                </span>
+      {/* Gallery xen kẽ */}
+      {project.gallery.length > 0 && (
+        <section className="h-container" style={{ paddingBottom: 'clamp(72px, 8vw, 120px)' }} aria-label={`Hình ảnh ${project.name}`}>
+          <div className="flex flex-col gap-4">
+            {chunk(project.gallery, 3).map((group, gi) => (
+              <div key={gi} className="flex flex-col gap-4">
+                <RevealOnScroll>
+                  <div className="work-card__img" style={{ aspectRatio: '16 / 9' }}>
+                    <img src={group[0]} alt={`${project.name} — ảnh ${gi * 3 + 2}`} loading="lazy" />
+                  </div>
+                </RevealOnScroll>
+                {group.length > 1 && (
+                  <div className={`grid gap-4 ${group.length === 3 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
+                    {group.slice(1).map((img, k) => (
+                      <RevealOnScroll key={img} delay={k * 80}>
+                        <div className="work-card__img" style={{ aspectRatio: group.length === 3 ? '4 / 3' : '16 / 9' }}>
+                          <img src={img} alt={`${project.name} — ảnh ${gi * 3 + k + 3}`} loading="lazy" />
+                        </div>
+                      </RevealOnScroll>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
-          )}
+        </section>
+      )}
+
+      {/* Dự án trước / tiếp */}
+      <section className="h-container" style={{ paddingBottom: 'clamp(72px, 8vw, 120px)' }}>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5" style={{ paddingTop: '24px', borderTop: '1px solid var(--border)', marginBottom: '24px' }}>
+          <p className="h-label">/ Xem thêm</p>
+          <Link to="/du-an" className="btn btn--ghost">Tất cả dự án</Link>
         </div>
-
-        {/* Gallery Grid */}
-        {project.gallery && project.gallery.length > 0 && (
-          <div style={{ paddingBottom: '88px' }}>
-            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', marginBottom: '32px' }}>
-              GALLERY
-            </p>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '16px',
-            }}>
-              {project.gallery.map((img, i) => (
-                <div key={i} style={{ aspectRatio: '4/3', borderRadius: '4px', overflow: 'hidden' }}>
-                  <img
-                    src={img}
-                    alt={`${project.name} — ${i + 2}`}
-                    loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform .55s ease' }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Project Navigation */}
-        <div style={{
-          borderTop: '1px solid rgba(42,32,24,.12)',
-          padding: '48px 0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '16px',
-          flexWrap: 'wrap',
-        }}>
-          {prevProject ? (
-            <Link to={`/du-an/${prevProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>← DỰ ÁN TRƯỚC</span>
-              <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
-                onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
-              >
-                {prevProject.name}
-              </span>
-            </Link>
-          ) : <div />}
-
-          <Link to="/du-an" style={{
-            ...MONO, fontSize: '9.5px', letterSpacing: '2px',
-            color: '#5A3820', textDecoration: 'none',
-            border: '1px solid rgba(42,32,24,.2)',
-            padding: '10px 24px', borderRadius: '999px',
-            transition: 'all .2s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#6B3318'; e.currentTarget.style.color = '#DCC99B' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#5A3820' }}
-          >
-            TẤT CẢ DỰ ÁN
-          </Link>
-
-          {nextProject ? (
-            <Link to={`/du-an/${nextProject.slug}`} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-              <span style={{ ...MONO, fontSize: '9px', letterSpacing: '2px', color: '#9A6A40' }}>DỰ ÁN TIẾP →</span>
-              <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '18px', color: '#6B3318', transition: 'color .2s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#9B5030'}
-                onMouseLeave={e => e.currentTarget.style.color = '#6B3318'}
-              >
-                {nextProject.name}
-              </span>
-            </Link>
-          ) : <div />}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <NeighbourCard project={prevProject} dir="prev" />
+          <NeighbourCard project={nextProject} dir="next" />
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div style={{ background: '#6B3318', padding: '80px 0' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ textAlign: 'center' }}>
-          <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#FFFFFF', marginBottom: '20px' }}>
-            BẮT ĐẦU NGAY HÔM NAY
-          </p>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: 'clamp(28px, 4vw, 52px)', color: '#F0E5CC', marginBottom: '24px', lineHeight: 1.2 }}>
-            Bắt đầu dự án của bạn?
-          </h2>
-          <p style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '16px', fontWeight: 300, color: '#D4B080', marginBottom: '40px', maxWidth: '480px', margin: '0 auto 40px' }}>
-            Hãy để chúng tôi lắng nghe câu chuyện của bạn. Buổi tư vấn đầu tiên hoàn toàn miễn phí.
-          </p>
-          <Link to="/lien-he" style={{
-            ...MONO, fontSize: '11px', letterSpacing: '2.5px',
-            background: '#DCC99B', color: '#6B3318',
-            padding: '16px 40px', borderRadius: '999px',
-            textDecoration: 'none',
-            display: 'inline-block',
-            transition: 'opacity .25s, transform .25s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.opacity = '.82'; e.currentTarget.style.transform = 'translateY(-3px)' }}
-            onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
-          >
-            LIÊN HỆ TƯ VẤN
-          </Link>
-        </div>
-      </div>
-
+      <CtaCard
+        title="Bắt đầu dự án của bạn?"
+        desc="Hãy để chúng tôi lắng nghe câu chuyện của bạn. Buổi tư vấn đầu tiên hoàn toàn miễn phí."
+      />
     </main>
   )
 }

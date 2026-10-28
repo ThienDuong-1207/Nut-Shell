@@ -1,7 +1,6 @@
 /* ─── #7 Vì sao chọn Nut Shell — số lớn {4} + lưới 2×2 ─── */
 import RevealOnScroll from '../../ui/RevealOnScroll'
 import { VALUES } from '../../data/home'
-import { Asterisk } from './Icons'
 
 export default function HomeWhy() {
   return (
@@ -24,10 +23,7 @@ export default function HomeWhy() {
           {VALUES.map((v, i) => (
             <RevealOnScroll key={v.num} delay={i * 90}>
               <article className="card card--dark" style={{ height: '100%' }}>
-                <div className="flex justify-between items-start" style={{ color: 'var(--text-light-secondary)' }}>
-                  <span className="card__index">/ {v.num}</span>
-                  <span className="icon-ring" style={{ color: 'var(--accent)' }}><Asterisk size={14} /></span>
-                </div>
+                <span className="card__index" style={{ color: 'var(--text-light-secondary)' }}>/ {v.num}</span>
                 <div style={{ marginTop: '56px' }}>
                   <h3 className="h-serif" style={{ fontSize: '28px', fontWeight: 500, lineHeight: 1.1, color: 'var(--text-light)', marginBottom: '10px' }}>{v.name}</h3>
                   <p className="h-body" style={{ fontSize: '14px' }}>{v.desc}</p>

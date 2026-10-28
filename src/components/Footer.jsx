@@ -1,47 +1,54 @@
-/* ─── Footer — sandcastle reveal, stagger columns ─── */
+/* ─── Footer — tagline + nút, 3 cột "/ MỤC", logo chữ khổ lớn, dòng bản quyền ─── */
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FB_PAGE_URL } from './FloatingContact'
+import { Arrow } from './ui/Icons'
 
-const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif' }
-const JOST = { fontFamily: '"Be Vietnam Pro", sans-serif' }
-
-const LINK_COLOR = '#5A3820'
-const LINK_HOVER = '#3D1608'
-
-const COLUMNS = {
-  'Khám phá': [
-    { label: 'Dịch vụ',   href: '/#dichvu',   router: false },
-    { label: 'Dự án',     href: '/du-an',     router: true  },
-    { label: 'Quy trình', href: '/#quytrinh', router: false },
-    { label: 'Chia sẻ',   href: '/chia-se',  router: true  },
-  ],
-  'Kết nối': [
-    { label: 'Instagram', href: 'https://www.instagram.com/nut.shellinterior/' },
-    { label: 'Facebook',  href: FB_PAGE_URL },
-    { label: 'Zalo',      href: 'https://zalo.me/0898123636' },
-  ],
-  'Liên hệ': [
-    { label: 'nuttt.shell@gmail.com',                         href: 'mailto:nuttt.shell@gmail.com' },
-    { label: '0898 123 636',                             href: 'tel:0898123636'          },
-    { label: '228 Thống Nhất, P. Gò Vấp\nTP. Hồ Chí Minh',  href: 'https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh' },
-  ],
-}
+const COLUMNS = [
+  {
+    title: 'Điều hướng',
+    links: [
+      { label: 'Trang chủ',  href: '/',          router: true },
+      { label: 'Giới thiệu', href: '/gioi-thieu', router: true },
+      { label: 'Dịch vụ',    href: '/#dichvu' },
+      { label: 'Dự án',      href: '/du-an',     router: true },
+      { label: 'Chia sẻ',    href: '/chia-se',   router: true },
+      { label: 'Liên hệ',    href: '/lien-he',   router: true },
+    ],
+  },
+  {
+    title: 'Liên hệ',
+    links: [
+      { label: 'nuttt.shell@gmail.com', href: 'mailto:nuttt.shell@gmail.com' },
+      { label: '0898 123 636',          href: 'tel:0898123636' },
+      { label: '228 Thống Nhất, P. Gò Vấp\nTP. Hồ Chí Minh', href: 'https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh' },
+    ],
+  },
+  {
+    title: 'Mạng xã hội',
+    links: [
+      { label: 'Instagram', href: 'https://www.instagram.com/nut.shellinterior/' },
+      { label: 'Facebook',  href: FB_PAGE_URL },
+      { label: 'Zalo',      href: 'https://zalo.me/0898123636' },
+    ],
+  },
+]
 
 function FooterLink({ link }) {
-  const base = { ...JOST, fontSize: '14px', fontWeight: 300, color: LINK_COLOR, textDecoration: 'none', lineHeight: 1.65, whiteSpace: 'pre-line', transition: 'color .2s' }
-  const hover = e => e.currentTarget.style.color = LINK_HOVER
-  const leave = e => e.currentTarget.style.color = LINK_COLOR
-  return link.router
-    ? <Link to={link.href} style={base} onMouseEnter={hover} onMouseLeave={leave}>{link.label}</Link>
-    : <a href={link.href} style={base} onMouseEnter={hover} onMouseLeave={leave}
-        {...(link.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}>{link.label}</a>
+  if (link.router) return <Link to={link.href} className="footer__link">{link.label}</Link>
+  const external = link.href.startsWith('http')
+  return (
+    <a href={link.href} className="footer__link" {...(external && { target: '_blank', rel: 'noopener noreferrer' })}>
+      {link.label}
+    </a>
+  )
 }
 
 export default function Footer() {
   const [revealed, setRevealed] = useState(false)
   const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  // footer nằm dưới nội dung (fixed underlay) → hiện dần khi cuộn gần cuối trang
   useEffect(() => {
     if (prefersReduced) { setRevealed(true); return }
     const onScroll = () => {
@@ -53,96 +60,45 @@ export default function Footer() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [prefersReduced])
 
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
-
-  const colStyle = (i) => ({
-    transition: `opacity .6s ease ${i * 110}ms, transform .6s ease ${i * 110}ms`,
+  const step = (i) => ({
+    transition: `opacity .6s ease ${i * 100}ms, transform .6s ease ${i * 100}ms`,
     opacity: revealed ? 1 : 0,
-    transform: revealed ? 'translateY(0)' : 'translateY(20px)',
+    transform: revealed ? 'none' : 'translateY(16px)',
   })
 
   return (
-    <footer style={{ background: '#DCC99B', overflow: 'hidden', position: 'relative' }}>
-
-
-      {/* Ghost wordmark */}
-      <div aria-hidden style={{
-        position: 'absolute', bottom: '36px', left: '50%',
-        fontFamily: '"Cormorant Garamond", serif',
-        fontSize: 'clamp(64px, 10vw, 140px)',
-        letterSpacing: '-1px',
-        color: 'rgba(107,51,24,.055)',
-        whiteSpace: 'nowrap',
-        userSelect: 'none',
-        pointerEvents: 'none',
-        lineHeight: 1,
-        transition: 'opacity 1.2s ease .2s, transform 1.2s ease .2s',
-        opacity: revealed ? 1 : 0,
-        transform: revealed ? 'translate(-50%, 0)' : 'translate(-50%, 18px)',
-      }}>
-        NUT SHELL
-      </div>
-
-      {/* ── Top: logo + columns ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12" style={{ paddingTop: '72px', paddingBottom: '56px', position: 'relative', zIndex: 1 }}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1" style={colStyle(0)}>
-            <img
-              src="/images/logo-text.png"
-              alt="Nut Shell Interior Design"
-              style={{ height: '48px', width: 'auto', objectFit: 'contain', marginBottom: '16px' }}
-            />
-            <p style={{ ...JOST, fontSize: '13px', fontWeight: 300, color: '#5A3820', lineHeight: 1.85, maxWidth: '200px' }}>
-              Studio thiết kế & thi công nội thất sang trọng tại Việt Nam.
+    <footer className="footer">
+      <div className="h-container">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10" style={{ paddingTop: 'clamp(56px, 7vw, 88px)' }}>
+          <div className="md:col-span-4" style={step(0)}>
+            <p className="h-serif" style={{ fontSize: 'clamp(26px, 2.4vw, 34px)', lineHeight: 1.15, color: 'var(--text)', marginBottom: '24px', maxWidth: '320px' }}>
+              Nut Shell — thiết kế từ câu chuyện của bạn.
             </p>
+            <Link to="/lien-he" className="btn btn--dark">Liên hệ tư vấn <Arrow /></Link>
           </div>
 
-          {/* Link columns */}
-          {Object.entries(COLUMNS).map(([title, links], i) => (
-            <div key={title} style={colStyle(i + 1)}>
-              <p style={{ ...MONO, fontSize: '9px', letterSpacing: '2.5px', color: '#6B3318', marginBottom: '18px', textTransform: 'uppercase' }}>
-                {title}
-              </p>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '11px' }}>
-                {links.map(link => (
-                  <li key={link.label}><FooterLink link={link} /></li>
-                ))}
+          {COLUMNS.map((col, i) => (
+            <div key={col.title} className={i === 0 ? 'md:col-span-3 md:col-start-6' : i === 1 ? 'md:col-span-2' : 'md:col-span-2'} style={step(i + 1)}>
+              <p className="h-label" style={{ paddingBottom: '14px', marginBottom: '16px', borderBottom: '1px solid var(--border)' }}>/ {col.title}</p>
+              <ul className="flex flex-col gap-2" style={{ listStyle: 'none' }}>
+                {col.links.map(link => <li key={link.label}><FooterLink link={link} /></li>)}
               </ul>
             </div>
           ))}
         </div>
+
+        {/* footer là lớp fixed nằm dưới nội dung → giữ tổng chiều cao thấp hơn màn hình */}
+        <div style={{ ...step(4), padding: 'clamp(40px, 5vw, 64px) 0 clamp(24px, 3vw, 32px)' }}>
+          <img src="/images/logo-text.png" alt="Nut Shell Interior Design" style={{ width: '100%', maxWidth: '720px', height: 'auto', display: 'block' }} />
+        </div>
       </div>
 
-      {/* ── Copyright bar ── */}
-      <div style={{
-        borderTop: 'none',
-        padding: '18px clamp(16px, 4vw, 48px)',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        flexWrap: 'wrap', gap: '8px',
-        position: 'relative', zIndex: 1,
-        transition: 'opacity .6s ease .44s',
-        opacity: revealed ? 1 : 0,
-      }}>
-        <p style={{ ...MONO, fontSize: '9px', letterSpacing: '1px', color: '#5A3820' }}>
-          © 2026 Nut Shell. Bảo lưu mọi quyền.
-        </p>
-        <button
-          onClick={scrollTop}
-          style={{
-            ...MONO, fontSize: '9px', letterSpacing: '1.5px',
-            color: '#5A3820',
-            background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0',
-            transition: 'color .2s',
-          }}
-          onMouseEnter={e => e.currentTarget.style.color = '#3D1608'}
-          onMouseLeave={e => e.currentTarget.style.color = '#5A3820'}
-        >
-          ↑ LÊN ĐẦU
+      <div className="h-container flex flex-wrap items-center justify-between gap-2" style={{ ...step(5), borderTop: '1px solid var(--border)', paddingTop: '16px', paddingBottom: '16px' }}>
+        <p className="h-label" style={{ color: 'var(--text-secondary)', fontSize: '10px' }}>© 2026 Nut Shell. Bảo lưu mọi quyền.</p>
+        <button className="footer__top h-label" onClick={() => window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' })}>
+          ↑ Lên đầu trang
         </button>
       </div>
-
     </footer>
   )
 }

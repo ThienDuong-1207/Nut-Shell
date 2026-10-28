@@ -1,4 +1,4 @@
-/* ─── Navigation — trong suốt chữ sáng khi nằm trên Hero trang chủ, còn lại nền kem ─── */
+/* ─── Navigation — trong suốt chữ sáng khi nằm trên ảnh [data-hero], còn lại nền kem ─── */
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -13,20 +13,23 @@ const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10.5px', l
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [overHero,   setOverHero]   = useState(true)
+  const [overHero,   setOverHero]   = useState(false)
   const location = useLocation()
 
-  // Hero trang chủ cao 100svh → nav trong suốt cho đến khi cuộn qua hết ảnh
+  // Trang có ảnh đầu trang tràn màn hình (đánh dấu data-hero) → nav trong suốt cho đến khi cuộn qua ảnh
   useEffect(() => {
-    const onScroll = () => setOverHero(window.scrollY < window.innerHeight - 72)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    onScroll()
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+    const check = () => {
+      const hero = document.querySelector('[data-hero]')
+      setOverHero(!!hero && hero.getBoundingClientRect().bottom > 72)
     }
-  }, [])
+    window.addEventListener('scroll', check, { passive: true })
+    window.addEventListener('resize', check)
+    check()   // effect chạy sau khi trang mới đã render nên [data-hero] đã có trong DOM
+    return () => {
+      window.removeEventListener('scroll', check)
+      window.removeEventListener('resize', check)
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setMobileOpen(false) }
@@ -42,7 +45,7 @@ export default function Nav() {
   useEffect(() => { setMobileOpen(false) }, [location.pathname])
 
   const isHome     = location.pathname === '/'
-  const heroMode   = isHome && overHero
+  const heroMode   = overHero
   const isActive   = (to) => to && (location.pathname === to || location.pathname.startsWith(to + '/'))
 
   /* ── Theme tokens ── */

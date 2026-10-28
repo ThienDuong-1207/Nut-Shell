@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProjectBySlug } from '../../data/projects'
-import { Arrow } from './Icons'
+import { Arrow } from '../ui/Icons'
 
 // Nhà ở mục 17, 2, 3, 4 trong thư mục CÔNG TRÌNH RENDER
 const SLIDES = ['villa-longhau', 'cheese-tart', 'muted-spark', 'kingdom101'].map(getProjectBySlug)
@@ -32,7 +32,7 @@ export default function HomeHero({ appLoaded }) {
   const pad = n => String(n).padStart(2, '0')
 
   return (
-    <section className="hero" aria-roledescription="carousel" aria-label="Công trình tiêu biểu">
+    <section className="hero" data-hero aria-roledescription="carousel" aria-label="Công trình tiêu biểu">
       {SLIDES.map((p, i) => (
         <div key={p.slug} className="hero__slide" data-active={i === active} aria-hidden={i !== active}>
           <img src={p.cover} alt={i === active ? p.name : ''} fetchpriority={i === 0 ? 'high' : undefined} loading={i === 0 ? 'eager' : 'lazy'} />
