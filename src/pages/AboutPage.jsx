@@ -50,11 +50,20 @@ const VALUES = [
 ]
 
 // objectPosition giữ khuôn mặt trong khung khi ảnh gốc có nhiều khoảng trống
-const TEAM = [
-  { name: 'Hoàng Vân Anh',     role: 'FOUNDER', img: '/images/founder-1.jpeg', pos: 'center 72%' },
-  { name: 'Phan Thị Kinh Anh', role: 'FOUNDER', img: '/images/founder-2.jpeg', pos: 'center 30%' },
-  { name: null,                role: 'MEMBER',  img: '/images/member-1.jpeg',  pos: 'center 30%' },
-  { name: null,                role: 'MEMBER',  img: '/images/member-2.jpeg',  pos: 'center 35%' },
+const FOUNDERS = [
+  {
+    name: 'Hoàng Vân Anh', role: 'Founder', img: '/images/founder-1.jpeg', pos: 'center 72%',
+    bio: 'Giảng viên Thiết kế nội thất với 9 năm kinh nghiệm trong các dự án nhà ở và cộng đồng.',
+  },
+  {
+    name: 'Phan Thị Kim Anh', role: 'Co-Founder', img: '/images/founder-2.jpeg', pos: 'center 30%',
+    bio: 'Giảng viên Thiết kế nội thất với 9 năm kinh nghiệm trong các dự án nhà ở và F&B.',
+  },
+]
+
+const TEAMS = [
+  { name: 'Team 3D Design',            members: ['Mai Hồ Ánh Thư', 'Nguyễn Hồ Minh Nguyệt'] },
+  { name: 'Team Triển khai & Giám sát', members: ['Nguyễn Tuấn Kiệt'] },
 ]
 
 const MILESTONES = [
@@ -175,7 +184,7 @@ export default function AboutPage() {
             <div className="lg:col-span-7" style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingTop: '4px' }}>
               <RevealOnScroll delay={150}>
                 <p style={{ ...BODY, color: C.body }}>
-                  Năm 2017, hai nhà sáng lập Hoàng Vân Anh và Phan Thị Kinh Anh bắt đầu hành trình từ một xưởng thiết kế nhỏ tại quận 1, TP.HCM. Với triết lý "ít hơn nhưng có ý nghĩa hơn", mỗi dự án là bài toán cân bằng giữa vẻ đẹp thẩm mỹ và giá trị công năng thực sự.
+                  Năm 2017, hai nhà sáng lập Hoàng Vân Anh và Phan Thị Kim Anh bắt đầu hành trình từ một xưởng thiết kế nhỏ tại quận 1, TP.HCM. Với triết lý "ít hơn nhưng có ý nghĩa hơn", mỗi dự án là bài toán cân bằng giữa vẻ đẹp thẩm mỹ và giá trị công năng thực sự.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={210}>
@@ -263,13 +272,39 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHead label="ĐỘI NGŨ" title="Những người kiến tạo không gian" />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-6">
-            {TEAM.map((p, i) => (
-              <RevealOnScroll key={p.img} delay={i * 90}>
-                <div className="about-team">
-                  <ZoomImage src={p.img} alt={p.name ? `${p.name} — ${p.role} Nut Shell` : 'Thành viên Nut Shell Studio'} pos={p.pos} ratio="3/4" />
-                  {p.name && <h3 style={{ ...SERIF, fontSize: '19px', fontWeight: 400, color: C.brown, margin: '18px 0 4px' }}>{p.name}</h3>}
-                  <p style={{ ...MONO, fontSize: '9.5px', letterSpacing: '2px', color: C.accent, marginTop: p.name ? 0 : '18px' }}>{p.role}</p>
+          {/* Sáng lập — ảnh + vai trò + giới thiệu ngắn */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-6">
+            {FOUNDERS.map((p, i) => (
+              <RevealOnScroll key={p.name} delay={i * 100}>
+                <article className="about-team grid grid-cols-1 sm:grid-cols-2 gap-6 items-end">
+                  <ZoomImage src={p.img} alt={`${p.name} — ${p.role} Nut Shell`} pos={p.pos} ratio="4/5" />
+                  <div style={{ paddingBottom: '8px' }}>
+                    <p style={{ ...LABEL, color: C.accent, marginBottom: '14px' }}>/ {p.role.toUpperCase()}</p>
+                    <h3 style={{ ...SERIF, fontSize: 'clamp(28px, 2.6vw, 36px)', fontWeight: 500, lineHeight: 1.1, color: C.brown, marginBottom: '14px' }}>{p.name}</h3>
+                    <p style={{ ...BODY, fontSize: '15px', lineHeight: 1.7, color: C.body }}>{p.bio}</p>
+                  </div>
+                </article>
+              </RevealOnScroll>
+            ))}
+          </div>
+
+          {/* Các nhóm */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 'clamp(56px, 7vw, 96px)' }}>
+            {TEAMS.map((t, i) => (
+              <RevealOnScroll key={t.name} delay={i * 100}>
+                <div style={{ height: '100%', borderRadius: '20px', border: `1px solid ${C.line}`, background: 'var(--surface)', padding: 'clamp(24px, 3vw, 32px)' }}>
+                  <div className="flex justify-between items-baseline gap-4" style={{ paddingBottom: '16px', marginBottom: '8px', borderBottom: `1px solid ${C.line}` }}>
+                    <p style={{ ...LABEL, color: C.accent }}>/ {t.name.toUpperCase()}</p>
+                    <p style={{ ...LABEL, color: C.body }}>{String(t.members.length).padStart(2, '0')}</p>
+                  </div>
+                  <ul style={{ listStyle: 'none' }}>
+                    {t.members.map((m, k) => (
+                      <li key={m} className="flex items-baseline gap-4" style={{ padding: '14px 0', borderBottom: k < t.members.length - 1 ? `1px solid ${C.line}` : 'none' }}>
+                        <span style={{ ...LABEL, color: C.body }}>{String(k + 1).padStart(2, '0')}</span>
+                        <span style={{ ...SERIF, fontSize: '24px', fontWeight: 500, color: C.brown }}>{m}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </RevealOnScroll>
             ))}

@@ -63,13 +63,14 @@ export default function Nav() {
       borderBottom: navBorder,
       transition: 'background .5s ease, border-color .5s ease',
     }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between" style={{ height: '72px' }}>
+      {/* 3 cột: logo trái · menu giữa màn hình · nút Liên hệ phải (mobile: logo · hamburger) */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center" style={{ height: '72px' }}>
 
         {/* Logo */}
         <Link
           to="/"
           onClick={() => { if (isHome) window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%', cursor: 'pointer' }}
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%', cursor: 'pointer', justifySelf: 'start' }}
         >
           <img
             src={heroMode && !mobileOpen ? '/images/logo-text-light.png' : '/images/logo-text.png'}
@@ -84,7 +85,7 @@ export default function Nav() {
           />
         </Link>
 
-        {/* Desktop links */}
+        {/* Desktop links — cột giữa */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(l => {
             const active = isActive(l.to)
@@ -117,7 +118,10 @@ export default function Nav() {
             )
           })}
 
-          {/* LIÊN HỆ button */}
+        </div>
+
+        {/* LIÊN HỆ button — cột phải */}
+        <div className="hidden md:flex justify-end">
           <Link
             to="/lien-he"
             style={{
@@ -138,7 +142,7 @@ export default function Nav() {
 
         {/* Hamburger */}
         <button
-          className="md:hidden flex flex-col items-center justify-center gap-[5px] min-w-[44px] min-h-[44px] -mr-3"
+          className="md:hidden justify-self-end flex flex-col items-center justify-center gap-[5px] min-w-[44px] min-h-[44px] -mr-3"
           onClick={() => setMobileOpen(o => !o)}
           aria-label={mobileOpen ? 'Đóng menu' : 'Mở menu'}
         >
