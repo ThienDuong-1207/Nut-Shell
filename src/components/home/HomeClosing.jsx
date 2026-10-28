@@ -1,7 +1,22 @@
 /* ─── #12 Kết trang — meta row, ảnh tròn giữa 2 cụm vạch, dải nhấn, câu lớn chia đôi ─── */
 import { STRIP } from '../../data/home'
-import { MetaRow } from './HomeHero'
+import { PROJECTS } from '../../data/projects'
 import { Asterisk } from './Icons'
+
+function MetaRow() {
+  return (
+    <div className="meta-row" style={{ color: 'var(--text)' }}>
+      <span>Studio nội thất / TP.HCM</span>
+      <span className="flex flex-wrap gap-2">
+        <span className="tag">Nhà ở</span>
+        <span className="tag">Cafe</span>
+        <span className="tag">Nhà hàng</span>
+      </span>
+      <span>( {PROJECTS.length} dự án )</span>
+      <span className="tag tag--accent">Est. 2017</span>
+    </div>
+  )
+}
 
 const BARS = Array.from({ length: 14 })
 

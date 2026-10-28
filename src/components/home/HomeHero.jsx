@@ -1,82 +1,83 @@
-/* ─── #2 Hero — wordmark khổng lồ, H1, bento tối, meta row ─── */
+/* ─── #2 Hero — ảnh tràn màn hình tự chuyển, tiêu đề lớn so le ─── */
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { PROJECTS } from '../../data/projects'
-import { Asterisk, Arrow, Globe } from './Icons'
+import { getProjectBySlug } from '../../data/projects'
+import { Arrow } from './Icons'
+
+// Nhà ở mục 17, 2, 3, 4 trong thư mục CÔNG TRÌNH RENDER
+const SLIDES = ['villa-longhau', 'cheese-tart', 'muted-spark', 'kingdom101'].map(getProjectBySlug)
+const INTERVAL = 6000
+
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 // chỉ chạy animation vào trang khi loading screen đã xong
 const enter = (on, delay) => on
   ? { animation: `fadeUp 1s cubic-bezier(.2,.7,.2,1) ${delay}ms both` }
   : { opacity: 0 }
 
-export function MetaRow() {
-  return (
-    <div className="meta-row" style={{ color: 'var(--text)' }}>
-      <span>Studio nội thất / TP.HCM</span>
-      <span className="flex flex-wrap gap-2">
-        <span className="tag">Nhà ở</span>
-        <span className="tag">Cafe</span>
-        <span className="tag">Nhà hàng</span>
-      </span>
-      <span>( {PROJECTS.length} dự án )</span>
-      <span className="tag tag--accent">Est. 2017</span>
-    </div>
-  )
-}
-
 export default function HomeHero({ appLoaded }) {
-  return (
-    <section style={{ paddingTop: '104px', paddingBottom: 'clamp(72px, 8vw, 120px)' }}>
-      <div className="h-container">
-        <div style={{ overflow: 'hidden' }}>
-          <p className={`wordmark ${appLoaded ? 'wordmark--reveal' : ''}`} style={appLoaded ? undefined : { opacity: 0 }} aria-hidden="true">
-            NUT SHELL
-          </p>
-        </div>
+  const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(prefersReducedMotion)
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10" style={{ marginTop: 'clamp(24px, 3vw, 40px)', marginBottom: 'clamp(32px, 4vw, 48px)' }}>
-          <p className="md:col-span-5 h-body" style={{ fontSize: '16px', ...enter(appLoaded, 250) }}>
-            / Thiết kế & thi công nội thất.<br />Từ câu chuyện của bạn.
-          </p>
-          <h1 className="md:col-span-7 h-serif" style={{
-            fontWeight: 500, fontSize: 'clamp(44px, 6vw, 92px)', lineHeight: .95, letterSpacing: '-.03em', color: 'var(--text)',
-            ...enter(appLoaded, 350),
-          }}>
-            Thiết kế bắt đầu từ sự thấu hiểu.
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(() => {
+      if (!document.hidden) setActive(i => (i + 1) % SLIDES.length)
+    }, INTERVAL)
+    return () => clearInterval(id)
+  }, [paused, active])
+
+  const pad = n => String(n).padStart(2, '0')
+
+  return (
+    <section className="hero" aria-roledescription="carousel" aria-label="Công trình tiêu biểu">
+      {SLIDES.map((p, i) => (
+        <div key={p.slug} className="hero__slide" data-active={i === active} aria-hidden={i !== active}>
+          <img src={p.cover} alt={i === active ? p.name : ''} fetchpriority={i === 0 ? 'high' : undefined} loading={i === 0 ? 'eager' : 'lazy'} />
+        </div>
+      ))}
+      <div className="hero__shade" />
+
+      <div className="hero__content h-container">
+        <div className="hero__title-wrap">
+          <p className="hero__eyebrow" style={enter(appLoaded, 200)}>Mỗi không gian là một câu chuyện riêng</p>
+          <h1 className="hero__title">
+            <span style={{ ...enter(appLoaded, 300) }}>Thiết kế</span>
+            <span className="hero__indent-1" style={enter(appLoaded, 420)}>bắt đầu từ</span>
+            <span className="hero__indent-2" style={enter(appLoaded, 540)}>sự thấu hiểu.</span>
           </h1>
         </div>
 
-        <div className="bento" style={enter(appLoaded, 500)}>
-          <div className="bento__year items-end justify-center" style={{ padding: '18px 0' }}>
-            <span className="h-serif" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '64px', lineHeight: 1, color: 'var(--accent)' }}>2017</span>
-          </div>
-          <div className="flex flex-col justify-between" style={{ padding: '22px', color: 'var(--accent)' }}>
-            <Globe />
-            <p className="h-label" style={{ color: 'var(--accent)', lineHeight: 1.6 }}>
-              Thiết kế từ câu chuyện của bạn.<br />Không từ catalog.
+        <div className="hero__bottom">
+          <div className="hero__dots" style={enter(appLoaded, 700)}>
+            <p className="hero__caption" aria-live="polite">
+              {pad(active + 1)} / {pad(SLIDES.length)} — {SLIDES[active].name}
             </p>
-          </div>
-          <div className="bento__img">
-            <img src="/projects/nha-o/indochine/cover.webp" alt="Phòng khách Indochine Residence do Nut Shell thiết kế" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-          <div className="grid place-items-center" style={{ color: 'var(--accent)' }}>
-            <div className="spin-slow grid place-items-center" style={{ width: '60%', maxWidth: '150px', aspectRatio: 1, borderRadius: '50%', border: '1px solid var(--border-light)' }}>
-              <Asterisk size={48} strokeWidth={1.4} />
+            <div className="flex items-center gap-1">
+              {SLIDES.map((p, i) => (
+                <button key={p.slug} className="hero__dot" data-active={i === active}
+                  aria-label={`Xem ảnh ${i + 1}: ${p.name}`} aria-current={i === active || undefined}
+                  onClick={() => setActive(i)}>
+                  <span />
+                </button>
+              ))}
+              <button className="hero__dot hero__pause" onClick={() => setPaused(v => !v)} aria-label={paused ? 'Tiếp tục tự chuyển ảnh' : 'Dừng tự chuyển ảnh'}>
+                {paused
+                  ? <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z" /></svg>
+                  : <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" /></svg>}
+              </button>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ padding: '32px 0', borderBottom: '1px solid var(--border)', ...enter(appLoaded, 650) }}>
-          <p className="h-lead" style={{ maxWidth: '560px' }}>
-            Nut Shell đồng hành cùng hơn 400 công trình — từ nhà ở, biệt thự đến không gian thương mại — với cùng một cam kết: mỗi không gian là một câu chuyện riêng.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link to="/lien-he" className="btn btn--dark">Liên hệ tư vấn <Arrow /></Link>
-            <Link to="/du-an" className="btn btn--ghost">Xem dự án</Link>
+          <div className="hero__side" style={enter(appLoaded, 800)}>
+            <p>Đồng hành từ ý tưởng đến bàn giao — từng bước, hướng tới không gian sống bạn mơ ước.</p>
+            <div className="flex flex-wrap gap-3 md:justify-end">
+              <Link to="/lien-he" className="btn btn--light">Liên hệ tư vấn <Arrow /></Link>
+              <Link to="/du-an" className="btn btn--ghost-light">Xem dự án</Link>
+            </div>
           </div>
-        </div>
-
-        <div style={{ paddingTop: '20px', ...enter(appLoaded, 750) }}>
-          <MetaRow />
         </div>
       </div>
     </section>
