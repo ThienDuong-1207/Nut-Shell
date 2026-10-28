@@ -21,7 +21,7 @@ const COLUMNS = [
     links: [
       { label: 'nuttt.shell@gmail.com', href: 'mailto:nuttt.shell@gmail.com' },
       { label: '0898 123 636',          href: 'tel:0898123636' },
-      { label: '228 Thống Nhất, P. Gò Vấp\nTP. Hồ Chí Minh', href: 'https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh' },
+      { label: '228 Thống Nhất, P. Gò Vấp, TP.\u00A0Hồ\u00A0Chí\u00A0Minh', href: 'https://www.google.com/maps/search/?api=1&query=228+Th%E1%BB%91ng+Nh%E1%BA%A5t,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh' },
     ],
   },
   {
@@ -70,7 +70,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="h-container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10" style={{ paddingTop: 'clamp(56px, 7vw, 88px)' }}>
-          <div className="md:col-span-4" style={step(0)}>
+          <div className="md:col-span-3" style={step(0)}>
             <p className="h-serif" style={{ fontSize: 'clamp(26px, 2.4vw, 34px)', lineHeight: 1.15, color: 'var(--text)', marginBottom: '24px', maxWidth: '320px' }}>
               Nut Shell — thiết kế từ câu chuyện của bạn.
             </p>
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
 
           {COLUMNS.map((col, i) => (
-            <div key={col.title} className={i === 0 ? 'md:col-span-3 md:col-start-6' : i === 1 ? 'md:col-span-2' : 'md:col-span-2'} style={step(i + 1)}>
+            <div key={col.title} className={i === 0 ? 'md:col-span-2 md:col-start-5' : i === 1 ? 'md:col-span-4' : 'md:col-span-2'} style={step(i + 1)}>
               <p className="h-label" style={{ paddingBottom: '14px', marginBottom: '16px', borderBottom: '1px solid var(--border)' }}>/ {col.title}</p>
               <ul className="flex flex-col gap-2" style={{ listStyle: 'none' }}>
                 {col.links.map(link => <li key={link.label}><FooterLink link={link} /></li>)}
