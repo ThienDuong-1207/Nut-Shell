@@ -90,9 +90,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1" style={colStyle(0)}>
             <img
-              src="/images/logo.jpeg"
-              alt="Nut Shell"
-              style={{ height: '44px', width: 'auto', objectFit: 'contain', marginBottom: '16px', opacity: .85 }}
+              src="/images/logo-text.png"
+              alt="Nut Shell Interior Design"
+              style={{ height: '48px', width: 'auto', objectFit: 'contain', marginBottom: '16px' }}
             />
             <p style={{ ...JOST, fontSize: '13px', fontWeight: 300, color: '#5A3820', lineHeight: 1.85, maxWidth: '200px' }}>
               Studio thiết kế & thi công nội thất sang trọng tại Việt Nam.

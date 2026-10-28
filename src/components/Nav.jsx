@@ -71,15 +71,13 @@ export default function Nav() {
           style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%', cursor: 'pointer' }}
         >
           <img
-            src="/images/logo.jpeg"
-            alt="Nut Shell"
+            src={heroMode ? '/images/logo-text-light.png' : '/images/logo-text.png'}
+            alt="Nut Shell Interior Design"
             style={{
-              height: '52px',
+              height: '40px',
               width: 'auto',
               objectFit: 'contain',
               display: 'block',
-              mixBlendMode: heroMode ? 'normal' : 'multiply',
-              transition: 'mix-blend-mode .5s',
               pointerEvents: 'none',
             }}
           />
