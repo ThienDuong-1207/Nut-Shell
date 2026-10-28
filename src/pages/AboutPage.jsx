@@ -24,25 +24,15 @@ const VALUES = [
   },
 ]
 
-const TEAM = [
-  {
-    name: 'Hoàng Vân Anh',
-    role: 'Nhà thiết kế sáng lập',
-    img: '/projects/nha-o/indochine-cover.jpg',
-    desc: 'Tốt nghiệp kiến trúc ĐH Kiến trúc TP.HCM, 12 năm kinh nghiệm thiết kế nội thất cao cấp.',
-  },
-  {
-    name: 'Trần Minh Khoa',
-    role: 'Kiến trúc sư trưởng',
-    img: '/projects/cafe/nina-cover.jpg',
-    desc: 'Chuyên gia về không gian thương mại, đã thiết kế hơn 80 quán cafe và nhà hàng tại Việt Nam.',
-  },
-  {
-    name: 'Lê Thùy Linh',
-    role: 'Thiết kế nội thất',
-    img: '/projects/nha-o/wabi-cover.jpg',
-    desc: 'Chuyên sâu về phong cách Wabi-Sabi và tối giản châu Á, mang chất liệu tự nhiên vào từng không gian.',
-  },
+// objectPosition giữ khuôn mặt trong khung khi ảnh gốc có nhiều khoảng trống
+const FOUNDERS = [
+  { name: 'Hoàng Vân Anh',      img: '/images/founder-1.jpeg', pos: 'center 72%' },
+  { name: 'Phan Thị Kinh Anh',  img: '/images/founder-2.jpeg', pos: 'center 30%' },
+]
+
+const MEMBERS = [
+  { img: '/images/member-1.jpeg', pos: 'center 30%' },
+  { img: '/images/member-2.jpeg', pos: 'center 35%' },
 ]
 
 const MILESTONES = [
@@ -98,7 +88,7 @@ export default function AboutPage() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '28px', marginBottom: '28px' }}>
                   <div style={{ width: '2px', flexShrink: 0, height: '56px', background: 'linear-gradient(to bottom, #9B5030, transparent)', marginTop: '4px' }} />
                   <p style={{ ...JOST, fontSize: '16px', fontWeight: 300, color: '#5A3820', lineHeight: 1.9 }}>
-                    Năm 2017, kiến trúc sư Hoàng Vân Anh bắt đầu hành trình từ một xưởng thiết kế nhỏ tại quận 1, TP.HCM. Với triết lý "ít hơn nhưng có ý nghĩa hơn", mỗi dự án là bài toán cân bằng giữa vẻ đẹp thẩm mỹ và giá trị công năng thực sự.
+                    Năm 2017, hai nhà sáng lập Hoàng Vân Anh và Phan Thị Kinh Anh bắt đầu hành trình từ một xưởng thiết kế nhỏ tại quận 1, TP.HCM. Với triết lý "ít hơn nhưng có ý nghĩa hơn", mỗi dự án là bài toán cân bằng giữa vẻ đẹp thẩm mỹ và giá trị công năng thực sự.
                   </p>
                 </div>
               </RevealOnScroll>
@@ -113,7 +103,7 @@ export default function AboutPage() {
             <RevealOnScroll delay={100}>
               <div style={{ aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden' }}>
                 <img
-                  src="/images/team1.jpg"
+                  src="/images/proj1.jpg"
                   alt="Nut Shell Studio workspace"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -194,25 +184,49 @@ export default function AboutPage() {
               Những người kiến tạo không gian
             </h2>
           </RevealOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {TEAM.map((member, i) => (
-              <RevealOnScroll key={member.name} delay={i * 100}>
+          {/* Founders — 2 ảnh lớn */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+            {FOUNDERS.map((f, i) => (
+              <RevealOnScroll key={f.name} delay={i * 100}>
                 <div>
-                  <div style={{ aspectRatio: '3/4', borderRadius: '2px', overflow: 'hidden', marginBottom: '22px' }}>
+                  <div style={{ aspectRatio: '4/5', borderRadius: '2px', overflow: 'hidden', marginBottom: '22px' }}>
                     <img
-                      src={member.img}
-                      alt={member.name}
+                      src={f.img}
+                      alt={`${f.name} — Founder Nut Shell`}
                       loading="lazy"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform .55s ease' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: f.pos, transition: 'transform .55s ease' }}
                       onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
                       onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                     />
                   </div>
-                  <h3 style={{ ...SERIF, fontSize: '20px', color: '#6B3318', marginBottom: '6px' }}>{member.name}</h3>
-                  <p style={{ ...MONO, fontSize: '9.5px', letterSpacing: '2px', color: '#9B5030', marginBottom: '12px' }}>
-                    {member.role.toUpperCase()}
-                  </p>
-                  <p style={{ ...JOST, fontSize: '14px', fontWeight: 300, color: '#5A3820', lineHeight: 1.8 }}>{member.desc}</p>
+                  <h3 style={{ ...SERIF, fontSize: '24px', color: '#6B3318', marginBottom: '6px' }}>{f.name}</h3>
+                  <p style={{ ...MONO, fontSize: '9.5px', letterSpacing: '2px', color: '#9B5030' }}>FOUNDER</p>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+
+          {/* Members — 2 ảnh nhỏ hơn */}
+          <RevealOnScroll>
+            <p style={{ ...MONO, fontSize: '10px', letterSpacing: '3px', color: '#9B5030', margin: '96px 0 32px' }}>
+              MEMBERS
+            </p>
+          </RevealOnScroll>
+          <div className="grid grid-cols-2 gap-6 lg:gap-10" style={{ maxWidth: '760px' }}>
+            {MEMBERS.map((m, i) => (
+              <RevealOnScroll key={m.img} delay={i * 100}>
+                <div>
+                  <div style={{ aspectRatio: '3/4', borderRadius: '2px', overflow: 'hidden', marginBottom: '16px' }}>
+                    <img
+                      src={m.img}
+                      alt="Thành viên Nut Shell Studio"
+                      loading="lazy"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: m.pos, transition: 'transform .55s ease' }}
+                      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                      onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                    />
+                  </div>
+                  <p style={{ ...MONO, fontSize: '9.5px', letterSpacing: '2px', color: '#9B5030' }}>MEMBER</p>
                 </div>
               </RevealOnScroll>
             ))}
