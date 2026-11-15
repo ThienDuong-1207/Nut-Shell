@@ -148,9 +148,8 @@ export default function AboutPage() {
   return (
     <main style={{ background: 'var(--bg-about)' }}>
       <style>{`
-        .about-at { --w: clamp(220px, 24vw, 360px); display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--w) * .05); }
+        .about-at { --w: clamp(220px, 24vw, 360px); display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
         .about-at__logo { width: var(--w); height: auto; display: block; }
-        .about-at__word { font: 700 calc(var(--w) * .12)/1 "Be Vietnam Pro", sans-serif; letter-spacing: .01em; color: var(--logo); }
         .about-zoom { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
         .about-zoom:hover { transform: scale(1.04); }
         .about-team img { filter: sepia(.35) saturate(.8); transition: filter .5s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
@@ -188,25 +187,18 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center" style={{ borderBottom: `1px solid ${C.line}`, paddingBottom: '64px', marginBottom: '64px' }}>
-            {/* "Tại" in đậm đặt phía trên logo chữ → đọc thành "Tại nutshell, chúng tôi…" */}
+            {/* "TẠI" cùng kiểu nhãn mục (như GIÁ TRỊ CỐT LÕI) đặt trên logo chữ → đọc thành "Tại nutshell, chúng tôi…" */}
             <RevealOnScroll className="lg:col-span-5">
               <p className="about-at" aria-label="Tại Nut Shell">
-                <span className="about-at__word" aria-hidden="true">Tại</span>
+                <span aria-hidden="true" style={{ ...LABEL, color: C.accent }}>TẠI</span>
                 <img src="/images/logo-text.png" alt="" className="about-at__logo" />
               </p>
             </RevealOnScroll>
-            <div className="lg:col-span-7" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <RevealOnScroll delay={120}>
-                <p style={{ ...SERIF, fontSize: 'clamp(24px, 2.4vw, 34px)', lineHeight: 1.3, color: C.brown }}>
-                  Chúng tôi tư vấn, thiết kế và thi công nội thất trọn gói.
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={200}>
-                <p style={{ ...BODY, color: C.body }}>
-                  Kết hợp thẩm mỹ, công năng và vật liệu để tạo nên những không gian mang dấu ấn riêng, chỉn chu trong từng chi tiết.
-                </p>
-              </RevealOnScroll>
-            </div>
+            <RevealOnScroll delay={120} className="lg:col-span-7">
+              <p style={{ ...BODY, color: C.body, maxWidth: '640px' }}>
+                Chúng tôi tư vấn, thiết kế và thi công nội thất trọn gói. Kết hợp thẩm mỹ, công năng và vật liệu để tạo nên những không gian mang dấu ấn riêng, chỉn chu trong từng chi tiết.
+              </p>
+            </RevealOnScroll>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
