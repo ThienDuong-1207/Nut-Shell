@@ -75,7 +75,7 @@ export default function App() {
 
       {/* Spacer: non-positioned (stacking layer below fixed footer) + pointer-events none
           → footer is visually & interactively on top in this area */}
-      <div style={{ height: footerH, pointerEvents: 'none', background: 'var(--bg)' }} aria-hidden="true" />
+      <div style={{ height: footerH, pointerEvents: 'none', background: 'var(--page-bg)' }} aria-hidden="true" />
 
       <FloatingContact />
     </BrowserRouter>

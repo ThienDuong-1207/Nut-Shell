@@ -5,6 +5,8 @@
 /* ─── Design tokens (DESIGN.md §2) ─── */
 :root {
   --bg: #F0E7D7;
+  --bg-about: #EFEBE6;           /* nền riêng trang Giới thiệu */
+  --page-bg: var(--bg);          /* nền trang hiện tại — menu, footer theo màu này; trang có thể ghi đè trên <body> */
   --surface: #F6F0E4;
   --surface-alt: #E6DAC3;
   --surface-dark: #1D1A19;
@@ -24,6 +26,7 @@
   --accent: #DCC99B;
   --accent-hover: #E6D6AE;
   --accent-strong: #6B3318;
+  --logo: #884534;              /* màu chữ trong logo-text.png */
   --brand: #6B3318;             /* nâu thương hiệu — nền thẻ CTA */
   --text-on-brand: #E6D6BF;     /* đoạn văn trên --brand (7:1) */
 

@@ -140,7 +140,7 @@
 }
 
 /* ── Footer ── */
-.footer { background: var(--bg); border-top: 1px solid var(--border); overflow: hidden; }
+.footer { background: var(--page-bg); border-top: 1px solid var(--border); overflow: hidden; }
 .footer__link { font: 300 15px/1.6 "Be Vietnam Pro", sans-serif; color: var(--text-secondary); text-decoration: none; white-space: pre-line; transition: color .2s ease; }
 .footer__link:hover { color: var(--text); }
 .footer__link:focus-visible, .footer__top:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; }

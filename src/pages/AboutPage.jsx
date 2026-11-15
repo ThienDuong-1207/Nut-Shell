@@ -137,11 +137,20 @@ function ZoomImage({ src, alt, pos = 'center', ratio = '4/5' }) {
 }
 
 export default function AboutPage() {
+  // menu và footer dùng --page-bg → đổi theo nền riêng của trang này, trả lại khi rời trang
+  useEffect(() => {
+    document.body.style.setProperty('--page-bg', 'var(--bg-about)')
+    return () => document.body.style.removeProperty('--page-bg')
+  }, [])
+
   const heroBg = useParallax(0.22)
 
   return (
-    <main style={{ background: C.cream }}>
+    <main style={{ background: 'var(--bg-about)' }}>
       <style>{`
+        .about-at { --w: clamp(220px, 24vw, 360px); display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--w) * .05); }
+        .about-at__logo { width: var(--w); height: auto; display: block; }
+        .about-at__word { font: 700 calc(var(--w) * .12)/1 "Be Vietnam Pro", sans-serif; letter-spacing: .01em; color: var(--logo); }
         .about-zoom { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
         .about-zoom:hover { transform: scale(1.04); }
         .about-team img { filter: sepia(.35) saturate(.8); transition: filter .5s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
@@ -167,40 +176,34 @@ export default function AboutPage() {
           </div>
           <div style={{ paddingBottom: '64px', maxWidth: '720px' }}>
             <RevealOnScroll delay={120}>
-              <h1 style={{ ...SERIF, fontSize: 'clamp(34px, 5.5vw, 72px)', lineHeight: 1.1, fontWeight: 400, color: C.lightHead, marginBottom: '24px' }}>
+              <h1 style={{ ...SERIF, fontSize: 'clamp(34px, 5.5vw, 72px)', lineHeight: 1.1, fontWeight: 400, color: C.lightHead }}>
                 Câu chuyện của Nut Shell Studio
               </h1>
-            </RevealOnScroll>
-            <RevealOnScroll delay={220}>
-              <p style={{ ...BODY, fontSize: '17px', color: C.lightBody, maxWidth: '560px', margin: '0 auto' }}>
-                Được thành lập với niềm tin rằng mỗi không gian sống đều có thể trở thành một tác phẩm — nơi ánh sáng, chất liệu và cảm xúc hòa quyện thành một.
-              </p>
             </RevealOnScroll>
           </div>
         </div>
       </section>
 
-      {/* ── 2. Nguồn gốc — tiêu đề trái, nội dung phải ── */}
+      {/* ── 2. Giới thiệu — logo chữ trái, nội dung phải, 2 ảnh dự án ── */}
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16" style={{ borderBottom: `1px solid ${C.line}`, paddingBottom: '64px', marginBottom: '64px' }}>
-            <div className="lg:col-span-5">
-              <RevealOnScroll>
-                <p style={{ ...LABEL, color: C.accent, marginBottom: '18px' }}>NGUỒN GỐC</p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={80}>
-                <h2 style={{ ...H2, color: C.brown }}>Từ một xưởng nhỏ đến 400+ công trình</h2>
-              </RevealOnScroll>
-            </div>
-            <div className="lg:col-span-7" style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingTop: '4px' }}>
-              <RevealOnScroll delay={150}>
-                <p style={{ ...BODY, color: C.body }}>
-                  Năm 2017, hai nhà sáng lập Hoàng Vân Anh và Phan Thị Kim Anh bắt đầu hành trình từ một xưởng thiết kế nhỏ tại quận 1, TP.HCM. Với triết lý "ít hơn nhưng có ý nghĩa hơn", mỗi dự án là bài toán cân bằng giữa vẻ đẹp thẩm mỹ và giá trị công năng thực sự.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center" style={{ borderBottom: `1px solid ${C.line}`, paddingBottom: '64px', marginBottom: '64px' }}>
+            {/* "Tại" in đậm đặt phía trên logo chữ → đọc thành "Tại nutshell, chúng tôi…" */}
+            <RevealOnScroll className="lg:col-span-5">
+              <p className="about-at" aria-label="Tại Nut Shell">
+                <span className="about-at__word" aria-hidden="true">Tại</span>
+                <img src="/images/logo-text.png" alt="" className="about-at__logo" />
+              </p>
+            </RevealOnScroll>
+            <div className="lg:col-span-7" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <RevealOnScroll delay={120}>
+                <p style={{ ...SERIF, fontSize: 'clamp(24px, 2.4vw, 34px)', lineHeight: 1.3, color: C.brown }}>
+                  Chúng tôi tư vấn, thiết kế và thi công nội thất trọn gói.
                 </p>
               </RevealOnScroll>
-              <RevealOnScroll delay={210}>
+              <RevealOnScroll delay={200}>
                 <p style={{ ...BODY, color: C.body }}>
-                  Hơn 7 năm sau, Nut Shell đã đồng hành cùng hơn 400 công trình — từ nhà ở, biệt thự đến không gian thương mại — nhưng vẫn giữ nguyên cam kết từ ngày đầu: thiết kế từ câu chuyện của bạn, không phải từ catalog.
+                  Kết hợp thẩm mỹ, công năng và vật liệu để tạo nên những không gian mang dấu ấn riêng, chỉn chu trong từng chi tiết.
                 </p>
               </RevealOnScroll>
             </div>
@@ -208,10 +211,10 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <RevealOnScroll>
-              <ZoomImage src="/images/proj1.jpg" alt="Không gian do Nut Shell Studio thiết kế" ratio="1/1" />
+              <ZoomImage src="/images/about-muted-spark-2.webp" alt="Phòng khách dự án Muted Spark do Nut Shell thiết kế" ratio="4/3" />
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
-              <ZoomImage src="/images/thiet_ke.jpg" alt="Đội ngũ Nut Shell trong quá trình thiết kế" ratio="1/1" />
+              <ZoomImage src="/images/about-muted-spark-4.webp" alt="Phòng ngủ dự án Muted Spark do Nut Shell thiết kế" ratio="4/3" />
             </RevealOnScroll>
           </div>
         </div>

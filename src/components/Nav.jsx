@@ -49,7 +49,7 @@ export default function Nav() {
   const isActive   = (to) => to && (location.pathname === to || location.pathname.startsWith(to + '/'))
 
   /* ── Theme tokens ── */
-  const navBg      = heroMode ? 'transparent' : 'var(--bg)'
+  const navBg      = heroMode ? 'transparent' : 'var(--page-bg)'
   const navBorder  = heroMode ? '1px solid rgba(255,255,255,.18)' : '1px solid rgba(42,32,24,.08)'
   const textColor  = heroMode ? '#FFFFFF' : '#6B3318'
   const hoverColor = heroMode ? 'var(--accent)' : '#9B5030'
