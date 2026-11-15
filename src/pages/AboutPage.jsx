@@ -220,7 +220,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 3. Giá trị cốt lõi — thẻ có ảnh ── */}
-      <section className="pb-24 lg:pb-32">
+      <section className="pb-20 lg:pb-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHead label="GIÁ TRỊ CỐT LÕI" title="Những điều chúng tôi tin tưởng" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
@@ -286,7 +286,7 @@ export default function AboutPage() {
       )}
 
       {/* ── 6. Đội ngũ — lưới đều ── */}
-      <section className="py-24 lg:py-32">
+      <section className="pb-20 lg:pb-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHead label="ĐỘI NGŨ" title="Những người kiến tạo không gian" />
           {/* Sáng lập — ảnh + vai trò + giới thiệu ngắn */}
