@@ -42,24 +42,43 @@
   .hero__title { font-size: clamp(52px, min(9.5vw, 16svh), 144px); }
 }
 
-/* ── Thẻ dịch vụ mở rộng ── */
-.svc { border-radius: 20px; background: var(--surface); border: 1px solid var(--border); overflow: hidden; transition: border-color .3s ease; }
-.svc[data-open="true"] { border-color: var(--border-hover); }
-.svc__head { width: 100%; padding: clamp(22px, 3vw, 32px); display: grid; grid-template-columns: 1fr auto; gap: 10px 24px;
-  text-align: left; color: var(--text); background: transparent; border: 0; cursor: pointer; transition: background-color .25s ease; }
-.svc__head:hover { background: var(--bg); }
-.svc__head:focus-visible { outline: 2px solid var(--heading); outline-offset: -2px; }
-.svc__toggle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-hover); display: grid; place-items: center;
-  color: var(--text); transition: transform .35s ease, background-color .25s ease, color .25s ease; }
-.svc[data-open="true"] .svc__toggle { transform: rotate(45deg); background: var(--surface-dark); color: var(--text-light); border-color: transparent; }
-.svc__body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1); }
-.svc[data-open="true"] .svc__body { grid-template-rows: 1fr; }
-.svc__inner { overflow: hidden; }
-.svc__items { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-@media (min-width: 768px)  { .svc__items { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .svc__items { grid-template-columns: repeat(3, 1fr); } }
-.svc__item { background: var(--surface); padding: 24px clamp(22px, 3vw, 32px); }
-.svc__key { font-family: "Cormorant Garamond", serif; font-size: 30px; line-height: 1; color: var(--heading); }
+/* ── Dịch vụ: 2 khối ảnh, bấm để hiện danh sách A–Z trên ảnh ── */
+.svc-tile { position: relative; aspect-ratio: 3 / 4; border-radius: 24px; overflow: hidden; background: var(--surface-dark); color: #FFFFFF; isolation: isolate; }
+.svc-tile__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+.svc-tile:hover .svc-tile__img { transform: scale(1.04); }
+.svc-tile__shade { position: absolute; inset: 0; transition: background-color .45s ease;
+  background: linear-gradient(to top, rgba(var(--dark-rgb), .82) 0%, rgba(var(--dark-rgb), .3) 45%, rgba(var(--dark-rgb), .05) 70%); }
+.svc-tile[data-open="true"] .svc-tile__shade { background-color: rgba(var(--dark-rgb), .72); }
+.svc-tile__hit { position: absolute; inset: 0; z-index: 2; background: transparent; border: 0; cursor: pointer; border-radius: inherit; }
+.svc-tile__hit:focus-visible { outline: 3px solid var(--peach); outline-offset: -3px; }
+.svc-tile__toggle { position: absolute; top: clamp(18px, 2.5vw, 28px); right: clamp(18px, 2.5vw, 28px); z-index: 3; pointer-events: none;
+  width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .55); display: grid; place-items: center;
+  transition: transform .35s ease, background-color .25s ease, color .25s ease; }
+.svc-tile[data-open="true"] .svc-tile__toggle { transform: rotate(45deg); background: #FFFFFF; color: var(--text); border-color: transparent; }
+.svc-tile__front, .svc-tile__list { position: absolute; left: 0; right: 0; padding: clamp(22px, 3vw, 36px); z-index: 1;
+  transition: opacity .4s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+.svc-tile__front { bottom: 0; }
+.svc-tile[data-open="true"] .svc-tile__front { opacity: 0; transform: translateY(12px); }
+.svc-tile__list { top: 0; bottom: 0; display: flex; flex-direction: column; opacity: 0; transform: translateY(12px); }
+.svc-tile[data-open="true"] .svc-tile__list { opacity: 1; transform: none; }
+.svc-tile__num { font: 500 11px/1 "Be Vietnam Pro", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--peach); margin-bottom: 12px; }
+.svc-tile__title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(32px, 3.4vw, 48px); line-height: 1.02; letter-spacing: -.02em; color: #FFFFFF; }
+.svc-tile__title--sm { font-size: clamp(26px, 2.4vw, 34px); margin-bottom: 18px; padding-right: 60px; }
+.svc-tile__summary { font: 300 15px/1.6 "Be Vietnam Pro", sans-serif; color: rgba(255, 255, 255, .9); margin-top: 12px; max-width: 420px; }
+.svc-tile__list ul { list-style: none; border-top: 1px solid rgba(255, 255, 255, .25); }
+.svc-tile__list li { display: flex; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px solid rgba(255, 255, 255, .25);
+  font: 400 16px/1.35 "Be Vietnam Pro", sans-serif; color: #FFFFFF; }
+.svc-tile__key { font-family: "Cormorant Garamond", serif; font-size: 24px; line-height: 1; color: var(--peach); min-width: 20px; }
+/* link nằm trên nút phủ cả khối để bấm được riêng */
+.svc-tile__cta { position: relative; z-index: 3; align-self: flex-start; margin-top: auto; }
+/* điện thoại 3:4 · tablet (1 cột, rộng) 16:11 · máy tính (2 cột) 4:5 — đủ chỗ cho 6 hạng mục */
+@media (min-width: 640px)  { .svc-tile { aspect-ratio: 16 / 11; } }
+@media (min-width: 1024px) { .svc-tile { aspect-ratio: 4 / 5; } }
+@media (max-width: 767px) {
+  /* điện thoại: chiều cao theo bề ngang, tối thiểu 440px để đủ 6 hạng mục (không dùng aspect-ratio vì sẽ đẩy rộng khối) */
+  .svc-tile { aspect-ratio: auto; height: clamp(440px, 125vw, 540px); }
+  .svc-tile__list li { padding: 9px 0; font-size: 15px; }
+}
 
 /* ── Dự án: thẻ nổi bật cỡ lớn ── */
 .work-feature { position: relative; display: block; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; color: #FFFFFF; text-decoration: none; background: var(--surface-dark); }
@@ -114,7 +133,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero__slide, .hero__slide img { transition: none; transform: none; }
-  .svc__body, .svc__toggle { transition: none; }
+  .svc-tile__img, .svc-tile__shade, .svc-tile__toggle, .svc-tile__front, .svc-tile__list { transition: none; }
+  .svc-tile:hover .svc-tile__img { transform: none; }
   .work-feature img, .work-row__name, .work-row__arrow { transition: none; }
   .work-feature:hover img, .work-row:hover .work-row__name, .work-row:hover .work-row__arrow { transform: none; }
 }

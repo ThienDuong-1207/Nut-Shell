@@ -1,8 +1,9 @@
-// Nội dung phần Dịch vụ (#4 trong DESIGN.md) — mỗi dịch vụ là 1 thẻ bấm để mở chi tiết
+// Nội dung phần Dịch vụ — mỗi dịch vụ là 1 khối ảnh, bấm để hiện danh sách (đánh chữ A–Z) trên ảnh
 export const SERVICES = [
   {
     num: '01',
     name: 'Tư vấn & Thiết kế',
+    img: '/images/svc-1.webp',   // HALA Nguyễn Huệ 1.jpg
     summary: 'Dành cho khách hàng cần giải pháp thiết kế, hồ sơ ý tưởng hoặc phối cảnh nội thất.',
     itemsLabel: 'Gói',
     items: [
@@ -18,15 +19,16 @@ export const SERVICES = [
   {
     num: '02',
     name: 'Thiết kế & Thi công trọn gói',
+    img: '/images/svc-2.webp',   // Kingdom 101 5.jpg
     summary: 'Dành cho khách hàng muốn đồng bộ quá trình thiết kế và hoàn thiện công trình.',
-    itemsLabel: 'Bước',
+    itemsLabel: 'Hạng mục',
     items: [
-      { key: '1', name: 'Tư vấn & Khảo sát',          desc: 'Tiếp nhận nhu cầu, khảo sát hiện trạng, xác lập mục tiêu sử dụng, ngân sách và tiến độ dự kiến.' },
-      { key: '2', name: 'Thiết kế không gian',        desc: 'Phát triển concept, bố trí mặt bằng, lựa chọn vật liệu và diễn họa phối cảnh 3D.' },
-      { key: '3', name: 'Hồ sơ triển khai',           desc: 'Hoàn thiện các bản vẽ kỹ thuật cần thiết theo phạm vi thiết kế và thi công đã thống nhất.' },
-      { key: '4', name: 'Báo giá & Lựa chọn vật liệu', desc: 'Lập danh mục công việc, khối lượng, chủng loại vật tư và báo giá thi công để khách hàng phê duyệt.' },
-      { key: '5', name: 'Tổ chức thi công',           desc: 'Triển khai các hạng mục theo hợp đồng, phối hợp nhà thầu và kiểm soát sự phù hợp với thiết kế được duyệt.' },
-      { key: '6', name: 'Nghiệm thu & Bàn giao',      desc: 'Kiểm tra các hạng mục hoàn thiện, xử lý tồn đọng và bàn giao công trình theo điều kiện hợp đồng.' },
+      { key: 'A', name: 'Tư vấn & Khảo sát',          desc: 'Tiếp nhận nhu cầu, khảo sát hiện trạng, xác lập mục tiêu sử dụng, ngân sách và tiến độ dự kiến.' },
+      { key: 'B', name: 'Thiết kế không gian',        desc: 'Phát triển concept, bố trí mặt bằng, lựa chọn vật liệu và diễn họa phối cảnh 3D.' },
+      { key: 'C', name: 'Hồ sơ triển khai',           desc: 'Hoàn thiện các bản vẽ kỹ thuật cần thiết theo phạm vi thiết kế và thi công đã thống nhất.' },
+      { key: 'D', name: 'Báo giá & Lựa chọn vật liệu', desc: 'Lập danh mục công việc, khối lượng, chủng loại vật tư và báo giá thi công để khách hàng phê duyệt.' },
+      { key: 'E', name: 'Tổ chức thi công',           desc: 'Triển khai các hạng mục theo hợp đồng, phối hợp nhà thầu và kiểm soát sự phù hợp với thiết kế được duyệt.' },
+      { key: 'F', name: 'Nghiệm thu & Bàn giao',      desc: 'Kiểm tra các hạng mục hoàn thiện, xử lý tồn đọng và bàn giao công trình theo điều kiện hợp đồng.' },
     ],
   },
 ]

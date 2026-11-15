@@ -1,49 +1,52 @@
-/* ─── #4 Dịch vụ — 2 thẻ lớn, bấm để mở chi tiết ─── */
+/* ─── #4 Dịch vụ — 2 khối ảnh, bấm để hiện danh sách A–Z ngay trên ảnh ─── */
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import RevealOnScroll from '../../ui/RevealOnScroll'
 import { SERVICES } from '../../data/services'
 import { Plus, Arrow } from '../ui/Icons'
 
-function ServiceCard({ svc, open, onToggle }) {
-  const headId = `svc-head-${svc.num}`
-  const bodyId = `svc-body-${svc.num}`
+function ServiceTile({ svc, open, onToggle }) {
+  const listId = `svc-list-${svc.num}`
   return (
-    <div className="svc" data-open={open}>
-      <button id={headId} className="svc__head" aria-expanded={open} aria-controls={bodyId} onClick={onToggle}>
-        <span className="card__index" style={{ color: 'var(--heading)' }}>{svc.num} /</span>
-        <span className="svc__toggle" style={{ gridRow: 'span 3', alignSelf: 'start' }}><Plus /></span>
-        <span className="h-serif" style={{ fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 500, lineHeight: 1.05 }}>{svc.name}</span>
-        <span className="h-body" style={{ maxWidth: '560px' }}>{svc.summary}</span>
+    <article className="svc-tile" data-open={open}>
+      <img src={svc.img} alt="" loading="lazy" className="svc-tile__img" />
+      <div className="svc-tile__shade" />
+
+      {/* Cả khối là nút bấm; nút nằm dưới link "Liên hệ tư vấn" trong danh sách */}
+      <button className="svc-tile__hit" aria-expanded={open} aria-controls={listId} onClick={onToggle}>
+        <span className="sr-only">{open ? 'Thu gọn' : 'Xem các hạng mục'}: {svc.name}</span>
       </button>
 
-      <div id={bodyId} role="region" aria-labelledby={headId} className="svc__body" inert={open ? undefined : ''}>
-        <div className="svc__inner">
-          <div className="svc__items">
-            {svc.items.map(item => (
-              <div key={item.key} className="svc__item">
-                <div className="flex items-baseline gap-3" style={{ marginBottom: '10px' }}>
-                  <span className="svc__key">{item.key}</span>
-                  <h4 className="h-serif" style={{ fontSize: '22px', fontWeight: 500, color: 'var(--text)', lineHeight: 1.2 }}>{item.name}</h4>
-                </div>
-                <p className="h-body" style={{ fontSize: '14px' }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-          {svc.note && (
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5" style={{ padding: 'clamp(22px, 3vw, 32px)' }}>
-              <p className="h-body" style={{ maxWidth: '620px' }}>{svc.note}</p>
-              <Link to={svc.cta.to} className="btn btn--dark" style={{ flexShrink: 0 }}>{svc.cta.label} <Arrow /></Link>
-            </div>
-          )}
-        </div>
+      <span className="svc-tile__toggle" aria-hidden="true"><Plus /></span>
+
+      {/* Mặt trước: tên dịch vụ */}
+      <div className="svc-tile__front" aria-hidden={open}>
+        <p className="svc-tile__num">{svc.num} /</p>
+        <h3 className="svc-tile__title">{svc.name}</h3>
+        <p className="svc-tile__summary">{svc.summary}</p>
       </div>
-    </div>
+
+      {/* Khi mở: danh sách A–Z trên ảnh */}
+      <div id={listId} className="svc-tile__list" inert={open ? undefined : ''}>
+        <p className="svc-tile__num">{svc.num} / {svc.itemsLabel}</p>
+        <h3 className="svc-tile__title svc-tile__title--sm">{svc.name}</h3>
+        <ul>
+          {svc.items.map(item => (
+            <li key={item.key}>
+              <span className="svc-tile__key">{item.key}</span>
+              <span>{item.name}</span>
+            </li>
+          ))}
+        </ul>
+        <Link to="/lien-he" className="btn btn--light svc-tile__cta">Liên hệ tư vấn <Arrow /></Link>
+      </div>
+    </article>
   )
 }
 
 export default function HomeServices() {
-  const [openNum, setOpenNum] = useState(null)
+  const [open, setOpen] = useState({})
+  const toggle = num => setOpen(o => ({ ...o, [num]: !o[num] }))
   return (
     <section id="dichvu" className="h-section">
       <div className="h-container">
@@ -54,10 +57,10 @@ export default function HomeServices() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
           {SERVICES.map((svc, i) => (
             <RevealOnScroll key={svc.num} delay={i * 100}>
-              <ServiceCard svc={svc} open={openNum === svc.num} onToggle={() => setOpenNum(n => n === svc.num ? null : svc.num)} />
+              <ServiceTile svc={svc} open={!!open[svc.num]} onToggle={() => toggle(svc.num)} />
             </RevealOnScroll>
           ))}
         </div>
