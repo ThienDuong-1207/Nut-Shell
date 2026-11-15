@@ -155,7 +155,7 @@ export default function AboutPage() {
       {/* ── 1. Hero — ảnh tràn màn hình ── */}
       <section data-hero style={{ position: 'relative', height: '100svh', minHeight: '560px', overflow: 'hidden' }}>
         <div ref={heroBg} style={{ position: 'absolute', inset: '-8% 0 0 0', willChange: 'transform' }}>
-          <img src="/images/hero.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/images/about-hero.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, rgba(var(--dark-rgb), .45), rgba(var(--dark-rgb), .6) 45%, rgba(var(--dark-rgb), .9))` }} />
 
