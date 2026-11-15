@@ -1,17 +1,10 @@
 /* ─── FloatingContact — fixed bottom-right Zalo + Messenger + Phone buttons ─── */
 import { useState, useEffect } from 'react'
 
-// Username của fanpage Facebook (phần sau facebook.com/)
+// Username của fanpage Facebook (phần sau facebook.com/) — m.me/<username> mở thẳng Messenger
 export const FB_PAGE_USERNAME = 'nutshell.interior'
 export const FB_PAGE_URL = `https://www.facebook.com/${FB_PAGE_USERNAME}`
-
-// Mobile: m.me mở thẳng app Messenger.
-// Desktop: m.me chuyển sang messenger.com (không chung phiên đăng nhập với facebook.com)
-// nên mở khung chat ngay trên facebook.com, nơi người dùng thường đã đăng nhập sẵn.
-const IS_MOBILE = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-const MESSENGER_URL = IS_MOBILE
-  ? `https://m.me/${FB_PAGE_USERNAME}`
-  : `https://www.facebook.com/messages/t/${FB_PAGE_USERNAME}`
+const MESSENGER_URL = `https://m.me/${FB_PAGE_USERNAME}`
 
 const MESSENGER_SVG = (
   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -19,11 +12,11 @@ const MESSENGER_SVG = (
   </svg>
 )
 
-// Chữ "Zalo" thay cho bong bóng chat — tránh nhầm với icon Messenger ngay bên dưới
 const ZALO_SVG = (
-  <span style={{ fontFamily: '"Be Vietnam Pro", sans-serif', fontWeight: 700, fontSize: '13px', color: 'white', letterSpacing: '-0.2px' }}>
-    Zalo
-  </span>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.919 1.397 5.523 3.584 7.25L4.5 22l3.978-1.77C9.563 20.717 10.76 21 12 21c5.523 0 10-4.145 10-9.243C22 6.145 17.523 2 12 2z" fill="white"/>
+    <path d="M7.5 13.5L9.75 11l2.25 2.25L14.25 9" stroke="#0068FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
 )
 
 const PHONE_SVG = (
@@ -39,8 +32,7 @@ export default function FloatingContact() {
   const [phoneHover, setPhoneHover] = useState(false)
 
   useEffect(() => {
-    // Trang chủ chờ loading screen (~3.5s); trang khác không có loading nên hiện sớm
-    const timer = setTimeout(() => setVisible(true), window.location.pathname === '/' ? 3600 : 600)
+    const timer = setTimeout(() => setVisible(true), 3600)
     return () => clearTimeout(timer)
   }, [])
 
@@ -48,6 +40,8 @@ export default function FloatingContact() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '52px',
+    height: '52px',
     borderRadius: '50%',
     border: 'none',
     cursor: 'pointer',
@@ -64,7 +58,7 @@ export default function FloatingContact() {
     transform: 'translateY(-50%)',
     background: 'rgba(42,32,24,0.88)',
     color: '#F0E5CC',
-    fontFamily: '"Be Vietnam Pro", sans-serif',
+    fontFamily: '"Space Mono", monospace',
     fontSize: '10px',
     letterSpacing: '1.5px',
     padding: '6px 12px',
@@ -75,15 +69,16 @@ export default function FloatingContact() {
   }
 
   return (
-    // Kích thước / vị trí qua Tailwind để thu nhỏ trên điện thoại, đỡ che nội dung
     <div
-      className="bottom-4 right-3 gap-2 sm:bottom-8 sm:right-6 sm:gap-3 [&>a]:w-11 [&>a]:h-11 sm:[&>a]:w-[52px] sm:[&>a]:h-[52px]"
       style={{
         position: 'fixed',
+        bottom: '32px',
+        right: '24px',
         zIndex: 100,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        gap: '12px',
         opacity: visible ? 1 : 0,
         transition: 'opacity 0.5s ease',
         pointerEvents: visible ? 'auto' : 'none',
@@ -91,7 +86,7 @@ export default function FloatingContact() {
     >
       {/* Zalo button */}
       <a
-        href="https://zalo.me/0898123636"
+        href="https://zalo.me/08981233636"
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -139,7 +134,7 @@ export default function FloatingContact() {
 
       {/* Phone button */}
       <a
-        href="tel:0898123636"
+        href="tel:08981233636"
         style={{
           ...btnBase,
           background: '#6B3318',
