@@ -193,7 +193,9 @@ export default function AboutPage() {
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="about-intro">
+            {/* "TẠI" cùng kiểu nhãn mục (như GIÁ TRỊ CỐT LÕI) đặt trên logo → đọc thành "Tại nutshell, chúng tôi…" */}
             <RevealOnScroll>
+              <p style={{ ...LABEL, color: C.accent, marginBottom: '18px' }}>TẠI</p>
               <img src="/images/logo-wordmark.webp" alt="Nut Shell" className="about-intro__logo" />
             </RevealOnScroll>
             <RevealOnScroll delay={100}>
