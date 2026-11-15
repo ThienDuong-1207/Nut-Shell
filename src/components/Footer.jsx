@@ -8,12 +8,12 @@ const COLUMNS = [
   {
     title: 'Điều hướng',
     links: [
-      { label: 'Trang chủ',  href: '/',          router: true },
-      { label: 'Giới thiệu', href: '/gioi-thieu', router: true },
-      { label: 'Dịch vụ',    href: '/#dichvu' },
-      { label: 'Dự án',      href: '/du-an',     router: true },
-      { label: 'Chia sẻ',    href: '/chia-se',   router: true },
-      { label: 'Liên hệ',    href: '/lien-he',   router: true },
+      // cùng thứ tự với thanh menu, thêm Liên hệ ở cuối
+      { label: 'Trang chủ',     href: '/',           router: true },
+      { label: 'Dự án',         href: '/du-an',      router: true },
+      { label: 'Về chúng tôi',  href: '/gioi-thieu', router: true },
+      { label: 'Chia sẻ',       href: '/chia-se',    router: true },
+      { label: 'Liên hệ',       href: '/lien-he',    router: true },
     ],
   },
   {
