@@ -32,19 +32,19 @@ const VALUES = [
   {
     num: '01',
     name: 'Tính xác thực',
-    img: '/images/svc1.jpg',
+    img: '/images/about-value-1.webp',
     desc: 'Mỗi không gian chúng tôi tạo ra phản ánh đúng cá tính và lối sống của chủ nhân — không theo trào lưu, không copy mẫu có sẵn.',
   },
   {
     num: '02',
     name: 'Sự tỉ mỉ',
-    img: '/images/svc2.jpg',
+    img: '/images/about-value-2.webp',
     desc: 'Từ góc chiếu sáng đến texture vải bọc — mọi chi tiết đều được cân nhắc kỹ lưỡng trước khi chốt phương án cuối cùng.',
   },
   {
     num: '03',
     name: 'Đồng hành dài lâu',
-    img: '/images/svc3.jpg',
+    img: '/images/about-value-3.webp',
     desc: 'Mối quan hệ với khách hàng không kết thúc khi bàn giao. Chúng tôi ở đây cho mọi điều chỉnh nhỏ sau này.',
   },
 ]
@@ -77,6 +77,9 @@ const TEAMS_WITHOUT_PHOTO = TEAMS
   .map(t => ({ ...t, members: t.members.filter(m => !m.img) }))
   .filter(t => t.members.length > 0)
 
+// Các phần đang tạm ẩn — đổi thành true để hiện lại
+const SHOW_MILESTONES = false   // "Hành trình"
+const SHOW_STORY_BAND = false   // dải ảnh "Câu chuyện của bạn / Không gian của bạn"
 const MILESTONES = [
   { year: '2017', title: 'Thành lập Nut Shell',      text: 'Khởi đầu từ xưởng nhỏ tại quận 1, TP.HCM' },
   { year: '2019', title: '100 dự án đầu tiên',       text: 'Mở rộng sang thiết kế không gian thương mại' },
@@ -237,7 +240,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 4. Hành trình — dạng bảng ── */}
+      {/* ── 4. Hành trình — dạng bảng (tạm ẩn, xem SHOW_MILESTONES) ── */}
+      {SHOW_MILESTONES && (
       <section style={{ background: C.brown }} className="py-24 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHead label="HÀNH TRÌNH" title="Những cột mốc đáng nhớ" dark />
@@ -257,8 +261,10 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      )}
 
-      {/* ── 5. Dải ảnh — câu chuyện / không gian ── */}
+      {/* ── 5. Dải ảnh — câu chuyện / không gian (tạm ẩn, xem SHOW_STORY_BAND) ── */}
+      {SHOW_STORY_BAND && (
       <section style={{ position: 'relative', height: 'clamp(440px, 85vh, 820px)', overflow: 'hidden' }}>
         <img src="/images/proj5.jpg" alt="Không gian sống do Nut Shell thiết kế" loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(var(--dark-rgb), .55), rgba(var(--dark-rgb), .15) 50%, rgba(var(--dark-rgb), .55))' }} />
@@ -277,6 +283,7 @@ export default function AboutPage() {
           </RevealOnScroll>
         </div>
       </section>
+      )}
 
       {/* ── 6. Đội ngũ — lưới đều ── */}
       <section className="py-24 lg:py-32">
