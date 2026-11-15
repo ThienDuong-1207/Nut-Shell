@@ -106,7 +106,7 @@ function ProjectList({ projects }) {
 
 export default function HomeWork() {
   return (
-    <section id="duan" className="h-section h-alt">
+    <section id="duan" className="h-section h-dark">
       <div className="h-container">
         <div className="section-head">
           <div>
@@ -129,8 +129,8 @@ export default function HomeWork() {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5" style={{ marginTop: '40px' }}>
-          <p className="h-label" style={{ color: 'var(--text-secondary-alt)' }}>{PROJECTS.length} công trình · Nhà ở · Cafe · Nhà hàng</p>
-          <Link to="/du-an" className="btn btn--dark">Xem tất cả {PROJECTS.length} dự án <Arrow /></Link>
+          <p className="h-label">{PROJECTS.length} công trình · Nhà ở · Cafe · Nhà hàng</p>
+          <Link to="/du-an" className="btn btn--light">Xem tất cả {PROJECTS.length} dự án <Arrow /></Link>
         </div>
       </div>
     </section>

@@ -73,7 +73,7 @@ export default function Nav() {
           style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', height: '100%', cursor: 'pointer', justifySelf: 'start' }}
         >
           <img
-            src={heroMode && !mobileOpen ? '/images/logo-text-light.png' : '/images/logo-text.png'}
+            src="/images/logo-text.png"
             alt="Nut Shell Interior Design"
             style={{
               height: '40px',
@@ -167,7 +167,7 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       <div style={{
-        background: '#F0E8D8',
+        background: 'var(--page-bg)',
         borderTop: '1px solid rgba(42,32,24,.07)',
         maxHeight: mobileOpen ? '520px' : '0',
         overflow: 'hidden',

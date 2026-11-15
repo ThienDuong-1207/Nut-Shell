@@ -13,7 +13,7 @@ const C = {
   cream:     'var(--bg)',
   sand:      'var(--surface-alt)',
   accent:    'var(--accent-strong)',  // nhãn trên nền sáng
-  body:      'var(--text-secondary)',
+  body:      'var(--text)',          // chữ thường trên nền kem: đen
   lightHead: 'var(--text-light)',
   lightBody: 'var(--text-light-secondary)',
   line:      'var(--border)',
@@ -80,6 +80,7 @@ const TEAMS_WITHOUT_PHOTO = TEAMS
 // Các phần đang tạm ẩn — đổi thành true để hiện lại
 const SHOW_MILESTONES = false   // "Hành trình"
 const SHOW_STORY_BAND = false   // dải ảnh "Câu chuyện của bạn / Không gian của bạn"
+const SHOW_MEMBERS = false      // thành viên Team 3D Design, Team Triển khai & Giám sát (chỉ hiện 2 Founder)
 const MILESTONES = [
   { year: '2017', title: 'Thành lập Nut Shell',      text: 'Khởi đầu từ xưởng nhỏ tại quận 1, TP.HCM' },
   { year: '2019', title: '100 dự án đầu tiên',       text: 'Mở rộng sang thiết kế không gian thương mại' },
@@ -119,7 +120,7 @@ function SectionHead({ label, title, dark = false }) {
         </RevealOnScroll>
       )}
       <RevealOnScroll delay={80}>
-        <h2 style={{ ...H2, color: dark ? C.lightHead : C.brown }}>{title}</h2>
+        <h2 style={{ ...H2, color: dark ? 'var(--peach)' : 'var(--heading)' }}>{title}</h2>
       </RevealOnScroll>
     </div>
   )
@@ -140,16 +141,10 @@ function ZoomImage({ src, alt, pos = 'center', ratio = '4/5' }) {
 }
 
 export default function AboutPage() {
-  // menu và footer dùng --page-bg → đổi theo nền riêng của trang này, trả lại khi rời trang
-  useEffect(() => {
-    document.body.style.setProperty('--page-bg', 'var(--bg-about)')
-    return () => document.body.style.removeProperty('--page-bg')
-  }, [])
-
   const heroBg = useParallax(0.22)
 
   return (
-    <main style={{ background: 'var(--bg-about)' }}>
+    <main style={{ background: 'var(--bg)' }}>
       <style>{`
         .about-intro { margin-bottom: 48px; }
         .about-intro__logo { width: 220px; height: auto; display: block; margin-bottom: 24px; }
@@ -219,20 +214,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 3. Giá trị cốt lõi — thẻ có ảnh ── */}
-      <section className="pb-20 lg:pb-28">
+      {/* ── 3. Giá trị cốt lõi — thẻ có ảnh, nền đất nung (xen kẽ với phần trên/dưới) ── */}
+      <section className="py-20 lg:py-28" style={{ background: 'var(--surface-dark)' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <SectionHead label="GIÁ TRỊ CỐT LÕI" title="Những điều chúng tôi tin tưởng" />
+          <SectionHead label="GIÁ TRỊ CỐT LÕI" title="Những điều chúng tôi tin tưởng" dark />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
             {VALUES.map((v, i) => (
               <RevealOnScroll key={v.num} delay={i * 100}>
                 <div>
                   <ZoomImage src={v.img} alt={v.name} ratio="4/5" />
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '14px', margin: '22px 0 10px' }}>
-                    <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: C.accent }}>{v.num}</span>
-                    <h3 style={{ ...SERIF, fontSize: '22px', fontWeight: 400, color: C.brown }}>{v.name}</h3>
+                    <span style={{ ...MONO, fontSize: '10px', letterSpacing: '2px', color: 'var(--peach)' }}>{v.num}</span>
+                    <h3 style={{ ...SERIF, fontSize: '22px', fontWeight: 400, color: 'var(--text-light)' }}>{v.name}</h3>
                   </div>
-                  <p style={{ ...BODY, fontSize: '15px', lineHeight: 1.8, color: C.body, maxWidth: '360px' }}>{v.desc}</p>
+                  <p style={{ ...BODY, fontSize: '15px', lineHeight: 1.8, color: 'var(--text-light-secondary)', maxWidth: '360px' }}>{v.desc}</p>
                 </div>
               </RevealOnScroll>
             ))}
@@ -286,7 +281,7 @@ export default function AboutPage() {
       )}
 
       {/* ── 6. Đội ngũ — lưới đều ── */}
-      <section className="pb-20 lg:pb-28">
+      <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <SectionHead label="ĐỘI NGŨ" title="Những người kiến tạo không gian" />
           {/* Sáng lập — ảnh + vai trò + giới thiệu ngắn */}
@@ -306,7 +301,7 @@ export default function AboutPage() {
           </div>
 
           {/* Thành viên đã có ảnh */}
-          {MEMBERS_WITH_PHOTO.length > 0 && (
+          {SHOW_MEMBERS && MEMBERS_WITH_PHOTO.length > 0 && (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10" style={{ marginTop: 'clamp(56px, 7vw, 96px)' }}>
               {MEMBERS_WITH_PHOTO.map((m, i) => (
                 <RevealOnScroll key={m.name} delay={i * 90}>
@@ -321,7 +316,7 @@ export default function AboutPage() {
           )}
 
           {/* Thành viên chưa có ảnh — bảng theo nhóm */}
-          {TEAMS_WITHOUT_PHOTO.length > 0 && (
+          {SHOW_MEMBERS && TEAMS_WITHOUT_PHOTO.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginTop: 'clamp(56px, 7vw, 96px)' }}>
             {TEAMS_WITHOUT_PHOTO.map((t, i) => (
               <RevealOnScroll key={t.name} delay={i * 100}>

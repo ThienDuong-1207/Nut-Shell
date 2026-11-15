@@ -17,9 +17,9 @@ export default function CtaCard({
           <div className="cta-card">
             <div>
               <p className="h-label" style={{ color: '#FFFFFF', marginBottom: '18px' }}>/ {label}</p>
-              <h2 className="h-h2" style={{ color: 'var(--accent)', marginBottom: '20px' }}>{title}</h2>
+              <h2 className="h-h2" style={{ color: 'var(--peach)', marginBottom: '20px' }}>{title}</h2>
               <p className="h-body" style={{ color: 'var(--text-on-brand)', maxWidth: '460px', marginBottom: '32px' }}>{desc}</p>
-              <Link to={cta.to} className="btn btn--accent">{cta.label} <Arrow /></Link>
+              <Link to={cta.to} className="btn btn--light">{cta.label} <Arrow /></Link>
             </div>
             <img className="cta-card__logo" src="/images/logo-text-light.png" alt="Nut Shell Interior Design" loading="lazy" />
           </div>

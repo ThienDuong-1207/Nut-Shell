@@ -10,13 +10,16 @@ import HomeTestimonials from '../components/home/HomeTestimonials'
 import Faq from '../components/ui/Faq'
 import HomeCta from '../components/home/HomeCta'
 
+// Các phần đang tạm ẩn — đổi thành true để hiện lại
+const SHOW_PROCESS = false   // "Quy trình"
+
 export default function Home({ appLoaded }) {
   return (
     <main className="home">
       <HomeHero appLoaded={appLoaded} />
       <NameMarquee />
       <HomeServices />
-      <HomeProcess />
+      {SHOW_PROCESS && <HomeProcess />}
       <HomeWork />
       <HomeWhy />
       <HomeTestimonials />

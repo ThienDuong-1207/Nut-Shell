@@ -17,7 +17,7 @@ export default function NameMarquee() {
             <span key={copy} className="inline-flex items-center" aria-hidden={copy === 1 || undefined}>
               {names.map(n => (
                 <span key={n} className="inline-flex items-center">
-                  <span className="h-serif" style={{ fontSize: 'clamp(26px, 2.6vw, 36px)', color: 'var(--accent)', padding: '0 28px' }}>{n}</span>
+                  <span className="h-serif" style={{ fontSize: 'clamp(26px, 2.6vw, 36px)', color: 'var(--peach)', padding: '0 28px' }}>{n}</span>
                   <span aria-hidden="true" style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--text-light-secondary)', display: 'inline-block' }} />
                 </span>
               ))}

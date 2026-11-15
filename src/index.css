@@ -4,32 +4,34 @@
 
 /* ─── Design tokens (DESIGN.md §2) ─── */
 :root {
-  --bg: #F0E7D7;
-  --bg-about: #EFEBE6;           /* nền riêng trang Giới thiệu */
+  --bg: #EFEBE6;
   --page-bg: var(--bg);          /* nền trang hiện tại — menu, footer theo màu này; trang có thể ghi đè trên <body> */
-  --surface: #F6F0E4;
+  --surface: #F7F5F2;            /* thẻ trên nền sáng */
   --surface-alt: #E6DAC3;
-  --surface-dark: #1D1A19;
-  --surface-dark-card: #3A302C;
-  --surface-dark-hover: #453A35;
+  /* Nền 1 — Terracotta Brown: chữ trắng, tiêu đề Soft Peach */
+  --surface-dark: #884534;
+  --surface-dark-card: #743A2C;   /* thẻ trên nền đất nung */
+  --surface-dark-hover: #7E4031;
 
   --border: rgba(29, 26, 25, .14);
   --border-hover: rgba(29, 26, 25, .36);
-  --border-light: rgba(240, 231, 215, .14);
+  --border-light: rgba(255, 255, 255, .2);
 
   --text: #1D1A19;
+  --heading: #884534;            /* tiêu đề các mục trên nền sáng (6:1 trên --bg) */
   --text-secondary: #6B675F;
   --text-secondary-alt: #5C5851;
-  --text-light: #F0E7D7;
-  --text-light-secondary: #B8AE9C;
+  --text-light: #FFFFFF;
+  --text-light-secondary: #F8EFEA;  /* đoạn văn trên nền đất nung (6.6:1) */
+  --peach: #F2C6AC;                 /* tiêu đề trên nền đất nung — màu chữ logo (4.6:1) */
 
   --accent: #DCC99B;
   --accent-hover: #E6D6AE;
   --accent-strong: #6B3318;
-  --brand: #6B3318;             /* nâu thương hiệu — nền thẻ CTA */
-  --text-on-brand: #E6D6BF;     /* đoạn văn trên --brand (7:1) */
+  --brand: #884534;             /* nền thẻ CTA = nền 1 */
+  --text-on-brand: #F8EFEA;
 
-  --bg-rgb: 240, 231, 215;
+  --bg-rgb: 239, 235, 230;
   --dark-rgb: 29, 26, 25;
 }
 

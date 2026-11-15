@@ -1,12 +1,17 @@
-/* ─── #2 Hero — ảnh tràn màn hình tự chuyển, tiêu đề lớn so le ─── */
+/* ─── #2 Hero — ảnh tràn màn hình tự chuyển, tiêu đề căn trái ─── */
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getProjectBySlug } from '../../data/projects'
 import { Arrow } from '../ui/Icons'
 
-// Ảnh bìa các dự án chọn cho hero (bìa Villa Long Hậu, Kingdom 101 chọn tay trong scripts/import-renders.mjs)
-const SLIDES = ['villa-longhau', 'tiem-kem', 'cf-gau', 'muted-spark', 'kingdom101'].map(getProjectBySlug)
-const INTERVAL = 6000
+// Ảnh hero chọn tay (public/images/hero-1..5.webp), theo thứ tự hiển thị
+const SLIDES = [
+  { key: 'kingdom101',      src: '/images/hero-1.webp', name: 'Kingdom 101' },
+  { key: 'hala-nguyen-hue', src: '/images/hero-2.webp', name: 'HALA Nguyễn Huệ' },
+  { key: 'cf-gau',          src: '/images/hero-3.webp', name: 'Cafe Gấu' },
+  { key: 'sashimi',         src: '/images/hero-4.webp', name: 'Sashimi Premium' },
+  { key: 'hala-cf',         src: '/images/hero-5.webp', name: 'HALA Cafe' },
+]
+const INTERVAL = 4000
 
 const prefersReducedMotion =
   typeof window !== 'undefined' &&
@@ -34,8 +39,8 @@ export default function HomeHero({ appLoaded }) {
   return (
     <section className="hero" data-hero aria-roledescription="carousel" aria-label="Công trình tiêu biểu">
       {SLIDES.map((p, i) => (
-        <div key={p.slug} className="hero__slide" data-active={i === active} aria-hidden={i !== active}>
-          <img src={p.cover} alt={i === active ? p.name : ''} fetchpriority={i === 0 ? 'high' : undefined} loading={i === 0 ? 'eager' : 'lazy'} />
+        <div key={p.key} className="hero__slide" data-active={i === active} aria-hidden={i !== active}>
+          <img src={p.src} alt={i === active ? p.name : ''} fetchpriority={i === 0 ? 'high' : undefined} loading={i === 0 ? 'eager' : 'lazy'} />
         </div>
       ))}
       <div className="hero__shade" />
@@ -45,7 +50,7 @@ export default function HomeHero({ appLoaded }) {
           <p className="hero__eyebrow" style={enter(appLoaded, 200)}>Mỗi không gian là một câu chuyện riêng</p>
           <h1 className="hero__title">
             <span style={enter(appLoaded, 300)}>Thiết kế</span>
-            <span className="hero__indent" style={enter(appLoaded, 440)}>từ sự thấu hiểu.</span>
+            <span style={enter(appLoaded, 440)}>từ sự thấu hiểu.</span>
           </h1>
         </div>
 
@@ -56,7 +61,7 @@ export default function HomeHero({ appLoaded }) {
             </p>
             <div className="flex items-center gap-1">
               {SLIDES.map((p, i) => (
-                <button key={p.slug} className="hero__dot" data-active={i === active}
+                <button key={p.key} className="hero__dot" data-active={i === active}
                   aria-label={`Xem ảnh ${i + 1}: ${p.name}`} aria-current={i === active || undefined}
                   onClick={() => setActive(i)}>
                   <span />
@@ -71,7 +76,7 @@ export default function HomeHero({ appLoaded }) {
           </div>
 
           <div className="hero__side" style={enter(appLoaded, 800)}>
-            <p>Đồng hành từ ý tưởng đến bàn giao — từng bước, hướng tới không gian sống bạn mơ ước.</p>
+            <p>Đồng hành từ ý tưởng đến bàn giao từng bước, hướng tới không gian sống bạn mơ ước.</p>
             <div className="flex flex-wrap gap-3 md:justify-end">
               <Link to="/lien-he" className="btn btn--light">Liên hệ tư vấn <Arrow /></Link>
               <Link to="/du-an" className="btn btn--ghost-light">Xem dự án</Link>

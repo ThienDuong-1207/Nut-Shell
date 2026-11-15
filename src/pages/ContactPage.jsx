@@ -111,7 +111,7 @@ export default function ContactPage() {
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7" style={{ marginBottom: '32px' }}>
               {INFO.map(item => (
                 <div key={item.label}>
-                  <dt className="h-label" style={{ color: 'var(--accent)', fontSize: '10px', marginBottom: '10px' }}>{item.label}</dt>
+                  <dt className="h-label" style={{ color: 'var(--peach)', fontSize: '10px', marginBottom: '10px' }}>{item.label}</dt>
                   {item.lines.map(line => (
                     <dd key={line} className="h-body" style={{ fontSize: '14px', color: 'var(--text-light)' }}>
                       {item.href ? <a href={item.href} className="footer__link" style={{ color: 'inherit', fontSize: '14px' }}>{line}</a> : line}

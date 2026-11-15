@@ -4,7 +4,7 @@ import { TESTIMONIALS } from '../../data/home'
 
 export default function HomeTestimonials() {
   return (
-    <section className="h-section">
+    <section className="h-section h-dark">
       <div className="h-container">
         <div className="section-head">
           <div>
@@ -25,7 +25,7 @@ export default function HomeTestimonials() {
                 </blockquote>
                 <figcaption className="flex items-center justify-between gap-3">
                   <span className="flex items-center gap-3" style={{ background: 'var(--bg)', borderRadius: '999px', padding: '5px 16px 5px 5px', border: '1px solid var(--border)' }}>
-                    <span aria-hidden="true" className="grid place-items-center" style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'var(--surface-dark)', color: 'var(--accent)', font: '500 11px/1 "Be Vietnam Pro", sans-serif', letterSpacing: '.06em' }}>{t.initials}</span>
+                    <span aria-hidden="true" className="grid place-items-center" style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'var(--surface-dark)', color: 'var(--text-light)', font: '500 11px/1 "Be Vietnam Pro", sans-serif', letterSpacing: '.06em' }}>{t.initials}</span>
                     <span>
                       <span style={{ display: 'block', font: '500 14px/1.2 "Be Vietnam Pro", sans-serif', color: 'var(--text)' }}>{t.name}</span>
                       <span className="h-label" style={{ display: 'block', fontSize: '10px', color: 'var(--text-secondary)', marginTop: '3px' }}>{t.role}</span>
