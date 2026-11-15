@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const NAV_LINKS = [
-  { label: 'GIỚI THIỆU', to: '/gioi-thieu' },
-  { label: 'DỊCH VỤ',    href: '/#dichvu'   },
-  { label: 'DỰ ÁN',      to: '/du-an'       },
-  { label: 'CHIA SẺ',    to: '/chia-se'     },
+  { label: 'TRANG CHỦ',     to: '/'           },
+  { label: 'DỰ ÁN',         to: '/du-an'      },
+  { label: 'VỀ CHÚNG TÔI',  to: '/gioi-thieu' },
+  { label: 'CHIA SẺ',       to: '/chia-se'    },
 ]
 
 const MONO = { fontFamily: '"Be Vietnam Pro", sans-serif', fontSize: '10.5px', letterSpacing: '2px' }
@@ -174,18 +174,6 @@ export default function Nav() {
         transition: 'max-height .4s cubic-bezier(.4,0,.2,1)',
       }}>
         <div className="px-6 py-8 flex flex-col gap-6">
-          <Link
-            to="/"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              ...MONO,
-              color: location.pathname === '/' ? '#9B5030' : '#6B3318',
-              textDecoration: 'none',
-            }}
-          >
-            TRANG CHỦ
-          </Link>
-
           {NAV_LINKS.map(l => {
             const active = isActive(l.to)
             const color  = active ? '#9B5030' : '#6B3318'
