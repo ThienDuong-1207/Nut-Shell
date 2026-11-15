@@ -148,8 +148,14 @@ export default function AboutPage() {
   return (
     <main style={{ background: 'var(--bg-about)' }}>
       <style>{`
-        .about-at { --w: clamp(220px, 24vw, 360px); display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
-        .about-at__logo { width: var(--w); height: auto; display: block; }
+        .about-intro { margin-bottom: 48px; }
+        .about-intro__logo { width: 220px; height: auto; display: block; margin-bottom: 24px; }
+        .about-intro__text { font: 300 16px/1.8 "Be Vietnam Pro", sans-serif; color: ${C.body}; max-width: 560px; }
+        @media (min-width: 768px) {
+          .about-intro { margin-bottom: 72px; }
+          .about-intro__logo { width: 300px; margin-bottom: 32px; }
+          .about-intro__text { font-size: 17px; }
+        }
         .about-zoom { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
         .about-zoom:hover { transform: scale(1.04); }
         .about-team img { filter: sepia(.35) saturate(.8); transition: filter .5s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
@@ -183,25 +189,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 2. Giới thiệu — logo chữ trái, nội dung phải, 2 ảnh dự án ── */}
-      <section className="py-24 lg:py-32">
+      {/* ── 2. Giới thiệu — logo chữ, đoạn văn (căn trái), bên dưới 2 ảnh dự án ── */}
+      <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center" style={{ borderBottom: `1px solid ${C.line}`, paddingBottom: '64px', marginBottom: '64px' }}>
-            {/* "TẠI" cùng kiểu nhãn mục (như GIÁ TRỊ CỐT LÕI) đặt trên logo chữ → đọc thành "Tại nutshell, chúng tôi…" */}
-            <RevealOnScroll className="lg:col-span-5">
-              <p className="about-at" aria-label="Tại Nut Shell">
-                <span aria-hidden="true" style={{ ...LABEL, color: C.accent }}>TẠI</span>
-                <img src="/images/logo-text.png" alt="" className="about-at__logo" />
-              </p>
+          <div className="about-intro">
+            <RevealOnScroll>
+              <img src="/images/logo-wordmark.webp" alt="Nut Shell" className="about-intro__logo" />
             </RevealOnScroll>
-            <RevealOnScroll delay={120} className="lg:col-span-7">
-              <p style={{ ...BODY, color: C.body, maxWidth: '640px' }}>
+            <RevealOnScroll delay={100}>
+              <p className="about-intro__text">
                 Chúng tôi tư vấn, thiết kế và thi công nội thất trọn gói. Kết hợp thẩm mỹ, công năng và vật liệu để tạo nên những không gian mang dấu ấn riêng, chỉn chu trong từng chi tiết.
               </p>
             </RevealOnScroll>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <RevealOnScroll>
               <ZoomImage src="/images/about-muted-spark-2.webp" alt="Phòng khách dự án Muted Spark do Nut Shell thiết kế" ratio="4/3" />
             </RevealOnScroll>
